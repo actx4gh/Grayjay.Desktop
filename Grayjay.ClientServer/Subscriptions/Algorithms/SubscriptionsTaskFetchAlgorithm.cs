@@ -318,12 +318,12 @@ namespace Grayjay.ClientServer.Subscriptions.Algorithms
                                 SetProgress(finished, forkTasks.Count);
                                 if (!cachedChannels.Contains(task.Url))
                                 {
-                                    return new SubscriptionTaskResult(task, null, null);
+                                    cachedChannels.Add(task.Url);
+                                    return new SubscriptionTaskResult(task, StateCache.GetChannelCachePager(task.Url), null);
                                 }
                                 else
                                 {
-                                    cachedChannels.Add(task.Url);
-                                    return new SubscriptionTaskResult(task, StateCache.GetChannelCachePager(task.Url), null);
+                                    return new SubscriptionTaskResult(task, null, null);
                                 }
                             }
                         }
@@ -334,7 +334,6 @@ namespace Grayjay.ClientServer.Subscriptions.Algorithms
                             return new SubscriptionTaskResult(task, null, null); //skipped
                         }
 
-                        Exception taskEx = null;
                         IPager<PlatformContent> pager = null;
                         try
                         {
@@ -390,8 +389,7 @@ namespace Grayjay.ClientServer.Subscriptions.Algorithms
                             {
                                 Logger.i(nameof(StateSubscriptions), $"Channel {task.Sub.Channel.Name} failed, substituting with cache");
                                 pager = StateCache.GetChannelCachePager(task.Sub.Channel.Url);
-                                taskEx = ex;
-                                return new SubscriptionTaskResult(task, pager, taskEx);
+                                return new SubscriptionTaskResult(task, pager, null);
                             }
                         }
                     });
@@ -411,13 +409,13 @@ namespace Grayjay.ClientServer.Subscriptions.Algorithms
                                 SetProgress(finished, forkTasks.Count);
                                 if (!cachedChannels.Contains(task.Url))
                                 {
-                                    source.SetResult(new SubscriptionTaskResult(task, null, null));
+                                    cachedChannels.Add(task.Url);
+                                    source.SetResult(new SubscriptionTaskResult(task, StateCache.GetChannelCachePager(task.Url), null));
                                     return;
                                 }
                                 else
                                 {
-                                    cachedChannels.Add(task.Url);
-                                    source.SetResult(new SubscriptionTaskResult(task, StateCache.GetChannelCachePager(task.Url), null));
+                                    source.SetResult(new SubscriptionTaskResult(task, null, null));
                                     return;
                                 }
                             }
@@ -430,7 +428,6 @@ namespace Grayjay.ClientServer.Subscriptions.Algorithms
                             return;
                         }
 
-                        Exception taskEx = null;
                         IPager<PlatformContent> pager = null;
                         try
                         {
@@ -487,8 +484,7 @@ namespace Grayjay.ClientServer.Subscriptions.Algorithms
                             {
                                 Logger.i(nameof(StateSubscriptions), $"Channel {task.Sub.Channel.Name} failed, substituting with cache");
                                 pager = StateCache.GetChannelCachePager(task.Sub.Channel.Url);
-                                taskEx = ex;
-                                source.SetResult(new SubscriptionTaskResult(task, pager, taskEx));
+                                source.SetResult(new SubscriptionTaskResult(task, pager, null));
                                 return;
                             }
                         }
