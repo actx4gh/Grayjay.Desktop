@@ -172,7 +172,7 @@
     right: 10px;
     top: 10px;
     width: 15px;
-    background-color: #111111;
+    background-color: var(--gj-bg-popover);
     height: 15px;
     padding: 5px;
     border-radius: 3px;

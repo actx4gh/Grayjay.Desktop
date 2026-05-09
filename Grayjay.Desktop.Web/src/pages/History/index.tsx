@@ -318,7 +318,7 @@ const HistoryPage: Component = () => {
                         "bottom": "0px",
                         "left": "0px",
                         "right": "0px",
-                        "background-color": "#019BE7",
+                        "background-color": "var(--gj-accent)",
                         "height": "3px",
                         "width": historyVideo() ? `${(getVideoProgressPercentage(historyVideo()?.position, historyVideo()?.video?.duration))}%` : undefined
                       }} />

@@ -131,3 +131,12 @@
 :global(:root[data-theme="light"]) .closeButton img {
     filter: var(--gj-theme-icon-filter);
 }
+
+
+/* broad-light-theme-icon-pass */
+:global(:root[data-theme="light"]) .closeButton img,
+:global(:root[data-theme="light"]) .iconClose,
+:global(:root[data-theme="light"]) .button img,
+:global(:root[data-theme="light"]) .status img {
+    filter: var(--gj-theme-icon-filter);
+}

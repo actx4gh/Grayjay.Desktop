@@ -85,13 +85,13 @@
     position: absolute;
     right: 12px;
     bottom: 12px;
-    color: #D9D9D9;
+    color: var(--gj-text-secondary);
     padding: 6px 8px;
 
     padding: 5px 8px;
 
 
-    color: #FFF;
+    color: var(--gj-text-primary);
 
 
     
@@ -103,7 +103,7 @@
     line-height: normal;
 
 
-    color: #FFF;
+    color: var(--gj-text-primary);
     font-family: Inter;
     font-size: 14px;
     font-style: normal;

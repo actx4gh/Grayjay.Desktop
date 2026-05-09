@@ -17,8 +17,8 @@
 }
 
 .checkbox.checked {
-    border-color: #019BE7;
-    background-color: #019BE7;
+    border-color: var(--gj-accent);
+    background-color: var(--gj-accent);
 }
 
 .checkbox .check {

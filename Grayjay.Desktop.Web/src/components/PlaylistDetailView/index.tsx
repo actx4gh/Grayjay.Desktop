@@ -150,7 +150,7 @@ const PlaylistDetailView: Component<PlaylistDetailViewProps> = (props) => {
             text="Play all"
             icon={iconPlay}
             style={{
-              background: "linear-gradient(267deg, #01D6E6 -100.57%, #0182E7 90.96%)",
+              background: "linear-gradient(267deg, #01D6E6 -100.57%, var(--gj-accent) 90.96%)",
               "flex-shrink": 0
             }}
             onClick={() => props.onPlayAll()}

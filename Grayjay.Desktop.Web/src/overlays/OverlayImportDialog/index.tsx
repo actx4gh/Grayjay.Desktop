@@ -149,7 +149,7 @@ const OverlayImportDialog: Component<OverlayImportDialogProps> = (props: Overlay
                             onPress: () => props.dialog.action!('import', 'false'),
                             onBack: globalBack
                           }}></Button>
-                          <Button text='Yes' onClick={()=>props.dialog.action!('import', 'true')} color='#019BE7' style={{"margin-left": "10px"}} focusableOpts={{
+                          <Button text='Yes' onClick={()=>props.dialog.action!('import', 'true')} color='var(--gj-accent)' style={{"margin-left": "10px"}} focusableOpts={{
                             onPress: () => props.dialog.action!('import', 'true'),
                             onBack: globalBack
                           }}></Button>

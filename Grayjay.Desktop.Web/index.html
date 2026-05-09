@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" style="background-color: #1b1b1b">
+<html lang="en" style="background-color: var(--gj-bg-root, #141414)">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#141414" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f5f5f3" media="(prefers-color-scheme: light)" />
+    <style id="grayjay-theme-prepaint">
+      :root { --gj-bg-root: #141414; background-color: #141414; color-scheme: dark; }
+      @media (prefers-color-scheme: light) { :root { --gj-bg-root: #f5f5f3; background-color: #f5f5f3; color-scheme: light; } }
+      body { background-color: var(--gj-bg-root); }
+    </style>
     <link rel="shortcut icon" type="image/png" href="/src/assets/favicon.png" />
     <link rel="stylesheet" href="/src/assets/fonts/inter/inter.css" />
     <link rel="stylesheet" href="/src/assets/fonts/sen/sen.css" />

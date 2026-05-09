@@ -211,7 +211,7 @@ const OverlayDialog: Component<OverlayDialogProps> = (props: OverlayDialogProps)
       case "primary":
         return { color: 'var(--gj-accent)' };
       case "accent":
-        return { color: '#F97066' };
+        return { color: 'var(--gj-danger-accent)' };
       case "none":
       default:
         return { color: 'var(--gj-bg-panel-strong)' };

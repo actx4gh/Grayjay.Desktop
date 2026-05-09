@@ -59,7 +59,7 @@ table tr {
 }
 table th {
     overflow: hidden;
-    color: #D9D9D9;
+    color: var(--gj-text-secondary);
     text-overflow: ellipsis;
     font-family: sans-serif;
     font-size: 14px;

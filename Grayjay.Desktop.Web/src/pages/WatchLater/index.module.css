@@ -6,7 +6,7 @@
 }
 
 .header {
-    color: #FFF;
+    color: var(--gj-text-primary);
     leading-trim: both;
     text-edge: cap;
     font-family: Inter;
@@ -17,7 +17,7 @@
 }
 
 .metadata {
-    color: rgba(255, 255, 255, 0.60);
+    color: var(--gj-text-muted);
     leading-trim: both;
     text-edge: cap;
     font-family: Inter;
@@ -31,7 +31,7 @@
     display: flex;
     flex-direction: row;
     font-size: 16px;
-    color: #808080;
+    color: var(--gj-text-tertiary);
     align-items: center;
 }
 
@@ -69,7 +69,7 @@
     -webkit-line-clamp: 2;
     flex: 1 0 0;
     overflow: hidden;
-    color: #F0F0F0;
+    color: var(--gj-text-primary);
     text-overflow: ellipsis;
     font-family: Inter;
     font-size: 16px;

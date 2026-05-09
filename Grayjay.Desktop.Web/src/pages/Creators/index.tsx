@@ -207,7 +207,7 @@ const CreatorsPage: Component = () => {
               {
                 icon: iconSearch,
                 title: "Search Creators",
-                color: "#019BE7",
+                color: "var(--gj-accent)",
                 action: ()=>{navigate("/web/search?type=" + ContentType.CHANNEL)}
               }
             ]} />

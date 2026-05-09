@@ -22,5 +22,5 @@
 }
 
 .toggle.enabled {
-    background-color: #019BE7;
+    background-color: var(--gj-accent);
 }

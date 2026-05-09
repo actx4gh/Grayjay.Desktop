@@ -99,7 +99,7 @@
 }
 
 .authorName {
-    color: #FFF;
+    color: var(--gj-text-primary);
     leading-trim: both;
     text-edge: cap;
     font-family: Inter;
@@ -111,7 +111,7 @@
 }
 
 .authorMetadata {
-    color: #808080;
+    color: var(--gj-text-tertiary);
     leading-trim: both;
     text-edge: cap;
     font-family: Inter;

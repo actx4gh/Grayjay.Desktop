@@ -97,7 +97,7 @@
     background: var(--gj-accent);
 }
 .button.accent {
-    background: #F97066;
+    background: var(--gj-danger-accent);
 }
 
 .input {

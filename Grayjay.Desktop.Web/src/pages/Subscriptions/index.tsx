@@ -339,7 +339,7 @@ const SubscriptionsPage: Component = () => {
                 </div>
                 <div style="flex-grow: 1"></div>
                 <div class={styles.bannerButtons}>
-                  <Button text="Create a subscription group" color="linear-gradient(267deg, #01D6E6 -100.57%, #0182E7 90.96%)"
+                  <Button text="Create a subscription group" color="linear-gradient(267deg, #01D6E6 -100.57%, var(--gj-accent) 90.96%)"
                     onClick={() => newSubscriptionGroup()} focusableOpts={{ 
                       onPress: () => newSubscriptionGroup(),
                       groupEscapeTo: {
@@ -477,7 +477,7 @@ const SubscriptionsPage: Component = () => {
               {
                 icon: iconSearch,
                 title: "Search Creators",
-                color: "#019BE7",
+                color: "var(--gj-accent)",
                 action: ()=>{navigate("/web/search?type=" + ContentType.CHANNEL)}
               }
             ]} />

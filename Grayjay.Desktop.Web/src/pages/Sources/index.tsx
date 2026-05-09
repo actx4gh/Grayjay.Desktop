@@ -225,7 +225,7 @@ const SourcesPage: Component = () => {
               >
                 <Button
                   text="Install Source"
-                  color="#019BE7"
+                  color="var(--gj-accent)"
                   style={{
                     width: "100%",
                     height: "56px",
@@ -246,7 +246,7 @@ const SourcesPage: Component = () => {
 
                 <Button
                   text="Install Official Sources"
-                  color="#019BE7"
+                  color="var(--gj-accent)"
                   style={{
                     width: "100%",
                     height: "56px",

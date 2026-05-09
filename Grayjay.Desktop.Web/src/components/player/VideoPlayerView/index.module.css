@@ -3,7 +3,7 @@
     height: 100%;
     position: relative;
     /*padding: 24px;*/
-    background-color: black;
+    background-color: var(--gj-video-surface);
 }
 
 .container:focus {
@@ -35,13 +35,13 @@
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    background-color: rgba(0,0,0,.7);
-    border: 1px solid rgba(255,255,255,.15);
+    background-color: var(--gj-video-overlay-bg);
+    border: 1px solid var(--gj-video-overlay-border);
     padding: 6px 12px;
     border-radius: 30px;
     font-size: 16px;
     cursor: pointer;
-    color: white;
+    color: var(--gj-video-overlay-text);
 }
 
 .loader {
@@ -79,7 +79,7 @@
     display: flex; 
     justify-content: center; 
     align-items: center; 
-    background-color: black;
+    background-color: var(--gj-video-surface);
 }
 
 
@@ -110,7 +110,8 @@
 }
 
 .captionsContainer div {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--gj-video-overlay-bg);
+    color: var(--gj-video-overlay-text);
     padding: 4px;
     box-sizing: border-box;
 }

@@ -8,8 +8,8 @@
     padding-right: 20px;
     padding-bottom: 20px;
     border-radius: 12px;
-    border: 1px solid #2E2E2E;
-    background: #141414;
+    border: 1px solid var(--gj-border);
+    background: var(--gj-bg-popover);
     box-shadow: 0px 1.648px 3.148px 0px rgba(0, 0, 0, 0.10), 0px 7.252px 6.519px 0px rgba(0, 0, 0, 0.16), 0px 17.8px 13px 0px rgba(0, 0, 0, 0.21), 0px 34.281px 25.481px 0px rgba(0, 0, 0, 0.26), 0px 57.685px 46.852px 0px rgba(0, 0, 0, 0.32), 0px 89px 80px 0px rgba(0, 0, 0, 0.42);
 }
 
@@ -25,7 +25,7 @@
 }
 .dialogHeader .headerSubText {
     font-size: 14px;
-    color: #AAA;
+    color: var(--gj-text-tertiary);
 }
 
 .closeButton {
@@ -38,7 +38,7 @@
     width: 40px;
     height: 40px;
     border-radius: 48px;
-    background: #2E2E2E;
+    background: var(--gj-bg-card-active);
     cursor: pointer;
 }
 .closeButton img {
@@ -46,7 +46,7 @@
     height: 24px;
 }
 .closeButton:focus {
-  background: #3A3A3A;
+  background: var(--gj-bg-card-active);
 }
 
 .subscriptionsContainer {
@@ -65,19 +65,19 @@
     margin: 5px;
 }
 .subscription.enabled {
-    background-color: #212121;
+    background-color: var(--gj-bg-control);
 }
 .subscription:focus {
-  background-color: #1E1E1E;
+  background-color: var(--gj-bg-panel-strong);
 }
 .subscription.enabled:focus {
-  background-color: #2A2A2A;
+  background-color: var(--gj-bg-card-active);
 }
 .subscription:focus .check {
-  border-color: #6A6A6A;
+  border-color: var(--gj-border-strong);
 }
 .subscription.enabled:focus .check {
-  background-color: #07A9F0; /* slightly brighter than #019BE7 */
+  background-color: var(--gj-accent); /* slightly brighter than #019BE7 */
 }
 .subscription .check {
     width: 18px;
@@ -86,13 +86,13 @@
     top: 10px;
     right: 5px;
     border-radius: 72.727px;
-    border: 2px solid #454545;
+    border: 2px solid var(--gj-border-strong);
 }
 .subscription .check img {
     display: none;
 }
 .subscription.enabled .check {
-    background-color: #019BE7;
+    background-color: var(--gj-accent);
 }
 .subscription.enabled .check img {
     display: block;
@@ -107,7 +107,7 @@
     display: inline-block;
 }
 .subscription .name {
-    color: #FFF;
+    color: var(--gj-text-primary);
 
     text-align: center;
     

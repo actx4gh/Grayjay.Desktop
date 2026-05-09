@@ -9,8 +9,8 @@
     text-align: center;
     
     border-radius: 12px;
-    border: 1px solid #2E2E2E;
-    background: #141414;
+    border: 1px solid var(--gj-border);
+    background: var(--gj-bg-popover);
     box-shadow: 0px 1.167px 3.148px 0px rgba(0, 0, 0, 0.07), 0px 5.133px 6.519px 0px rgba(0, 0, 0, 0.12), 0px 12.6px 13px 0px rgba(0, 0, 0, 0.16), 0px 24.267px 25.481px 0px rgba(0, 0, 0, 0.19), 0px 40.833px 46.852px 0px rgba(0, 0, 0, 0.24), 0px 63px 80px 0px rgba(0, 0, 0, 0.31);
 }
 
@@ -21,7 +21,7 @@
 }
 
 .title {
-    color: #FFF;
+    color: var(--gj-text-primary);
 
     leading-trim: both;
     
@@ -34,7 +34,7 @@
     text-align: center;
 }
 .description {
-    color: #8C8C8C;
+    color: var(--gj-text-tertiary);
 
     text-align: center;
     leading-trim: both;
@@ -65,13 +65,13 @@
     border-radius: 6px;
 }
 .button.none {
-    color: #019BE7;
+    color: var(--gj-accent);
 }
 .button.primary {
-    background: #019BE7;
+    background: var(--gj-accent);
 }
 .button.accent {
-    background: #F97066;
+    background: var(--gj-danger-accent);
 }
 
 .input {
@@ -83,9 +83,9 @@
     margin-top: 20px;
     margin-bottom: 30px;
     padding: 10px;
-    background-color: #1A1A1A;
+    background-color: var(--gj-bg-code);
     border-radius: 6px;
-    border: 1px solid #444;
+    border: 1px solid var(--gj-border-strong);
     font-family: monospace;
     white-space: pre-wrap;
 }

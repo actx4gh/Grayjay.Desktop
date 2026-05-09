@@ -141,12 +141,12 @@ const OverlayDownloadMultipleDialog: Component<OverlayDownloadMultipleDialogProp
                 }</Index>
               </div>
           </div>
-        <div style="height: 1px; background-color: rgba(255, 255, 255, 0.09); margin-top: 10px; margin-bottom: 10px;"></div>
+        <div style="height: 1px; background-color: var(--gj-border-muted); margin-top: 10px; margin-bottom: 10px;"></div>
         <div style="text-align: right">
             <Button text='Download'
               onClick={()=>download()}
               style={{"margin-left": "auto", cursor: ((isDownloadable$() ? "pointer" : "default"))}} 
-              color={(isDownloadable$()) ? "linear-gradient(267deg, #01D6E6 -100.57%, #0182E7 90.96%)" : "gray"}
+              color={(isDownloadable$()) ? "linear-gradient(267deg, #01D6E6 -100.57%, var(--gj-accent) 90.96%)" : "gray"}
               focusableOpts={{
                 onPress: download,
                 onBack: globalBack

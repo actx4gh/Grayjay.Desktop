@@ -29,7 +29,7 @@ const IconButton: Component<IconButtonProps> = (props) => {
     const shape = () => props.shape ?? 'circle';
 
     const computedStyle = createMemo(() => {
-        const bgFocus = props.focusColor ?? '#fff';
+        const bgFocus = props.focusColor ?? 'var(--gj-text-primary)';
         const iconFilterFocus =
             props.iconFilterFocus ??
             (props.focusColor ? 'none' : 'brightness(0) saturate(100%)');

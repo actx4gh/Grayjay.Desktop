@@ -161,7 +161,7 @@
     align-items: center;
     justify-content: center;
     gap: 6px;
-    color: #F97066;
+    color: var(--gj-danger-accent);
     leading-trim: both;
     text-edge: cap;
     font-family: Inter;

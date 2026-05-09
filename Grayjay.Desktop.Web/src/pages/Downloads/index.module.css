@@ -118,7 +118,7 @@
 .storageContainer .storagePath .tooltip {
     display: none;
     position: absolute;
-    background-color: #333;
+    background-color: var(--gj-bg-card-active);
     padding: 5px;
     margin-top: 5px;
     margin-left: -100px;
@@ -225,7 +225,7 @@
 }
 
 .deleteButton {    
-    color: #F97066;
+    color: var(--gj-danger-accent);
     cursor: pointer;
 }
 

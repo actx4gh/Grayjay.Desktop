@@ -453,7 +453,7 @@ const DownloadsPage: Component = () => {
             ((row.audioSources?.length ?? 0) > 0) ? (toHumanBitrate(row.audioSources[0].bitrate)) : null
           ].filter(x=>x).join(" • "),
         style: {
-          color: "#8C8C8C"
+          color: "var(--gj-text-tertiary)"
         },
         onClick(video: IVideoLocal){ openVideo(video); }
       },
@@ -461,7 +461,7 @@ const DownloadsPage: Component = () => {
         name: "Size",
         resolve: (row: any)=> toHumanBytesSize(calcSize(row)),
         style: {
-          color: "#8C8C8C"
+          color: "var(--gj-text-tertiary)"
         },
         onClick(video: IVideoLocal){ openVideo(video); }
       },
@@ -473,7 +473,7 @@ const DownloadsPage: Component = () => {
               <button class={styles.selectedButton} onClick={()=>{exportDownload(row.id)}}>
                 Export
               </button>
-              <button class={styles.selectedButton} onClick={()=>{deleteDownload(row.id)}} style="color: #F97066; margin-right: 20px;">
+              <button class={styles.selectedButton} onClick={()=>{deleteDownload(row.id)}} style="color: var(--gj-danger-accent); margin-right: 20px;">
                 Delete
               </button>
             </div>
@@ -510,7 +510,7 @@ const DownloadsPage: Component = () => {
                       name: "Resolution",
                       resolve: (row:any)=> row.targetPixelCount,
                       style: {
-                        color: "#8C8C8C"
+                        color: "var(--gj-text-tertiary)"
                       },
                       onClick(video: IVideoLocal){ openVideo(video); }
                     },
@@ -522,7 +522,7 @@ const DownloadsPage: Component = () => {
                             <button class={styles.selectedButton} onClick={()=>{exportDownloads(row?.playlist?.videos?.map(x=>x.id) ?? [])}}>
                               Export
                             </button>
-                            <button class={styles.selectedButton} onClick={()=>{deleteDownloadPlaylist(row?.playlist?.id)}} style="color: #F97066; margin-right: 20px;">
+                            <button class={styles.selectedButton} onClick={()=>{deleteDownloadPlaylist(row?.playlist?.id)}} style="color: var(--gj-danger-accent); margin-right: 20px;">
                               Delete
                             </button>
                           </div>
@@ -643,7 +643,7 @@ const DownloadsPage: Component = () => {
                     <button class={styles.selectedButton} onClick={doExport} use:focusable={{ onPress: doExport }}>
                       Export
                     </button>
-                    <button class={styles.selectedButton} onClick={doDelete} style="color: #F97066; margin-right: 5px;" use:focusable={{ onPress: doDelete }}>
+                    <button class={styles.selectedButton} onClick={doDelete} style="color: var(--gj-danger-accent); margin-right: 5px;" use:focusable={{ onPress: doDelete }}>
                       Delete
                     </button>
                   </div>
@@ -671,7 +671,7 @@ const DownloadsPage: Component = () => {
               {
                 icon: searchIcon,
                 title: "Search Videos",
-                color: "#019BE7",
+                color: "var(--gj-accent)",
                 action: ()=>{navigate("/web/search?type=" + ContentType.MEDIA)}
               }
             ]} />

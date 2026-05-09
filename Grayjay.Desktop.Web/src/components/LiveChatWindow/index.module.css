@@ -2,7 +2,9 @@
     width: 100%;
     height: 640px;
     border-radius: 6px;
-    border: #2E2E2E 1px solid;
+    border: 1px solid var(--gj-border);
+    background: var(--gj-bg-panel);
+    color: var(--gj-text-primary);
     display: flex;
     flex-direction: column;
 }
@@ -10,11 +12,10 @@
 .containerHeader {
     width: 100%;
     height: 48px;
-
-    border-bottom: #2E2E2E 1px solid;
-    background: rgb(15, 15, 15);
+    border-bottom: 1px solid var(--gj-border);
+    background: var(--gj-bg-panel-strong);
+    color: var(--gj-text-primary);
     box-sizing: border-box;
-
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -28,9 +29,8 @@
     width: 100%;
     flex-grow: 1;
     overflow: hidden;
-
-    border: #2E2E2E 1px solid;
-    background: #1B1B1B;
+    background: var(--gj-bg-panel);
+    color: var(--gj-text-primary);
     box-sizing: border-box;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .liveChatItem:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--gj-bg-hover);
 }
 
 .liveChatAuthorImage {
@@ -58,7 +58,7 @@
 .liveChatContent {
     display: inline;
     font-size: 13px;
-    color: white;
+    color: var(--gj-text-primary);
     line-height: 1.4;
     word-break: break-word;
     flex: 1;
@@ -67,14 +67,16 @@
 
 .liveChatAuthorName {
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--gj-text-secondary);
     white-space: nowrap;
     margin-right: 8px;
 }
 
 .donationStripWrapper {
-  position: relative;
-  padding: 8px 16px;
+    position: relative;
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--gj-border);
+    background: var(--gj-bg-soft);
 }
 
 .donationStrip {
@@ -85,31 +87,38 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+
 .donationStrip::-webkit-scrollbar {
     display: none;
 }
+
 .chevron {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     width: 32px;
     height: 32px;
-    border: none;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
+    border: 1px solid var(--gj-border);
+    border-radius: 999px;
+    background: var(--gj-bg-panel);
+    color: var(--gj-text-primary);
     font-size: 20px;
     cursor: pointer;
     z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: var(--gj-shadow);
 }
+
 .chevron.left {
     left: 8px;
 }
+
 .chevron.right {
     right: 8px;
 }
+
 .hidden {
     display: none;
 }

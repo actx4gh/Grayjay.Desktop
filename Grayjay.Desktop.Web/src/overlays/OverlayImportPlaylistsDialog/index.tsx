@@ -127,7 +127,7 @@ const OverlayImportPlaylistsDialog: Component<OverlayImportPlaylistsDialogProps>
                             onPress: () => props.dialog.action!('close', ''),
                             onBack: globalBack
                           }}></Button>
-                          <Button text='Import' color={(props.dialog.data$().Selected.length > 0) ? '#019BE7' : '#181818'} onClick={()=>importPlaylists()} style={{"margin-left": "10px"}} focusableOpts={{
+                          <Button text='Import' color={(props.dialog.data$().Selected.length > 0) ? 'var(--gj-accent)' : 'var(--gj-bg-control)'} onClick={()=>importPlaylists()} style={{"margin-left": "10px"}} focusableOpts={{
                             onPress: () => importPlaylists(),
                             onBack: globalBack
                           }}></Button>

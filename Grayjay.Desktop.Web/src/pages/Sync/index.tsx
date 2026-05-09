@@ -102,7 +102,7 @@ const SyncPage: Component = () => {
           <div class={styles.dialogHeader} style={{"margin-left": "0px"}}>
             <div class={styles.headerText}  style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
               Please enable sync to use this feature
-              <ButtonFlex style={{ width: "170px", "margin-top": "20px" }} small={true} text="Enable" color="#019BE7" onClick={enableSync} focusableOpts={{
+              <ButtonFlex style={{ width: "170px", "margin-top": "20px" }} small={true} text="Enable" color="var(--gj-accent)" onClick={enableSync} focusableOpts={{
                 onPress: enableSync
               }} />
             </div>
@@ -222,7 +222,7 @@ const SyncPage: Component = () => {
                   }}
                   style={{cursor: "pointer", "flex-shrink": 0, "margin-right": "20px"}} 
                   small={true}
-                  color={"linear-gradient(267deg, #01D6E6 -100.57%, #0182E7 90.96%)"}
+                  color={"linear-gradient(267deg, #01D6E6 -100.57%, var(--gj-accent) 90.96%)"}
                   focusableOpts={{ onPress: () => UIOverlay.overlayNewDeviceSync() }} />
 
                 {renderQrCodeOverlay()}
@@ -254,7 +254,7 @@ const SyncPage: Component = () => {
                   }}
                   style={{cursor: "pointer", "flex-shrink": 0}} 
                   small={true}
-                  color={"linear-gradient(267deg, #01D6E6 -100.57%, #0182E7 90.96%)"}
+                  color={"linear-gradient(267deg, #01D6E6 -100.57%, var(--gj-accent) 90.96%)"}
                   focusableOpts={{
                     onPress: () => UIOverlay.overlayNewDeviceSync()
                   }} />

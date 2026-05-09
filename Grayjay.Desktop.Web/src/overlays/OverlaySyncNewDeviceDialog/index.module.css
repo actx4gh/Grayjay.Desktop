@@ -8,8 +8,8 @@
     padding-right: 20px;
     padding-bottom: 20px;
     border-radius: 12px;
-    border: 1px solid #2E2E2E;
-    background: #141414;
+    border: 1px solid var(--gj-border);
+    background: var(--gj-bg-popover);
     box-shadow: 0px 1.648px 3.148px 0px rgba(0, 0, 0, 0.10), 0px 7.252px 6.519px 0px rgba(0, 0, 0, 0.16), 0px 17.8px 13px 0px rgba(0, 0, 0, 0.21), 0px 34.281px 25.481px 0px rgba(0, 0, 0, 0.26), 0px 57.685px 46.852px 0px rgba(0, 0, 0, 0.32), 0px 89px 80px 0px rgba(0, 0, 0, 0.42);
 }
 
@@ -26,7 +26,7 @@
 }
 .dialogHeader .headerSubText {
     font-size: 14px;
-    color: #AAA;
+    color: var(--gj-text-tertiary);
     margin-top: 5px;
 }
 
@@ -40,7 +40,7 @@
     width: 40px;
     height: 40px;
     border-radius: 48px;
-    background: #2E2E2E;
+    background: var(--gj-bg-card-active);
     cursor: pointer;
 }
 .closeButton img {
@@ -55,7 +55,7 @@
     overflow-y: auto;
     max-height: 800px;
     scrollbar-width: thin;
-    scrollbar-color: #555 #333;
+    scrollbar-color: var(--gj-scroll-thumb) var(--gj-scroll-track);
 }
 
 .source {
@@ -66,7 +66,7 @@
     cursor: pointer;
 }
 .source .name {
-    color: #CDCDCD;
+    color: var(--gj-text-secondary);
     text-overflow: ellipsis;
     font-family: Inter;
     font-size: 16px;
@@ -83,7 +83,7 @@
     overflow: hidden;
     font-size: 12px;
     text-overflow: ellipsis;
-    color: #8C8C8C
+    color: var(--gj-text-tertiary)
 }
 .source.hasSubs .meta {
     display: hidden;
@@ -106,13 +106,13 @@
 
 .source.enabled {
     border-radius: 4px;
-    background: rgba(255, 255, 255, 0.04);
+    background: var(--gj-bg-hover);
 }
 .source.enabled img {
     display: block;
 }
 .source.enabled .name {
-    color: #F0F0F0;
+    color: var(--gj-text-primary);
     font-weight: 600;
 }
 
@@ -121,4 +121,12 @@
     margin-left: 30px;
     font-weight: bold;
     margin-top: 20px;
+}
+
+/* broad-light-theme-icon-pass */
+:global(:root[data-theme="light"]) .closeButton img,
+:global(:root[data-theme="light"]) .iconClose,
+:global(:root[data-theme="light"]) .button img,
+:global(:root[data-theme="light"]) .status img {
+    filter: var(--gj-theme-icon-filter);
 }

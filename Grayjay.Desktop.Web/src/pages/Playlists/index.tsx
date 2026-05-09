@@ -298,7 +298,7 @@ const PlaylistsPage: Component = () => {
               <Dropdown label="Sort by" onSelectedChanged={(v) => setSortBy(v)} value={sortBy()} options={sortOptions} anchorStyle={AnchorStyle.BottomLeft} style={{"width": "280px"}} />
               <ButtonFlex text='New playlist'
                 icon={icon_add}
-                color='#019BE7'
+                color='var(--gj-accent)'
                 small={true}
                 style={{
                   width: '170px',
@@ -384,7 +384,7 @@ const PlaylistsPage: Component = () => {
                     {
                       icon: icon_add,
                       title: "Create Playlist",
-                      color: "#019BE7",
+                      color: "var(--gj-accent)",
                       action: ()=>{createPlaylist()}
                     }
                   ]} />

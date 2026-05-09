@@ -14,7 +14,7 @@
     width: 100%;
     margin-left: 4px;
     margin-bottom: 8px;
-    color: #FFF;
+    color: var(--gj-text-primary);
     font-family: Sen;
     font-size: 20px;
     font-style: normal;

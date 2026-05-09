@@ -309,7 +309,7 @@ const AddDeviceManually: Component = () => {
                 <div style="flex-grow: 1"></div>
                 <ButtonFlex small={true} onClick={onClick}
                     text='Add device'
-                    color='#019BE7'
+                    color='var(--gj-accent)'
                     style={{
                         "height": "48px",
                         "width": "180px",

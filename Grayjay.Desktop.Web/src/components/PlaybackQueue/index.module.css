@@ -1,6 +1,6 @@
 .containerPlaybackQueue {
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.13);
+    border: 1px solid var(--gj-border-muted);
 
     padding-top: 32px;
     padding-left: 12px;
@@ -9,7 +9,7 @@
 
 .title {
     overflow: hidden;
-    color: #F0F0F0;
+    color: var(--gj-text-primary);
     text-overflow: ellipsis;
     font-family: Inter;
     font-size: 24px;
@@ -20,7 +20,7 @@
 
 .metadata {
     overflow: hidden;
-    color: #8C8C8C;
+    color: var(--gj-text-tertiary);
     text-overflow: ellipsis;
     font-family: Inter;
     font-size: 14px;
@@ -30,7 +30,7 @@
 }
 
 .itemNumber {
-    color: #8C8C8C;
+    color: var(--gj-text-tertiary);
     text-align: center;
     font-family: Inter;
     font-size: 12px;
@@ -43,13 +43,13 @@
 }
 
 .itemNumber:hover {
-    color: #fff;
+    color: var(--gj-text-primary);
 }
 
 
 .itemTitle {
     overflow: hidden;
-    color: #D9D9D9;
+    color: var(--gj-text-secondary);
     text-overflow: ellipsis;
     font-family: Inter;
     font-size: 14px;
@@ -61,7 +61,7 @@
 }
 
 .itemAuthor {
-    color: #8C8C8C;
+    color: var(--gj-text-tertiary);
     font-family: Inter;
     font-size: 14px;
     font-style: normal;
@@ -133,33 +133,33 @@
 }
 
 
-:root[data-theme="light"] .containerPlaybackQueue {
+:global(:root[data-theme="light"]) .containerPlaybackQueue {
     border-color: var(--gj-border);
 }
 
-:root[data-theme="light"] .title {
+:global(:root[data-theme="light"]) .title {
     color: var(--gj-text-primary);
 }
 
-:root[data-theme="light"] .metadata,
-:root[data-theme="light"] .itemNumber,
-:root[data-theme="light"] .itemAuthor {
+:global(:root[data-theme="light"]) .metadata,
+:global(:root[data-theme="light"]) .itemNumber,
+:global(:root[data-theme="light"]) .itemAuthor {
     color: var(--gj-text-tertiary);
 }
 
-:root[data-theme="light"] .itemTitle {
+:global(:root[data-theme="light"]) .itemTitle {
     color: var(--gj-text-primary);
 }
 
-:root[data-theme="light"] .itemNumber:hover {
+:global(:root[data-theme="light"]) .itemNumber:hover {
     color: var(--gj-text-primary);
 }
 
-:root[data-theme="light"] .queueItemActive {
+:global(:root[data-theme="light"]) .queueItemActive {
     background-color: var(--gj-bg-card-hover);
     color: var(--gj-text-primary);
 }
 
-:root[data-theme="light"] .queueItemActive:hover {
+:global(:root[data-theme="light"]) .queueItemActive:hover {
     background-color: var(--gj-bg-card-hover);
 }
