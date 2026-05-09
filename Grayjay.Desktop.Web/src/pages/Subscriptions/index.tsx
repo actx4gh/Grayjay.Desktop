@@ -351,7 +351,7 @@ const SubscriptionsPage: Component = () => {
                       groupType: 'horizontal',
                       groupIndices: [0]
                     }} />
-                  <Button text="Dismiss" color="transparant" focusColor="#FFFFFF22" style={{ border: "1px solid rgba(1, 155, 231, 0)", "margin-left": "16px" }} 
+                  <Button text="Dismiss" color="transparent" focusColor="var(--gj-bg-hover)" textColor="var(--gj-text-primary)" focusTextColor="var(--gj-text-primary)" style={{ border: "1px solid rgba(1, 155, 231, 0)", "margin-left": "16px" }} 
                     onClick={() => dismissSubscriptionGroups()} focusableOpts={{ 
                       onPress: () => dismissSubscriptionGroups(),
                       groupEscapeTo: {

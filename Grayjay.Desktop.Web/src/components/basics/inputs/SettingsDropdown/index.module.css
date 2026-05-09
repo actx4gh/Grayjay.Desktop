@@ -3,7 +3,7 @@
   display: inline-block;
   flex-shrink: 0;
   border-radius: 6px;
-  border: 1px solid #2E2E2E;
+  border: 1px solid var(--gj-border);
 }
 
 .select {
@@ -12,7 +12,7 @@
   padding-right: 14px;
   padding-top: 4px;
   padding-bottom: 4px;
-  color: white;
+  color: var(--gj-text-primary);
   cursor: pointer;
 
   display: flex;
@@ -42,26 +42,26 @@
   position: absolute;
   
   border-radius: 10px;
-  border: 1px solid #2E2E2E;
-  background: #141414;
+  border: 1px solid var(--gj-border);
+  background: var(--gj-bg-elevated);
   max-height: 200px;
   overflow-y: auto;
   scrollbar-width: 8px;
-  scrollbar-color: #555 #333;
+  scrollbar-color: var(--gj-scroll-thumb) var(--gj-scroll-track);
 }
 
 .optionsContainer::-webkit-scrollbar {
   width: 10px;
 }
 .optionsContainer::-webkit-scrollbar-thumb {
-  background-color: #555;
+  background-color: var(--gj-scroll-thumb);
   border-radius: 5px;
 }
 .optionsContainer::-webkit-scrollbar-thumb:hover {
-  background-color: #888;
+  background-color: var(--gj-scroll-thumb-hover);
 }
 .optionsContainer::-webkit-scrollbar-track {
-  background-color: #333;
+  background-color: var(--gj-scroll-track);
 }
 .optionsContainer::-webkit-scrollbar-corner {
   background-color: transparent;
@@ -74,7 +74,7 @@
   padding-right: 10px;
   padding-bottom: 10px;
   padding-top: 10px;
-  color: #FFF;
+  color: var(--gj-text-primary);
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
@@ -86,7 +86,7 @@
   display: inline-block;
 }
 .option.selected {
-  background: #1B1B1B;
+  background: var(--gj-bg-panel);
   border-radius: 5px;
 }
 
@@ -100,11 +100,14 @@
 
 .labelText {
   overflow: hidden;
-  color: #595959;
+  color: var(--gj-text-tertiary);
   text-overflow: ellipsis;
   font-family: Inter;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: 22px; /* 183.333% */
+}
+:global(:root[data-theme="light"]) .selectArrow img {
+  filter: var(--gj-theme-icon-filter);
 }

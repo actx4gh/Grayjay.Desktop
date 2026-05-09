@@ -91,3 +91,75 @@
 .itemDrag:hover .iconDrag {
     opacity: 1;
 }
+
+.queueItem {
+    height: 80px;
+    margin-bottom: 8px;
+    margin-right: 12px;
+    display: flex;
+    flex-direction: row;
+    width: calc(100% - 12px);
+    align-items: center;
+    overflow: hidden;
+    gap: 8px;
+    border-radius: 8px;
+    color: var(--gj-text-primary);
+}
+
+.queueItemActive {
+    background-color: var(--gj-bg-card-hover);
+    color: var(--gj-text-primary);
+}
+
+.queueItem:hover {
+    background-color: var(--gj-bg-card-hover);
+}
+
+.queueItemActive:hover {
+    background-color: var(--gj-bg-card-hover);
+}
+
+.queueThumbnail {
+    border-radius: 3px;
+    height: 56px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.iconPlay,
+.queueRemoveIcon,
+.iconDrag {
+    filter: var(--gj-theme-icon-filter);
+}
+
+
+:root[data-theme="light"] .containerPlaybackQueue {
+    border-color: var(--gj-border);
+}
+
+:root[data-theme="light"] .title {
+    color: var(--gj-text-primary);
+}
+
+:root[data-theme="light"] .metadata,
+:root[data-theme="light"] .itemNumber,
+:root[data-theme="light"] .itemAuthor {
+    color: var(--gj-text-tertiary);
+}
+
+:root[data-theme="light"] .itemTitle {
+    color: var(--gj-text-primary);
+}
+
+:root[data-theme="light"] .itemNumber:hover {
+    color: var(--gj-text-primary);
+}
+
+:root[data-theme="light"] .queueItemActive {
+    background-color: var(--gj-bg-card-hover);
+    color: var(--gj-text-primary);
+}
+
+:root[data-theme="light"] .queueItemActive:hover {
+    background-color: var(--gj-bg-card-hover);
+}

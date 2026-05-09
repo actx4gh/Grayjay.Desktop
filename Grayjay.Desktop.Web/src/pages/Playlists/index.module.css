@@ -6,7 +6,7 @@
 }
 
 .textHeader {
-    color: #FFF;
+    color: var(--gj-text-primary);
     leading-trim: both;
     text-edge: cap;
     font-family: Inter;
@@ -39,6 +39,7 @@
 }
 
 .containerSeeAll {
+    background: var(--gj-bg-button-secondary);
     display: flex; 
     flex-direction: row;
     align-items: center;
@@ -49,7 +50,7 @@
     padding-bottom: 16px;
     cursor: pointer;
 
-    color: #FFF;
+    color: var(--gj-text-primary);
     text-align: center;
     leading-trim: both;
     text-edge: cap;
@@ -61,7 +62,7 @@
     line-height: 140%; /* 19.6px */
 
     border-radius: 6px;
-    border: 1px solid #2E2E2E;
+    border: 1px solid var(--gj-border);
 }
 
 .containerPlaylists {
@@ -95,7 +96,7 @@
     -webkit-overflow-scrolling: touch;
 
     scrollbar-width: thin;
-    scrollbar-color: #555 #333;
+    scrollbar-color: var(--gj-border-strong) var(--gj-bg-panel);
 }
 
 .watchLaterItem {

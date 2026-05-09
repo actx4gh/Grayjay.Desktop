@@ -555,7 +555,7 @@ const DownloadsPage: Component = () => {
   const video = useVideo();
   let scrollContainerRef: HTMLDivElement | undefined;
   return (
-    <LoaderContainer isLoading={isLoading$()} loadingText={"Loading Downloads"} loadingSubText={params.url} background='#141414'>
+    <LoaderContainer isLoading={isLoading$()} loadingText={"Loading Downloads"} loadingSubText={params.url} background='var(--gj-bg-root)'>
       <ScrollContainer ref={scrollContainerRef}>
         <Show when={storageInfo$()}>
         <div class={styles.storageContainer}>

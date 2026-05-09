@@ -3,7 +3,7 @@
     align-items: flex-start;
     justify-content: center;
     border-radius: 8px;
-    border: 1px solid #353535;
+    border: 1px solid var(--gj-border);
     overflow: hidden;
     height: 44px;
     width: fit-content;
@@ -23,21 +23,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #8C8C8C;
+    color: var(--gj-text-tertiary);
     gap: 12px;
     padding-left: 24px;
     padding-right: 24px;
 }
 
 .containerButton.active {
-    background: rgba(255, 255, 255, 0.06);
-    color: #FFF;
+    background: var(--gj-bg-card-active);
+    color: var(--gj-text-primary);
 }
 
 .containerButton:hover {
   cursor: pointer;
-  background: white;
-  color: #141414;
+  background: var(--gj-bg-hover);
+  color: var(--gj-text-primary);
 }
 
 .containerButton:hover .icon {
@@ -49,11 +49,22 @@
 }
 
 .containerButton:focus-visible {
-  background: white;
-  color: #141414;
+  background: var(--gj-bg-hover);
+  color: var(--gj-text-primary);
   outline: unset;
 }
 
 .containerButton:focus-visible .icon {
     filter: var(--ib-icon-filter-focus, brightness(0) saturate(100%));
+}
+
+
+.separator {
+    height: 100%;
+    width: 1px;
+    background-color: var(--gj-border);
+}
+
+:global(:root[data-theme="light"]) .icon {
+    filter: var(--gj-theme-icon-filter);
 }

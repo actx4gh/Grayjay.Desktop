@@ -26,22 +26,22 @@
     padding-left: 24px;
     padding-right: 24px;
     align-items: center;
-    color: #FFF;
+    color: var(--gj-text-primary);
     gap: 4px;
 
     border-radius: 6px;
-    border: 1px solid #454545;
+    border: 1px solid var(--gj-border-strong);
     box-sizing: border-box;
 }
 
 .containerButton.active {
-    background: #2E2E2E;
-    border: 1px solid #2E2E2E;
+    background: var(--gj-bg-card-active);
+    border: 1px solid var(--gj-border-strong);
 }
 .containerButton:hover {
   cursor: pointer;
-  background: white;
-  color: #141414;
+  background: var(--gj-bg-hover);
+  color: var(--gj-text-primary);
   outline: unset;
 }
 
@@ -50,8 +50,8 @@
 }
 
 .containerButton:focus-visible {
-  background: white;
-  color: #141414;
+  background: var(--gj-bg-hover);
+  color: var(--gj-text-primary);
   outline: unset;
 }
 
@@ -65,4 +65,8 @@
   object-fit: contain;
   flex-shrink: 0;
   display: block; 
+}
+
+:global(:root[data-theme="light"]) .icon {
+  filter: var(--gj-theme-icon-filter);
 }

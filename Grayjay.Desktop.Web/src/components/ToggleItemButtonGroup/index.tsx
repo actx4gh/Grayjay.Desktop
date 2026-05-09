@@ -40,7 +40,7 @@ const ToggleItemButtonGroup: Component<ToggleItemButtonGroupProps> = (props) => 
             <For each={props.items}>{(item, i) =>
                 <>
                     <Show when={i() > 0}>
-                        <div style="height: 100%; width: 1px; background-color: #454545;"></div>
+                        <div class={styles.separator}></div>
                     </Show>
                     <div class={styles.containerButton} classList={{ [styles.active]: item.value == selectedItem() }} onClick={() => toggleItem(item)} use:focusable={props.focusable ? {
                         onPress: () => toggleItem(item),

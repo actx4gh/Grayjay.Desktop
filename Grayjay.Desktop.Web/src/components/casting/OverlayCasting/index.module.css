@@ -2,7 +2,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #0F0F0FDB;
+    background-color: var(--gj-bg-backdrop);
     width: 100vw;
     height: 100vh;
 
@@ -21,11 +21,11 @@
     flex-direction: column;
     align-items: flex-start;
     border-radius: 12px;
-    border: 1px solid #2E2E2E;
-    background: #141414;
+    border: 1px solid var(--gj-border);
+    background: var(--gj-bg-elevated);
 
     /* Drop Shadow */
-    box-shadow: 0px 2px 21px 0px rgba(0, 0, 0, 0.55), 0px 32px 64px 0px rgba(0, 0, 0, 0.56);
+    box-shadow: var(--gj-shadow);
 }
 
 .containerCastingHeader {
@@ -36,7 +36,7 @@
 }
 
 .containerCastingHeaderTitle {
-    color: #FFF;
+    color: var(--gj-text-primary);
     font-family: Inter;
     font-size: 20px;
     font-style: normal;
@@ -48,7 +48,7 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: #2E2E2E;
+    background: var(--gj-bg-card-active);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -68,7 +68,7 @@
 }
 
 .containerNoDevicesFoundTitle {
-    color: #FFF;
+    color: var(--gj-text-primary);
     font-family: Inter;
     font-size: 20px;
     font-style: normal;
@@ -89,7 +89,7 @@
     align-items: center;
     flex-direction: row;
 
-    color: #8C8C8C;
+    color: var(--gj-text-tertiary);
     font-family: Inter;
     font-size: 14px;
     font-style: normal;
@@ -134,7 +134,7 @@
 }
 
 .containerDevice:hover {
-    background-color: #1B1B1B;
+    background-color: var(--gj-bg-hover);
 }
 
 .containerDevice img {
@@ -144,7 +144,7 @@
 }
 
 .deviceName {
-    color: #F0F0F0;
+    color: var(--gj-text-primary);
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
@@ -158,7 +158,7 @@
 }
 
 .deviceType {
-    color: #8C8C8C;
+    color: var(--gj-text-tertiary);
     font-family: Inter;
     font-size: 14px;
     font-style: normal;
@@ -183,7 +183,7 @@
 }
 
 .helpText {
-    color: #019BE7;
+    color: var(--gj-accent);
     text-align: center;
     font-feature-settings: 'clig' off, 'liga' off;
     font-family: Inter;
@@ -209,10 +209,58 @@
     flex-direction: column; 
     flex-grow: 1;
 
-    color: #8C8C8C;
+    color: var(--gj-text-tertiary);
     font-family: Inter;
     font-size: 12px;
     font-style: normal;
     font-weight: 300;
     line-height: 16px; /* 133.333% */
+}
+.divider {
+    height: 1px;
+    width: 100%;
+    background-color: var(--gj-border);
+    margin-top: 16px;
+}
+
+.deviceIcon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.connectingBody {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 32px;
+}
+
+.connectingTitle {
+    color: var(--gj-text-primary);
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.connectingHelp {
+    color: var(--gj-text-tertiary);
+    text-align: center;
+    leading-trim: both;
+    text-edge: cap;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 32px;
+}
+
+:global(:root[data-theme="light"]) .closeButton img,
+:global(:root[data-theme="light"]) .containerDevice img,
+:global(:root[data-theme="light"]) .deviceIcon {
+    filter: var(--gj-theme-icon-filter);
 }

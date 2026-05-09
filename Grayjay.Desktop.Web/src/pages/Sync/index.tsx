@@ -42,18 +42,18 @@ const SyncPage: Component = () => {
         break;
     }
   
-    return (<div style="display: flex; flex-direction: row; border-radius: 6px; background: #1B1B1B; padding: 14px 18px 14px; box-sizing: border-box; gap: 12px;  margin-left: 24px; margin-right: 24px; align-items: center; width: calc(100% - 48px);" use:focusable={{
+    return (<div style="display: flex; flex-direction: row; border-radius: 6px; background: var(--gj-bg-card); padding: 14px 18px 14px; box-sizing: border-box; gap: 12px;  margin-left: 24px; margin-right: 24px; align-items: center; width: calc(100% - 48px);" use:focusable={{
         onOptions: async () => await SyncBackend.removeDevice(publicKey)
       }}>
       <img src={iconDevice} style="width: 44px;" />
       <div style="display: flex; flex-direction: column; flex-grow: 1; align-items: flex-start; justify-content: center;">
-          <div style="overflow: hidden; color: white; text-align: center; text-overflow: ellipsis; font-family: Inter; font-size: 14px; font-style: normal; font-weight: 500; line-height: normal;">{title}</div>
-          <div style="color: #595959; font-family: Inter; font-size: 10px; font-style: normal; font-weight: 500; line-height: normal;">{subtitle}</div>
+          <div style="overflow: hidden; color: var(--gj-text-primary); text-align: center; text-overflow: ellipsis; font-family: Inter; font-size: 14px; font-style: normal; font-weight: 500; line-height: normal;">{title}</div>
+          <div style="color: var(--gj-text-tertiary); font-family: Inter; font-size: 10px; font-style: normal; font-weight: 500; line-height: normal;">{subtitle}</div>
       </div>
   
-      <div style="border-radius: 4px; border: 1px solid #2E2E2E; display: flex; padding: 6px 8px; align-items: center; gap: 4px; flex-shrink: 0; height: fit-content;">
+      <div style="border-radius: 4px; border: 1px solid var(--gj-border); display: flex; padding: 6px 8px; align-items: center; gap: 4px; flex-shrink: 0; height: fit-content;">
         <img src={icon} style="width: 20x; cursor: pointer;" />
-        <div style="color: #BFBFBF; font-family: Inter; font-size: 10px; font-style: normal; font-weight: 500; line-height: normal;">{status}</div>
+        <div style="color: var(--gj-text-secondary); font-family: Inter; font-size: 10px; font-style: normal; font-weight: 500; line-height: normal;">{status}</div>
       </div>
       <img src={iconClear} style="width: 30px; cursor: pointer; flex-shrink: 0;" onClick={async () => await SyncBackend.removeDevice(publicKey)} />
     </div>);
@@ -267,7 +267,7 @@ const SyncPage: Component = () => {
               </ScrollContainer>
             </Show>
             <Show when={isQrVisible$()}>
-              <div style="position: absolute; width: 100%; height: 100%; flex: 1; top: 0px; left: 0px; background-color: rgba(10,10,10,.95)" onClick={() => setIsQrVisible(false)}>{renderQrCodeOverlay()}</div>
+              <div style="position: absolute; width: 100%; height: 100%; flex: 1; top: 0px; left: 0px; background-color: var(--gj-bg-backdrop)" onClick={() => setIsQrVisible(false)}>{renderQrCodeOverlay()}</div>
             </Show>
           </>
         </Show>

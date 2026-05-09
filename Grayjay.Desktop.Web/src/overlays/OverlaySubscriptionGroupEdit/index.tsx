@@ -108,7 +108,7 @@ const OverlaySubscriptionGroupEditDialog: Component<OverlaySubscriptionGroupEdit
                 Deleted groups cannot be recovered
               </div>
             </div>
-            <div style="height: 1px; background-color: rgba(255, 255, 255, 0.09); margin-top: 10px; margin-bottom: 10px;"></div>
+            <div style="height: 1px; background-color: var(--gj-border); margin-top: 10px; margin-bottom: 10px;"></div>
             <div style="text-align: right">
                 <Button text={"Cancel"}
                   onClick={()=>changeView(0)}
@@ -192,7 +192,7 @@ const OverlaySubscriptionGroupEditDialog: Component<OverlaySubscriptionGroupEdit
                 </div>
               </div>
             </ScrollContainer>
-            <div style="height: 1px; background-color: rgba(255, 255, 255, 0.09); margin-top: 10px; margin-bottom: 10px;"></div>
+            <div style="height: 1px; background-color: var(--gj-border); margin-top: 10px; margin-bottom: 10px;"></div>
             <div style="text-align: right">
                   <Show when={selected$().length > 0}>
                     <Button text={"Delete Selected"}

@@ -2,6 +2,7 @@
 import { render } from 'solid-js/web';
 
 import './index.css';
+import './theme.css';
 import { Router, Route, RouteSectionProps, useNavigate, Navigator } from '@solidjs/router';
 import SideBar from './components/menus/SideBar';
 import { Component, Show, children, createSignal, lazy, onCleanup, onMount } from 'solid-js';
@@ -28,6 +29,7 @@ import BuyPage from './pages/BuyPage';
 import LoaderGameExamplePage from './pages/LoaderGameExamplePage';
 import { FocusProvider } from './FocusProvider';
 import { focusScope } from './focusScope';import ControllerOverlay from './components/ControllerOverlay';
+import NativeTheme from './theme';
  void focusScope;
 
 const HomePage = lazy(() => import('./pages/Home'));
@@ -144,6 +146,7 @@ const App: Component<RouteSectionProps> = (props) => {
   };
 
   return <>  
+    <NativeTheme />
     <VideoProvider>
       <FocusProvider>
         {renderContent()}

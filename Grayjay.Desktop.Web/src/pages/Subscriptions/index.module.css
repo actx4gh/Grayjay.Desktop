@@ -33,7 +33,7 @@
     overflow-y: none;
     white-space: nowrap;
     scrollbar-width: thin;
-    scrollbar-color: #555 #333;
+    scrollbar-color: var(--gj-scroll-thumb) var(--gj-scroll-track);
 }
 
 .channel {
@@ -46,20 +46,20 @@
     vertical-align: top;    
     padding: 12px 8px;
     border-radius: 8px;
-    background: #1B1B1B;
+    background: var(--gj-bg-card);
     text-align: center;
-    border: 1px solid transparent;
+    border: 1px solid var(--gj-border);
 }
 .channel:focus {
-    background: #303030;
+    background: var(--gj-bg-card-hover);
 }
 
 .channel.active {
-    border: 1px solid #4D4D4D;
-    background: #1B1B1B;
+    border: 1px solid var(--gj-border-strong);
+    background: var(--gj-bg-card);
 }
 .channel.active .channelText {
-    color: white;
+    color: var(--gj-text-primary);
 }
 .channelImg {
     width: 60px;
@@ -69,7 +69,7 @@
     margin-top: 3px;
 }
 .channelText {
-    color: #989898;
+    color: var(--gj-text-tertiary);
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
@@ -96,7 +96,7 @@
     right: 20px;
     height: 20px;
     width: 20px;
-    background-color: white;
+    background-color: var(--gj-bg-panel);
     border-radius: 20px;
     
 }
@@ -122,16 +122,16 @@
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
-    scrollbar-color: #555 #333;
+    scrollbar-color: var(--gj-scroll-thumb) var(--gj-scroll-track);
 }
 .subgroup {
     display: inline-block;
     flex-shrink: 0;
     position: relative;
     border-radius: 6px;
-    border: 2px solid rgba(32, 32, 32, 0.13);
+    border: 2px solid var(--gj-border);
 
-    background: #1B1B1B;
+    background: var(--gj-bg-card);
     width: 170px;
     height: 80px;
     overflow: hidden;
@@ -157,7 +157,7 @@
     opacity: 0.5;
 }
 .subgroup:focus {
-    background: #303030;
+    background: var(--gj-bg-card-hover);
 }
 .subgroup .editIcon:hover {
     opacity: 1;
@@ -177,7 +177,7 @@
     bottom: 10px;
     left: 18px;
     overflow: hidden;
-    color: #FFF;
+    color: var(--gj-text-primary);
     
     leading-trim: both;
     
@@ -200,7 +200,7 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    color: #FFF;
+    color: var(--gj-text-primary);
     
     leading-trim: both;
     
@@ -225,26 +225,26 @@
     width: 56px;
     padding: 8px 24px;
     border-radius: 6px;
-    border: 1px solid #454545;
+    border: 1px solid var(--gj-border-strong);
     margin-right: 8px;
 
-    background: #1B1B1B;
+    background: var(--gj-bg-card);
 }
 .filter:focus {
-    background: #474747;
+    background: var(--gj-bg-card-hover);
 }
 .filter.active {
-    border: 1px solid #454545;
-    background: #2E2E2E;
+    border: 1px solid var(--gj-border-strong);
+    background: var(--gj-bg-card-active);
 }
 .filter.active:focus {
-    background: #666666;
+    background: var(--gj-bg-card-active);
 }
 .filter:focus .name {
-    color: #b4b4b4;
+    color: var(--gj-text-secondary);
 }
 .filter .name {
-    color: #555555;
+    color: var(--gj-text-tertiary);
     text-align: center;
     leading-trim: both;
 
@@ -257,7 +257,7 @@
     line-height: 140%; /* 19.6px */
 }
 .filter.active .name {
-    color: white !important;
+    color: var(--gj-text-primary) !important;
 }
 
 .subgroupBanner {
@@ -271,7 +271,7 @@
     border-radius: 8px;
     border: 1px solid rgba(1, 155, 231, 0.00);
     
-    background: linear-gradient(0deg, rgba(27, 27, 27, 0.90) 0%, rgba(27, 27, 27, 0.90) 100%), linear-gradient(270deg, #01D6E6 -68.7%, #0182E7 97.07%);
+    background: linear-gradient(0deg, var(--gj-bg-card) 0%, var(--gj-bg-card) 100%), linear-gradient(270deg, #01D6E6 -68.7%, #0182E7 97.07%);
     
     display: flex;
     flex-direction: row;
@@ -283,7 +283,7 @@
     flex-grow: 1;
 }
 .subgroupBanner .bannerTitle {
-    color: #FFF;
+    color: var(--gj-text-primary);
     font-family: Inter;
     font-size: 24px;
     font-style: normal;
@@ -292,7 +292,7 @@
     padding-bottom: 12px;
 }
 .subgroupBanner .bannerDescription {
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--gj-text-muted);
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
@@ -314,7 +314,7 @@
 }
 .noSubs .title {
     margin-top: 10px;
-    color: #FFF;
+    color: var(--gj-text-primary);
 
     text-align: center;
     font-family: Inter;
@@ -325,7 +325,7 @@
 }
 .noSubs .description {
     margin-top: 10px;
-    color: #8C8C8C;
+    color: var(--gj-text-tertiary);
     text-align: center;
     font-family: Inter;
     font-size: 20px;
@@ -335,4 +335,83 @@
 }
 .noSubs .buttons {
     margin-top: 28px;
+}
+
+:global(:root[data-theme="light"]) .channel {
+    background: #f1eee8;
+    border-color: #d2cdc3;
+}
+
+:global(:root[data-theme="light"]) .channel.active {
+    background: #e4dfd5;
+    border-color: #bcb5a9;
+}
+
+:global(:root[data-theme="light"]) .filter {
+    background: #f1eee8;
+}
+
+:global(:root[data-theme="light"]) .filter.active {
+    background: #e2ddd3;
+}
+
+
+/* subscription-groups-light-mode-v29 */
+:global(:root[data-theme="light"]) .subgroup {
+    background: var(--gj-bg-panel);
+    border-color: var(--gj-border);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+:global(:root[data-theme="light"]) .subgroup:focus,
+:global(:root[data-theme="light"]) .subgroup:hover {
+    background: var(--gj-bg-card-hover);
+}
+
+:global(:root[data-theme="light"]) .subgroup.active {
+    background: var(--gj-bg-panel);
+    border-color: var(--gj-accent);
+}
+
+:global(:root[data-theme="light"]) .subgroup .image {
+    opacity: 0.42;
+}
+
+:global(:root[data-theme="light"]) .subgroup .name,
+:global(:root[data-theme="light"]) .subgroup .centerText {
+    color: var(--gj-text-primary);
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.55);
+}
+
+:global(:root[data-theme="light"]) .subgroup .editIcon {
+    filter: var(--gj-theme-icon-filter);
+    opacity: 0.65;
+}
+
+:global(:root[data-theme="light"]) .filter {
+    background: var(--gj-bg-panel-strong);
+    border-color: var(--gj-border);
+}
+
+:global(:root[data-theme="light"]) .filter:focus,
+:global(:root[data-theme="light"]) .filter:hover {
+    background: var(--gj-bg-card-hover);
+}
+
+:global(:root[data-theme="light"]) .filter.active {
+    background: var(--gj-bg-card-active);
+    border-color: var(--gj-border-strong);
+}
+
+:global(:root[data-theme="light"]) .filter .name {
+    color: var(--gj-text-primary);
+}
+
+:global(:root[data-theme="light"]) .filter:not(.active) .name {
+    color: var(--gj-text-secondary);
+}
+
+:global(:root[data-theme="light"]) .subgroupBanner {
+    background: var(--gj-bg-panel);
+    border-color: var(--gj-border);
 }

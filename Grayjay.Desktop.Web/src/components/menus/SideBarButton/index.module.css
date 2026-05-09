@@ -13,12 +13,12 @@
 
 .sideBarButton:hover {
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.055);
+    background: var(--gj-bg-hover);
 }
 
 .sideBarButton.selected {
     /*border-left: #019BE7 2px solid;*/
-    background: rgba(255, 255, 255, 0.105);
+    background: var(--gj-bg-selected);
 }
 
 .sideBarButton.collapsed {
@@ -26,12 +26,12 @@
 }
 
 .sideBarButton.selected:focus {
-    background: rgba(255, 255, 255, 0.15);
+    background: var(--gj-bg-selected-strong);
     outline: unset;
 }
 
 .sideBarButton:focus {
-  background: rgba(255, 255, 255, 0.055);
+  background: var(--gj-bg-hover);
   outline: unset;
 }
 
@@ -58,7 +58,7 @@
     line-height: 32px;
     margin-left: 10px;
     opacity: 1;
-    color: #BFBFBF;
+    color: var(--gj-text-secondary);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -66,9 +66,19 @@
     overflow-x: hidden;
 }
 .sideBarButton.selected .text {
-    color: white;
+    color: var(--gj-text-primary);
 }
 
 .sideBarButton.collapsed .text {
     opacity: 0;
+}
+
+:global(:root[data-theme="light"]) .sideBarButton .themeIcon {
+    filter: brightness(0) saturate(100%) invert(34%);
+    opacity: 1;
+}
+
+:global(:root[data-theme="light"]) .sideBarButton.selected .themeIcon {
+    filter: brightness(0) saturate(100%) invert(18%);
+    opacity: 1;
 }

@@ -11,7 +11,7 @@
 }
 
 .container:focus-visible {
-    background: #454545;
+    background: var(--gj-bg-selected-strong);
     border-radius: 6px;
     outline: unset;
 }
@@ -19,7 +19,7 @@
     width: 60%;
 }
 .descriptor .title {
-    color: #FFF;
+    color: var(--gj-text-primary);
     leading-trim: both;
     text-edge: cap;
     font-family: Inter;
@@ -29,7 +29,7 @@
     line-height: 24px; /* 133.333% */
 }
 .descriptor .description {
-    color: #8C8C8C;
+    color: var(--gj-text-tertiary);
     leading-trim: both;
     text-edge: cap;
     font-family: Inter;

@@ -26,44 +26,45 @@
   align-items: center;
   flex-direction: column;
 
-  color: #FFF;
+  color: var(--gj-text-primary);
   gap: 4px;
   padding: 10px;
 
   border-radius: 6px;
   box-sizing: border-box;
-  background: #1B1B1B;
+  background: var(--gj-bg-card);
+  border: 1px solid var(--gj-border);
 
   overflow: hidden;
 }
 
 .containerButton:hover {
   cursor: pointer;
-  background: white;
-  color: #141414;
+  background: var(--gj-bg-hover);
+  color: var(--gj-text-primary);
   outline: unset;
 }
 
 .containerButton:focus-visible {
-  background: white;
-  color: #141414;
+  background: var(--gj-bg-hover);
+  color: var(--gj-text-primary);
   outline: unset;
 }
 
 .containerButton.active {
-  background: #2E2E2E;
-  color: #FFF;
+  background: var(--gj-bg-card-active);
+  color: var(--gj-text-primary);
 }
 
 .containerButton.active:hover {
-  background: white;
-  color: #141414;
+  background: var(--gj-bg-hover);
+  color: var(--gj-text-primary);
   outline: unset;
 }
 
 .containerButton.active:focus-visible {
-  background: white;
-  color: #141414;
+  background: var(--gj-bg-hover);
+  color: var(--gj-text-primary);
   outline: unset;
 }
 

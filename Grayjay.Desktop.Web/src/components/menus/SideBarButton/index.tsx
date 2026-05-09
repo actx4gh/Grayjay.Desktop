@@ -36,7 +36,7 @@ const SideBarButton: Component<SideBarButtonProps> = (props) => {
       props.onFocus?.();
     }} onBlur={props.onBlur} style={props.style}>
       <Show when={props.icon}>
-        <img src={props.icon} class={styles.icon} alt="logo" />
+        <img src={props.icon} class={styles.icon} classList={{ [styles.themeIcon]: props.name !== 'Buy Grayjay' && props.name !== 'Settings' }} alt="logo" />
       </Show>
       <Show when={!props.collapsed}>
         <div class={styles.text} style={props.styleText}>{props.name}</div>

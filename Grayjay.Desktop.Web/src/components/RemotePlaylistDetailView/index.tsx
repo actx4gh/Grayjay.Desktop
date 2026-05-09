@@ -73,7 +73,8 @@ const RemotePlaylistDetailView: Component<RemotePlaylistDetailViewProps> = (prop
             text="Shuffle"
             icon={iconShuffle}
             style={{
-              border: "1px solid #2E2E2E",
+              border: "1px solid var(--gj-border)",
+              background: "var(--gj-bg-button-secondary)",
               "flex-shrink": 0
             }}
             onClick={() => props?.onInteract?.()}

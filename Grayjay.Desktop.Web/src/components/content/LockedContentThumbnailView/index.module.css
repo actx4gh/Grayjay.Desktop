@@ -61,13 +61,13 @@
 
 .duration {
     border-radius: 4px;
-    background: #000000EE;
+    background: var(--gj-thumbnail-badge-bg);
     position: absolute;
     right: 12px;
     bottom: 12px;
-    color: #D9D9D9;
+    color: var(--gj-thumbnail-badge-text);
     padding: 6px 8px;
-    color: #FFF;
+    color: var(--gj-thumbnail-badge-text);
 
     /*leading-trim: both; -NOT SUPPORTED YET BY BROWSERS*/
     
@@ -112,13 +112,13 @@
 }
 .isPlanned {
     border-radius: 3px;
-    background: #222;
+    background: var(--gj-thumbnail-badge-bg);
     position: absolute;
     right: 12px;
     bottom: 12px;
-    color: #D9D9D9;
+    color: var(--gj-thumbnail-badge-text);
     padding: 6px 8px;
-    color: #FFF;
+    color: var(--gj-thumbnail-badge-text);
 
 
     
@@ -186,4 +186,14 @@
     line-height: 1.2em;
     height: 1.2em;
     flex-grow: 1;
+}
+
+:global(:root[data-theme="light"]) .duration {
+    background: var(--gj-thumbnail-badge-bg);
+    color: var(--gj-thumbnail-badge-text);
+}
+
+:global(:root[data-theme="light"]) .isPlanned {
+    background: var(--gj-thumbnail-badge-bg);
+    color: var(--gj-thumbnail-badge-text);
 }

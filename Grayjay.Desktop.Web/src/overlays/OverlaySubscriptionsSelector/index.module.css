@@ -125,3 +125,51 @@
     margin-top: 3px;
     overflow: hidden;
 }
+
+
+/* subscriptions-selector-light-mode-v29 */
+:global(:root[data-theme="light"]) .container {
+    border-color: var(--gj-border);
+    background: var(--gj-bg-panel);
+    color: var(--gj-text-primary);
+    box-shadow: var(--gj-shadow);
+}
+
+:global(:root[data-theme="light"]) .dialogHeader .headerText {
+    color: var(--gj-text-primary);
+}
+
+:global(:root[data-theme="light"]) .dialogHeader .headerSubText {
+    color: var(--gj-text-tertiary);
+}
+
+:global(:root[data-theme="light"]) .closeButton {
+    background: var(--gj-bg-panel-strong);
+}
+
+:global(:root[data-theme="light"]) .closeButton:focus,
+:global(:root[data-theme="light"]) .subscription:focus,
+:global(:root[data-theme="light"]) .subscription.enabled:focus,
+:global(:root[data-theme="light"]) .subscription.enabled {
+    background-color: var(--gj-bg-card-hover);
+}
+
+:global(:root[data-theme="light"]) .closeButton img,
+:global(:root[data-theme="light"]) .subscription .check img {
+    filter: var(--gj-theme-icon-filter);
+}
+
+:global(:root[data-theme="light"]) .subscription .check {
+    border-color: var(--gj-border-strong);
+    background: var(--gj-bg-panel);
+}
+
+:global(:root[data-theme="light"]) .subscription.enabled .check,
+:global(:root[data-theme="light"]) .subscription.enabled:focus .check {
+    border-color: var(--gj-accent);
+    background-color: var(--gj-accent);
+}
+
+:global(:root[data-theme="light"]) .subscription .name {
+    color: var(--gj-text-primary);
+}

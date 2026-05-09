@@ -21,7 +21,7 @@ const RatingView: Component<RatingViewProps> = (props) => {
     const renderLikes = (rating: IRatingLikes) => {
         return (
             <div class={styles.containerLikeDislike}>
-                <img src={props.hasLiked ? ic_like_active : ic_like_inactive} style="width: 32px; height: 32px;" />
+                <img src={props.hasLiked ? ic_like_active : ic_like_inactive} class={styles.icon} classList={{ [styles.activeIcon]: props.hasLiked }} style="width: 32px; height: 32px;" />
                 <div class={styles.text} classList={{ [styles.active]: props.hasLiked }}>{toHumanNumber(rating.likes ?? 0)}</div>
             </div>
         );
@@ -32,11 +32,11 @@ const RatingView: Component<RatingViewProps> = (props) => {
             <>
                 <div style="display: flex; flex-direction: row; align-items: center; height: 100%;">
                     <div class={styles.containerLikeDislike} classList={{ [styles.editable]: props.editable }}>
-                        <img src={props.hasLiked ? ic_like_active : ic_like_inactive} style="width: 32px; height: 32px;" />
+                        <img src={props.hasLiked ? ic_like_active : ic_like_inactive} class={styles.icon} classList={{ [styles.activeIcon]: props.hasLiked }} style="width: 32px; height: 32px;" />
                         <div class={styles.text} classList={{ [styles.active]: props.hasLiked }}>{toHumanNumber(rating.likes ?? 0)}</div>
                     </div>
                     <div class={styles.containerLikeDislike} classList={{ [styles.editable]: props.editable }} style={{ "margin-left": "12px" }}>
-                        <img src={props.hasDisliked ? ic_dislike_active : ic_dislike_inactive} style="width: 32px; height: 32px;" />
+                        <img src={props.hasDisliked ? ic_dislike_active : ic_dislike_inactive} class={styles.icon} classList={{ [styles.activeIcon]: props.hasDisliked }} style="width: 32px; height: 32px;" />
                         <div class={styles.text} classList={{ [styles.active]: props.hasDisliked }}>{toHumanNumber(rating.dislikes ?? 0)}</div>
                     </div>
                 </div>

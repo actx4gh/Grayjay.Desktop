@@ -2,7 +2,7 @@
     border-radius: 30px;
     width: 52px;
     height: 32px;
-    background-color: #ffffff22;
+    background-color: var(--gj-bg-selected);
     display: inline-block;
     transition: background-color 0.5s;
     cursor: pointer;
@@ -12,7 +12,7 @@
     height: 22px;
     margin-top: 5px;
     margin-left: 5px;
-    background-color: #FFF;
+    background-color: var(--gj-bg-elevated);
     border-radius: 25px;
     transition: margin-left 0.5s;
 }

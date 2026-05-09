@@ -58,3 +58,12 @@
 .text {
   display: inline-block;
 }
+
+:global(:root[data-theme="light"]) .container .icon {
+  filter: brightness(0) saturate(100%);
+}
+
+:global(:root[data-theme="light"]) .container:hover .icon,
+:global(:root[data-theme="light"]) .container:focus-visible .icon {
+  filter: brightness(0) saturate(100%);
+}

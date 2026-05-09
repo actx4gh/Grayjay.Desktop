@@ -18,10 +18,21 @@ interface PillButtonProps {
 
 const PillButton: Component<PillButtonProps> = (props) => {
     const style = createMemo(() => {
-        const bg = props.color ?? '#212122';
-        const bgFocus = props.focusColor ?? '#fff';
-        const text = props.textColor ?? '#fff';
-        const textFocus = props.focusTextColor ?? (props.focusColor ? text : '#141414');
+        const normalizeNeutral = (color: string | undefined, fallback: string) => {
+            if (!color) {
+                return fallback;
+            }
+            const normalized = color.trim().toLowerCase();
+            return (normalized === '#212122' || normalized === '#2e2e2e' || normalized === '#222' || normalized === '#222222')
+                ? fallback
+                : color;
+        };
+
+        const bg = normalizeNeutral(props.color, 'var(--gj-bg-panel-strong)');
+        const isNeutral = bg === 'var(--gj-bg-panel-strong)';
+        const bgFocus = props.focusColor ?? (isNeutral ? 'var(--gj-bg-card-hover)' : '#fff');
+        const text = props.textColor ?? (isNeutral ? 'var(--gj-text-primary)' : '#fff');
+        const textFocus = props.focusTextColor ?? (isNeutral ? 'var(--gj-text-primary)' : (props.focusColor ? text : '#141414'));
         const iconFilterFocus = props.focusColor ? 'none' : 'brightness(0) saturate(100%)';
 
         return {

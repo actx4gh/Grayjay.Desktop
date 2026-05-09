@@ -3,7 +3,7 @@
     overflow-y: hidden;
     position: relative;
     scrollbar-width: 8px;
-    scrollbar-color: #555 #333;
+    scrollbar-color: var(--gj-scroll-thumb) var(--gj-scroll-track);
     scrollbar-width: thin;
     display: flex;
     flex-direction: row;
@@ -14,16 +14,16 @@
 }
 
 .containerScroll::-webkit-scrollbar-thumb {
-    background-color: #555;
+    background-color: var(--gj-scroll-thumb);
     border-radius: 5px;
 }
 
 .containerScroll::-webkit-scrollbar-thumb:hover {
-    background-color: #888;
+    background-color: var(--gj-scroll-thumb-hover);
 }
 
 .containerScroll::-webkit-scrollbar-track {
-    background-color: #333;
+    background-color: var(--gj-scroll-track);
 }
 
 .containerScroll::-webkit-scrollbar-corner {
@@ -35,7 +35,7 @@
     overflow-y: hidden;
     position: relative;
     scrollbar-width: 8px;
-    scrollbar-color: #292929 transparent;
+    scrollbar-color: var(--gj-scroll-thumb) transparent;
     scrollbar-width: thin;
     display: flex;
     flex-direction: row;

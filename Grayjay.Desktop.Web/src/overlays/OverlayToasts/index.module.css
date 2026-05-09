@@ -1,11 +1,10 @@
-
 .root {
     position: fixed;
     top: 0px;
     left: 0px;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0, .5);
+    background-color: var(--gj-bg-backdrop);
     display: grid;
     align-items: center;
     justify-content: center;
@@ -13,18 +12,21 @@
     pointer-events: none;
 }
 
-
 .toast {
-    padding: 10px;
+    padding: 10px 14px;
     margin-right: 25px;
-    background-color: #111;
-    border: 1.5px solid #333;
     margin-top: 15px;
     margin-bottom: 15px;
-    border-radius: 5px;
-    box-shadow: 1px 1px 5px black;
-    display:table;
     margin-left: auto;
+    max-width: min(900px, calc(100vw - 80px));
+    background-color: var(--gj-bg-panel);
+    border: 1px solid var(--gj-border);
+    border-radius: 8px;
+    box-shadow: var(--gj-shadow);
+    color: var(--gj-text-primary);
+    display: table;
+    text-align: left;
+    pointer-events: none;
 }
 .toast.showing {
     animation: fadeIn 0.5s ease-in;
@@ -35,12 +37,16 @@
     opacity: 0;
 }
 .toastText {
-    font-size: 22px;
-    font-weight: lighter;
+    color: var(--gj-text-secondary);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.35;
 }
 .toastTitle {
-    font-weight: 400;
-    font-size: 26px;
+    color: var(--gj-text-primary);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.35;
 }
 
 @keyframes fadeIn {

@@ -209,12 +209,12 @@ const OverlayDialog: Component<OverlayDialogProps> = (props: OverlayDialogProps)
   const themeFor = (style?: string) => {
     switch (style) {
       case "primary":
-        return { color: "#019BE7" };
+        return { color: 'var(--gj-accent)' };
       case "accent":
-        return { color: "#F97066" };
+        return { color: '#F97066' };
       case "none":
       default:
-        return { color: "#2E2E2E" };
+        return { color: 'var(--gj-bg-panel-strong)' };
     }
   };
   
@@ -236,10 +236,8 @@ const OverlayDialog: Component<OverlayDialogProps> = (props: OverlayDialogProps)
           <img src={props.dialog?.icon} class={styles.icon} alt="" />
         </Show>
 
-        <img
-          src={icon_close}
-          class={styles.iconClose}
-          alt="Close"
+        <div
+          class={styles.closeButton}
           role="button"
           tabindex={0}
           onClick={clickClose}
@@ -247,7 +245,13 @@ const OverlayDialog: Component<OverlayDialogProps> = (props: OverlayDialogProps)
             onPress: clickClose,
             onBack: dialogBack,
           }}
-        />
+        >
+          <img
+            src={icon_close}
+            class={styles.iconClose}
+            alt="Close"
+          />
+        </div>
 
         <div id={titleId} class={styles.title} style="padding-right: 25px;">
           {props.dialog!.title}

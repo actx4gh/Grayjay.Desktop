@@ -2002,13 +2002,13 @@ const VideoDetailView: Component<VideoDetailsProps> = (props) => {
                     "width": "100vw",
                     "height": "100vh",
                     "display": "flex",
-                    "background-color": "rgba(15, 15, 15, 0.86)",
+                    "background-color": "var(--gj-bg-backdrop)",
                     "justify-content": "center",
                     "align-items": "center",
                     "z-index": mode() === VideoMode.Theatre ? 2 : undefined
                 }} onClick={() => hideReplies()}>
                     <Show when={repliesPager$()} fallback={<Loader></Loader>}>
-                        <div style="border-radius: 12px; border: 1px solid #2E2E2E; background: #141414; box-shadow: 0px 63px 80px 0px rgba(0, 0, 0, 0.31), 0px 40.833px 46.852px 0px rgba(0, 0, 0, 0.24), 0px 24.267px 25.481px 0px rgba(0, 0, 0, 0.19), 0px 12.6px 13px 0px rgba(0, 0, 0, 0.16), 0px 5.133px 6.519px 0px rgba(0, 0, 0, 0.12), 0px 1.167px 3.148px 0px rgba(0, 0, 0, 0.07); display: flex; flex-direction: column; width: 80vw; max-width: 700px; max-height: 80vh; overflow: hidden;" onClick={(e) => {
+                        <div style="border-radius: 12px; border: 1px solid var(--gj-border); background: var(--gj-bg-panel); color: var(--gj-text-primary); box-shadow: var(--gj-shadow); display: flex; flex-direction: column; width: 80vw; max-width: 700px; max-height: 80vh; overflow: hidden;" onClick={(e) => {
                             e.stopPropagation();
                             e.preventDefault();
                         }}  use:focusScope={{
@@ -2026,8 +2026,8 @@ const VideoDetailView: Component<VideoDetailsProps> = (props) => {
                                     hideReplies();
                                     e.stopPropagation();
                                     e.preventDefault();
-                                }} style="width: 32px; height: 32px; border-radius: 50%; background: #2E2E2E; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-                                    <img src={icon_close} style="width: 19px; height: 19px;" />
+                                }} style="width: 32px; height: 32px; border-radius: 50%; background: var(--gj-bg-panel-strong); display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid var(--gj-border);">
+                                    <img src={icon_close} style={{"width": "19px", "height": "19px", "filter": "var(--gj-theme-icon-filter)"}} />
                                 </div>
                             </div>
                             <ScrollContainer ref={repliesOverlayScrollContainerRef} scrollToTopButton={true}>
@@ -2037,7 +2037,7 @@ const VideoDetailView: Component<VideoDetailsProps> = (props) => {
                                             comment={item}
                                             onClick={(ev) => handleContainerClick(ev)}
                                             style={{
-                                                "background-color": "#2E2E2E",
+                                                "background-color": "var(--gj-bg-card-active)",
                                                 "border-radius": "8px",
                                                 "overflow": "hidden",
                                                 "padding-left": "12px",

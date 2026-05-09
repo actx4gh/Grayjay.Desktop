@@ -19,6 +19,15 @@ namespace Grayjay.ClientServer.Settings
             public int AppLanguage { get; set; } = 0;
         }
 
+        [SettingsField("Appearance", "group", "Configure the application appearance", 1)]
+        public AppearanceSettings Appearance { get; set; } = new AppearanceSettings();
+        public class AppearanceSettings
+        {
+            [SettingsField("Theme", SettingsField.DROPDOWN, "Choose whether Grayjay follows the system theme or uses a fixed theme", 0)]
+            [SettingsDropdownOptions("System", "Dark", "Light")]
+            public int Theme { get; set; } = 1;
+        }
+
         //Home
         public HomeSettings Home { get; set; } = new HomeSettings();
         public class HomeSettings

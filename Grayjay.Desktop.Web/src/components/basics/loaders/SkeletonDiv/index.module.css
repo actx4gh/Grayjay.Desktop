@@ -4,7 +4,7 @@
   height: 100%; /* Adjust to your container’s height */
   position: relative;
   overflow: hidden;
-  background: #1b1b1b; /* Solid base color */
+  background: var(--gj-bg-card); /* Solid base color */
 }
 
 .skeletonBox::before {

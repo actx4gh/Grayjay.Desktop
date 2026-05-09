@@ -289,7 +289,7 @@ const PlaylistsPage: Component = () => {
                 showClearButton={true}
                 inputContainerStyle={{
                   "height": "48px",  
-                  "background": "#141414"
+                  "background": "var(--gj-bg-input)"
                 }}
                 onTextChanged={(v) => {
                   setFilterText(v);
