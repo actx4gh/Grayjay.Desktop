@@ -33,3 +33,13 @@
       left: 100%;
   }
 }
+:global(:root[data-theme="light"]) .skeletonBox::before {
+  background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(20, 20, 20, 0.04) 30%,
+      rgba(20, 20, 20, 0.12) 50%,
+      rgba(20, 20, 20, 0.04) 70%,
+      transparent 100%
+  );
+}

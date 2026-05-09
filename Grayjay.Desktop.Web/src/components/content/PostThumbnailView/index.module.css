@@ -212,3 +212,11 @@
     background: var(--gj-thumbnail-badge-bg);
     color: var(--gj-thumbnail-badge-text);
 }
+
+:global(:root[data-theme="light"]) .description {
+    color: var(--gj-text-secondary);
+}
+
+:global(:root[data-theme="light"]) .descriptionOverlay {
+    background: linear-gradient(0deg, var(--gj-bg-root), var(--gj-bg-root), rgba(245, 245, 243, 0.0));
+}

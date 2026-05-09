@@ -22,3 +22,15 @@
     width: 16px;
     height: 16px;
 }
+
+:global(:root[data-theme="light"]) .toggleViewType {
+    background-color: var(--gj-bg-panel-strong);
+}
+
+:global(:root[data-theme="light"]) .toggleViewType.enabled {
+    background-color: var(--gj-bg-card-active) !important;
+}
+
+:global(:root[data-theme="light"]) .toggleViewType img {
+    filter: var(--gj-theme-icon-filter);
+}

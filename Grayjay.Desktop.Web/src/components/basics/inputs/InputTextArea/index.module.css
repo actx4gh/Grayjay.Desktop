@@ -113,3 +113,18 @@
     font-weight: 500;
     line-height: 22px; /* 183.333% */
 }
+:global(:root[data-theme="light"]) .containerInputText:hover {
+    border: 1px solid var(--gj-border-strong);
+}
+
+:global(:root[data-theme="light"]) .containerInputText.disabled::placeholder {
+    color: var(--gj-text-tertiary);
+}
+
+:global(:root[data-theme="light"]) .searchInput::placeholder {
+    color: var(--gj-text-tertiary);
+}
+
+:global(:root[data-theme="light"]) .iconClear:hover {
+    fill: var(--gj-text-primary);
+}

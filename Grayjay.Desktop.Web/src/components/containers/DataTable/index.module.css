@@ -90,3 +90,8 @@ table td .tableImage img {
 .isClickable {
     cursor: pointer;
 }
+
+:global(:root[data-theme="light"]) table tr {
+    border-bottom: 1px solid var(--gj-border);
+    background: var(--gj-bg-root);
+}
