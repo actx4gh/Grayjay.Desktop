@@ -223,7 +223,7 @@ const OverlaySubscriptionGroupEditDialog: Component<OverlaySubscriptionGroupEdit
                 <Button text={"Save"}
                   onClick={()=>save()}
                   style={{"margin-left": "10px", cursor: ("pointer")}} 
-                  color={"linear-gradient(267deg, #01D6E6 -100.57%, var(--gj-accent) 90.96%)"}
+                  color={"var(--gj-accent-grad)"}
                   focusableOpts={{
                     onPress: () => save(),
                     onBack: globalBack

@@ -85,16 +85,16 @@
 }
 
 .searchInput::-webkit-scrollbar-thumb {
-    background-color: var(--gj-text-tertiary);
+    background-color: var(--gj-scroll-thumb);
     border-radius: 5px;
 }
 
 .searchInput::-webkit-scrollbar-thumb:hover {
-    background-color: var(--gj-text-tertiary);
+    background-color: var(--gj-scroll-thumb-hover);
 }
 
 .searchInput::-webkit-scrollbar-track {
-    background-color: var(--gj-bg-card-active);
+    background-color: var(--gj-scroll-track);
 }
 
 .searchInputs::-webkit-scrollbar-corner {

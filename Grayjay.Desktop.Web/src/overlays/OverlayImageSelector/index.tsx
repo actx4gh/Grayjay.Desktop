@@ -173,7 +173,7 @@ const OverlayImageSelector: Component<OverlayImageSelectorDialogProps> = (props:
             <Button text={"Select Image"}
               onClick={()=>submit()}
               style={{"margin-left": "auto", cursor: ("pointer")}} 
-              color={"linear-gradient(267deg, #01D6E6 -100.57%, var(--gj-accent) 90.96%)"}
+              color={"var(--gj-accent-grad)"}
               focusableOpts={{
                 onPress: submit,
                 onBack: globalBack

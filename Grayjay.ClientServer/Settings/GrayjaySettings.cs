@@ -25,7 +25,7 @@ namespace Grayjay.ClientServer.Settings
         {
             [SettingsField("Theme", SettingsField.DROPDOWN, "Choose whether Grayjay follows the system theme or uses a fixed theme", 0)]
             [SettingsDropdownOptions("System", "Dark", "Light")]
-            public int Theme { get; set; } = 1;
+            public int Theme { get; set; } = 0;
         }
 
         //Home

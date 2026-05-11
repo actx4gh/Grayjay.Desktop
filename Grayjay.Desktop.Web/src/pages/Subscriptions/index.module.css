@@ -105,6 +105,13 @@
     max-height: 15px;
 }
 
+.subProgress {
+    height: 2px;
+    position: absolute;
+    bottom: 1px;
+    background: var(--gj-accent-grad);
+}
+
 .content {
     flex-grow: 1;
     position: relative;
@@ -146,7 +153,7 @@
     cursor: pointer;
 }
 .subgroup.active {
-    border: 2px solid #02C6E7;
+    border: 2px solid var(--gj-accent);
 }
 .subgroup .editIcon {
     position: absolute;
@@ -269,9 +276,9 @@
     padding-top: 24px;
     padding-bottom: 24px;
     border-radius: 8px;
-    border: 1px solid rgba(1, 155, 231, 0.00);
+    border: 1px solid transparent;
     
-    background: linear-gradient(0deg, var(--gj-bg-card) 0%, var(--gj-bg-card) 100%), linear-gradient(270deg, #01D6E6 -68.7%, #0182E7 97.07%);
+    background: linear-gradient(0deg, var(--gj-bg-card) 0%, var(--gj-bg-card) 100%), var(--gj-accent-grad);
     
     display: flex;
     flex-direction: row;
@@ -337,23 +344,6 @@
     margin-top: 28px;
 }
 
-:global(:root[data-theme="light"]) .channel {
-    background: #f1eee8;
-    border-color: #d2cdc3;
-}
-
-:global(:root[data-theme="light"]) .channel.active {
-    background: #e4dfd5;
-    border-color: #bcb5a9;
-}
-
-:global(:root[data-theme="light"]) .filter {
-    background: #f1eee8;
-}
-
-:global(:root[data-theme="light"]) .filter.active {
-    background: #e2ddd3;
-}
 
 
 /* subscription-groups-light-mode-v29 */

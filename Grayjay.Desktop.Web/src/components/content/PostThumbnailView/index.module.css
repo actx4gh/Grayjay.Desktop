@@ -71,29 +71,13 @@
 }
 .isLive {
     border-radius: 4px;
-    background: red;
+    background: var(--gj-live-badge-bg);
     position: absolute;
     right: 12px;
     bottom: 12px;
-    color: var(--gj-text-secondary);
-    padding: 6px 8px;
-
+    color: var(--gj-live-badge-text);
     padding: 5px 8px;
 
-
-    color: var(--gj-text-primary);
-
-
-    
-
-    font-family: Inter;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 200;
-    line-height: normal;
-
-
-    color: var(--gj-text-primary);
     font-family: Inter;
     font-size: 14px;
     font-style: normal;

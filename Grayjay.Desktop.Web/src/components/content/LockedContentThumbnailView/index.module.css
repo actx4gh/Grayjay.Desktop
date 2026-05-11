@@ -16,8 +16,11 @@
     width: 100%;
     height: auto;
     aspect-ratio: 16/9;
-    background-color: rgba(0,0,0,.5);
+    background: var(--gj-video-overlay-bg);
     border-radius: 8px;
+    border: 1px solid var(--gj-video-overlay-border);
+    color: var(--gj-video-overlay-text);
+    box-sizing: border-box;
 }
 .lockedTextContainer {
     margin-top: 30px;
@@ -35,7 +38,7 @@
 .lockedUrl {
     margin-top: 10px;
     font-size: 12px;
-    color: #0000DD;
+    color: var(--gj-accent);
 }
 
 
@@ -81,29 +84,13 @@
 }
 .isLive {
     border-radius: 4px;
-    background: red;
+    background: var(--gj-live-badge-bg);
     position: absolute;
     right: 12px;
     bottom: 12px;
-    color: var(--gj-text-secondary);
-    padding: 6px 8px;
-
+    color: var(--gj-live-badge-text);
     padding: 5px 8px;
 
-
-    color: var(--gj-text-primary);
-
-
-    
-
-    font-family: Inter;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 200;
-    line-height: normal;
-
-
-    color: var(--gj-text-primary);
     font-family: Inter;
     font-size: 14px;
     font-style: normal;

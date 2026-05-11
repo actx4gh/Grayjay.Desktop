@@ -128,6 +128,7 @@ const SideBar: Component<SideBarProps> = (props: SideBarProps) => {
     autoPressOnFocus?: boolean;
     style?: JSX.CSSProperties;
     styleText?: JSX.CSSProperties;
+    themeFilter?: boolean;
   };
   
   const homeBtn: ButtonItem = { icon: home, name: 'Home', path: '/web/home', getSelected: createMemo(() => location.pathname === '/web/home' || location.pathname === '/web/index.html'), autoPressOnFocus: false };
@@ -181,11 +182,12 @@ const SideBar: Component<SideBarProps> = (props: SideBarProps) => {
   
   const buyBtn: ButtonItem = { 
     icon: iconBuy,
+    themeFilter: false,
     name: 'Buy Grayjay', 
     path: '/web/buy', 
     getSelected: createMemo(() => location.pathname === '/web/buy')
   };
-  const settingsBtn: ButtonItem = { icon: iconSettings, name: 'Settings', action: () => UIOverlay.overlaySettings(), getSelected: createMemo(() => location.pathname === '/web/settings') };
+  const settingsBtn: ButtonItem = { icon: iconSettings, themeFilter: false, name: 'Settings', action: () => UIOverlay.overlaySettings(), getSelected: createMemo(() => location.pathname === '/web/settings') };
 
   const bottomButtons$ = createMemo(() => {
     const list: ButtonItem[] = [];
@@ -368,6 +370,7 @@ const SideBar: Component<SideBarProps> = (props: SideBarProps) => {
                   onBlur={globalBlur}
                   style={btn.style}
                   styleText={btn.styleText}
+                  themeFilter={btn.themeFilter}
                 />
               );
             }}
@@ -457,6 +460,7 @@ const SideBar: Component<SideBarProps> = (props: SideBarProps) => {
                   onBlur={globalBlur}
                   style={btn.style}
                   styleText={btn.styleText}
+                  themeFilter={btn.themeFilter}
                 />
               );
             }}
@@ -510,6 +514,7 @@ const SideBar: Component<SideBarProps> = (props: SideBarProps) => {
                         onBlur={globalBlur}
                         style={btn.style}
                         styleText={btn.styleText}
+                        themeFilter={btn.themeFilter}
                       />
                     );
                   }}

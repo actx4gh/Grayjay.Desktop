@@ -40,8 +40,8 @@
 }
 .containerButton:hover {
   cursor: pointer;
-  background: var(--gj-bg-hover);
-  color: var(--gj-text-primary);
+  background: var(--btn-bg-focus);
+  color: var(--btn-text-focus);
   outline: unset;
 }
 
@@ -50,8 +50,8 @@
 }
 
 .containerButton:focus-visible {
-  background: var(--gj-bg-hover);
-  color: var(--gj-text-primary);
+  background: var(--btn-bg-focus);
+  color: var(--btn-text-focus);
   outline: unset;
 }
 

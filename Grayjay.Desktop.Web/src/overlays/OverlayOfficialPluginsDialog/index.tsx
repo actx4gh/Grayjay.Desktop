@@ -163,7 +163,7 @@ const OverlayOfficialPluginsDialog: Component<OverlayOfficialPluginsDialogProps>
                 <Button text={"Install Selected"}
                   onClick={()=>selected$() && selected$().length > 0 && install()}
                   style={{"margin-left": "10px", cursor: ("pointer")}} 
-                  color={((selected$() && selected$().length > 0) ? "linear-gradient(267deg, #01D6E6 -100.57%, var(--gj-accent) 90.96%)" : "")}
+                  color={((selected$() && selected$().length > 0) ? "var(--gj-accent-grad)" : "")}
                   focusableOpts={{
                     onPress: install,
                     onBack: globalBack

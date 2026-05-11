@@ -54,7 +54,7 @@ table .headers th:last-child{
 
 table tr {
     max-height: 60px;
-    border-bottom: 1px solid #3b3939;
+    border-bottom: 1px solid var(--gj-border);
     background: var(--gj-bg-root);
 }
 table th {

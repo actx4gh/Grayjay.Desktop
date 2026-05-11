@@ -158,13 +158,14 @@
     left: 10px; 
     right: 10px; 
     top: 60px; 
-    background-color: #000000AA; 
+    background: var(--gj-thumbnail-badge-bg); 
     border-radius: 8px; 
     padding: 8px; 
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: 12px; 
     text-align: center;
+    color: var(--gj-thumbnail-badge-text);
 }
 
 .downloadingCard .buttonCancel {

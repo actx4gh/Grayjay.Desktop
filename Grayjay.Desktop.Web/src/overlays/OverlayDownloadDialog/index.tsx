@@ -317,7 +317,7 @@ const OverlayDownloadDialog: Component<OverlayDownloadDialogProps> = (props: Ove
             <Button text='Download'
               onClick={()=>download()}
               style={{"margin-left": "auto", cursor: ((isDownloadable$() ? "pointer" : "default"))}} 
-              color={isDownloadable$() ? "linear-gradient(267deg, #01D6E6 -100.57%, var(--gj-accent) 90.96%)" : "gray"}
+              color={isDownloadable$() ? "var(--gj-accent-grad)" : "gray"}
               focusableOpts={{
                 onPress: download,
                 onBack: globalBack

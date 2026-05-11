@@ -267,6 +267,22 @@ const SettingsMenu: Component<SettingsMenuProps> = (props: SettingsMenuProps) =>
         if(props.onHide)
           props.onHide();
     }
+    function isExternalMenuIcon(icon: string | undefined): boolean {
+      if (!icon) {
+        return false;
+      }
+
+      const normalized = icon.toLowerCase();
+      const isLocalAsset =
+        normalized.includes('/assets/') ||
+        normalized.includes('assets/icons') ||
+        normalized.includes('src/assets/') ||
+        normalized.startsWith('./assets/') ||
+        normalized.startsWith('../assets/');
+
+      return !isLocalAsset;
+    }
+
     function clickButton(option: IMenuButton) {
         console.log("Button clicked", option);
         option?.onClick();
@@ -443,22 +459,6 @@ const SettingsMenu: Component<SettingsMenuProps> = (props: SettingsMenuProps) =>
     };
 
     const groupId = uuidv4();
-
-    const isExternalMenuIcon = (icon: string | undefined): boolean => {
-      if (!icon) {
-        return false;
-      }
-
-      const normalized = icon.toLowerCase();
-      const isLocalAsset =
-        normalized.includes('/assets/') ||
-        normalized.includes('assets/icons') ||
-        normalized.includes('src/assets/') ||
-        normalized.startsWith('./assets/') ||
-        normalized.startsWith('../assets/');
-
-      return !isLocalAsset;
-    };
 
     console.info("menu style", props.menuStyle);
   

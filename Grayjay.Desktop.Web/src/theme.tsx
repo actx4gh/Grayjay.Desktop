@@ -29,8 +29,26 @@ function resolveTheme(setting: unknown): ResolvedTheme {
   return 'dark';
 }
 
+function getPrepaintThemeSetting(): unknown {
+  const source = document.documentElement.dataset.themeSource;
+
+  if (source === 'light') {
+    return THEME_LIGHT;
+  }
+
+  if (source === 'system') {
+    return THEME_SYSTEM;
+  }
+
+  if (source === 'dark') {
+    return THEME_DARK;
+  }
+
+  return undefined;
+}
+
 function getThemeSetting(): unknown {
-  return StateGlobal.settings$()?.object?.appearance?.theme;
+  return StateGlobal.settings$()?.object?.appearance?.theme ?? getPrepaintThemeSetting();
 }
 
 function applyTheme(setting: unknown) {

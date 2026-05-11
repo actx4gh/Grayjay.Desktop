@@ -317,12 +317,12 @@
 }
 
 .pluginIcon {
-    filter: none !important;
+    filter: none;
 }
 
 :global(:root[data-theme="light"]) .menuToggle .pluginIcon {
-    filter: none !important;
-    opacity: 1 !important;
+    filter: none;
+    opacity: 1;
 }
 
 :global(:root[data-theme="light"]) .menuItem .expander img,
@@ -338,13 +338,13 @@
 :global(:root[data-theme="light"]) .menuItem .key,
 :global(:root[data-theme="light"]) .menuItem .value,
 :global(:root[data-theme="light"]) .filterHorizontalOption {
-    color: var(--gj-text-primary) !important;
+    color: var(--gj-text-primary);
 }
 
 :global(:root[data-theme="light"]) .menuToggle .nameContainer .description,
 :global(:root[data-theme="light"]) .menuHeader .nameContainer .description,
 :global(:root[data-theme="light"]) .menuButton .description {
-    color: var(--gj-text-tertiary) !important;
+    color: var(--gj-text-tertiary);
 }
 
 :global(:root[data-theme="light"]) .menuButton .icon,
@@ -352,8 +352,8 @@
 :global(:root[data-theme="light"]) .menuHeader .icon,
 :global(:root[data-theme="light"]) .menuItem .expander img,
 :global(:root[data-theme="light"]) .menu > div:first-child img {
-    filter: brightness(0) saturate(100%) !important;
-    opacity: 1 !important;
+    filter: var(--gj-theme-icon-filter);
+    opacity: 1;
 }
 
 :global(:root[data-theme="light"]) .menuButton .icon {

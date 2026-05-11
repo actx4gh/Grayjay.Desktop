@@ -39,7 +39,7 @@
   --gj-text-inverse: #141414;
 
   --gj-accent: #019be7;
-  --gj-accent-grad: linear-gradient(267deg, #01D6E6 -100.57%, #0182E7 90.96%);
+  --gj-accent-grad: linear-gradient(267deg, #01D6E6 -100.57%, var(--gj-accent) 90.96%);
   --gj-danger: #b23636;
   --gj-danger-accent: #F97066;
   --gj-warning-bg: rgba(244, 162, 97, 0.12);
@@ -54,6 +54,8 @@
   --gj-theme-icon-filter: none;
   --gj-thumbnail-badge-bg: #000000ee;
   --gj-thumbnail-badge-text: #ffffff;
+  --gj-live-badge-bg: #ff3b30;
+  --gj-live-badge-text: #ffffff;
 
   --btn-bg: var(--gj-bg-panel-strong);
   --btn-text: var(--gj-text-primary);
@@ -123,6 +125,8 @@
   --gj-theme-icon-filter: brightness(0) saturate(100%);
   --gj-thumbnail-badge-bg: rgba(255, 255, 255, 0.92);
   --gj-thumbnail-badge-text: #141414;
+  --gj-live-badge-bg: #ff3b30;
+  --gj-live-badge-text: #ffffff;
 
   --btn-bg: var(--gj-bg-panel-strong);
   --btn-text: var(--gj-text-primary);

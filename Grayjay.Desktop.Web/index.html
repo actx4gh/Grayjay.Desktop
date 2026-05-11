@@ -5,10 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#141414" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#f5f5f3" media="(prefers-color-scheme: light)" />
+    <script>
+      (() => {
+        const root = document.documentElement;
+        const source = new URLSearchParams(window.location.search).get('gjStartupTheme') || 'system';
+        const systemTheme = window.matchMedia?.('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        const theme = source === 'light' ? 'light' : source === 'dark' ? 'dark' : systemTheme;
+
+        root.dataset.theme = theme;
+        root.dataset.themeSource = source === 'light' || source === 'dark' ? source : 'system';
+        root.style.colorScheme = theme;
+      })();
+    </script>
     <style id="grayjay-theme-prepaint">
-      :root { --gj-bg-root: #141414; background-color: #141414; color-scheme: dark; }
-      @media (prefers-color-scheme: light) { :root { --gj-bg-root: #f5f5f3; background-color: #f5f5f3; color-scheme: light; } }
-      body { background-color: var(--gj-bg-root); }
+      :root { --gj-bg-root: #141414; --gj-bg-sidebar: #1b1b1b; background-color: #141414; color-scheme: dark; }
+      :root[data-theme="light"] { --gj-bg-root: #f5f5f3; --gj-bg-sidebar: #ecebe7; background-color: #f5f5f3; color-scheme: light; }
+      :root[data-theme="dark"] { --gj-bg-root: #141414; --gj-bg-sidebar: #1b1b1b; background-color: #141414; color-scheme: dark; }
+      @media (prefers-color-scheme: light) { :root:not([data-theme]) { --gj-bg-root: #f5f5f3; --gj-bg-sidebar: #ecebe7; background-color: #f5f5f3; color-scheme: light; } }
+      html, body, #root { background-color: var(--gj-bg-root); }
     </style>
     <link rel="shortcut icon" type="image/png" href="/src/assets/favicon.png" />
     <link rel="stylesheet" href="/src/assets/fonts/inter/inter.css" />

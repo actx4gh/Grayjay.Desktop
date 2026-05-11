@@ -107,7 +107,7 @@
 }
 
 .queueItemActive {
-    background-color: var(--gj-bg-card-hover);
+    background-color: var(--gj-bg-card-active);
     color: var(--gj-text-primary);
 }
 
@@ -116,7 +116,7 @@
 }
 
 .queueItemActive:hover {
-    background-color: var(--gj-bg-card-hover);
+    background-color: var(--gj-bg-selected);
 }
 
 .queueThumbnail {
@@ -156,10 +156,10 @@
 }
 
 :global(:root[data-theme="light"]) .queueItemActive {
-    background-color: var(--gj-bg-card-hover);
+    background-color: var(--gj-bg-card-active);
     color: var(--gj-text-primary);
 }
 
 :global(:root[data-theme="light"]) .queueItemActive:hover {
-    background-color: var(--gj-bg-card-hover);
+    background-color: var(--gj-bg-selected);
 }

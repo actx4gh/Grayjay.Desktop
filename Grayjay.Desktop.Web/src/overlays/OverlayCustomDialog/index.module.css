@@ -47,10 +47,10 @@
 
 
 :global(:root[data-theme="light"]) .closeButton {
-    background: #d5d1c9;
+    background: var(--gj-bg-panel-strong);
     border: 1px solid var(--gj-border-strong);
 }
 
 :global(:root[data-theme="light"]) .closeButton img {
-    filter: brightness(0) saturate(100%) invert(26%);
+    filter: var(--gj-theme-icon-filter);
 }

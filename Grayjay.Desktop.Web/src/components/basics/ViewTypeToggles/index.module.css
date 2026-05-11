@@ -14,7 +14,7 @@
     background-color: var(--gj-bg-panel);
 }
 .toggleViewType.enabled {
-    background-color: #262626 !important;
+    background-color: var(--gj-bg-card-active);
 }
 
 .toggleViewType img {
@@ -28,7 +28,7 @@
 }
 
 :global(:root[data-theme="light"]) .toggleViewType.enabled {
-    background-color: var(--gj-bg-card-active) !important;
+    background-color: var(--gj-bg-card-active);
 }
 
 :global(:root[data-theme="light"]) .toggleViewType img {

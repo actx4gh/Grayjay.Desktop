@@ -16,6 +16,7 @@ interface SideBarButtonProps {
     onBlur?: () => void;
     style?: JSX.CSSProperties;
     styleText?: JSX.CSSProperties;
+    themeFilter?: boolean;
 }
 
 const SideBarButton: Component<SideBarButtonProps> = (props) => {
@@ -36,7 +37,7 @@ const SideBarButton: Component<SideBarButtonProps> = (props) => {
       props.onFocus?.();
     }} onBlur={props.onBlur} style={props.style}>
       <Show when={props.icon}>
-        <img src={props.icon} class={styles.icon} classList={{ [styles.themeIcon]: props.name !== 'Buy Grayjay' && props.name !== 'Settings' }} alt="logo" />
+        <img src={props.icon} class={styles.icon} classList={{ [styles.themeIcon]: props.themeFilter !== false }} alt="logo" />
       </Show>
       <Show when={!props.collapsed}>
         <div class={styles.text} style={props.styleText}>{props.name}</div>

@@ -426,7 +426,7 @@ const OverlayCasting: Component = () => {
                                         casting?.actions.disconnect();
                                     }}
                                     text='Disconnect'
-                                    style={{ border: "1px solid rgba(1, 155, 231, 0)", "margin-left": "16px", "flex-shrink": "0" }}
+                                    style={{ border: "1px solid transparent", "margin-left": "16px", "flex-shrink": "0" }}
                                     focusableOpts={{
                                         onPress: async () => casting?.actions.disconnect(),
                                         onBack: globalBack

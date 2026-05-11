@@ -222,7 +222,7 @@ const SyncPage: Component = () => {
                   }}
                   style={{cursor: "pointer", "flex-shrink": 0, "margin-right": "20px"}} 
                   small={true}
-                  color={"linear-gradient(267deg, #01D6E6 -100.57%, var(--gj-accent) 90.96%)"}
+                  color={"var(--gj-accent-grad)"}
                   focusableOpts={{ onPress: () => UIOverlay.overlayNewDeviceSync() }} />
 
                 {renderQrCodeOverlay()}
@@ -254,7 +254,7 @@ const SyncPage: Component = () => {
                   }}
                   style={{cursor: "pointer", "flex-shrink": 0}} 
                   small={true}
-                  color={"linear-gradient(267deg, #01D6E6 -100.57%, var(--gj-accent) 90.96%)"}
+                  color={"var(--gj-accent-grad)"}
                   focusableOpts={{
                     onPress: () => UIOverlay.overlayNewDeviceSync()
                   }} />

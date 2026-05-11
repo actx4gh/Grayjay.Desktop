@@ -92,7 +92,7 @@
 }
 .storageContainer .storageIndicator .bar {
     border-radius: 99px;
-    background: linear-gradient(90deg, #01D6E6 0%, #0182E7 98.73%);
+    background: var(--gj-accent-grad);
     height: 100%;    
 }
 
