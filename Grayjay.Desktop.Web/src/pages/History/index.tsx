@@ -210,7 +210,7 @@ const HistoryPage: Component = () => {
                 style={{
                   "margin-left": "16px",
                   "margin-right": "32px",
-                  "border": "1px solid #f621215c",
+                  "border": "1px solid var(--gj-danger-accent)",
                 }}
                 onClick={(e) => {
                   contentAnchor.setElement(e.target as HTMLElement);

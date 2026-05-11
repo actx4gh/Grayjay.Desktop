@@ -122,7 +122,7 @@ const SettingsPage: Component<SettingsPageProps> = (props) => {
                     onPress: () => { setAdvanced(!showAdvanced$()) },
                     onBack: globalBack
                   }} class={styles.advanced}>
-                    <div style="font-size: 16px; color: #999;">
+                    <div style="font-size: 16px; color: var(--gj-text-tertiary);">
                       Advanced
                     </div>
                     <div style="flex-grow: 1"></div>

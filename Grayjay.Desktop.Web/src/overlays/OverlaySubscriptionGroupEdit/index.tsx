@@ -207,7 +207,7 @@ const OverlaySubscriptionGroupEditDialog: Component<OverlaySubscriptionGroupEdit
                 <Button text={"Add Subscriptions"}
                   onClick={()=>changeView(2)}
                   style={{"margin-left": "10px", cursor: ("pointer")}} 
-                  color={"#222"}
+                  color={"var(--gj-bg-control)"}
                   focusableOpts={{
                     onPress: () => changeView(2),
                     onBack: globalBack

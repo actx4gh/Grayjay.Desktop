@@ -331,10 +331,10 @@ const ChannelPage: Component = () => {
                       
                 <Show when={error$()}>
                   <div style="text-align: center;">
-                    <div style="color: #555">
+                    <div style="color: var(--gj-text-tertiary)">
                       Failed to load channel
                     </div>
-                    <div style="color: #AA0000">
+                    <div style="color: var(--gj-danger)">
                       {error$()?.message ?? error$()}
                     </div>
                   </div>

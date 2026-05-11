@@ -468,7 +468,7 @@ const SideBar: Component<SideBarProps> = (props: SideBarProps) => {
         </div>
         <Portal>
           <Show when={moreTopButtonCount$() > 0 && moreOverlayVisible$()}>
-            <div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: #0000009e; z-index: 3" onClick={(ev) => {
+            <div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: var(--gj-bg-backdrop); z-index: 3" onClick={(ev) => {
               props?.onMoreClosed?.();
               setMoreOverlayVisible(false);
               ev.preventDefault();
@@ -479,7 +479,7 @@ const SideBar: Component<SideBarProps> = (props: SideBarProps) => {
             }} use:focusScope={{
               initialMode: 'trap'
             }}>
-              <div style="background-color: #141414; width: 260px; height: calc(100% - 20px); border-right: #2a2a2a 1px solid; padding: 10px; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+              <div style="background-color: var(--gj-bg-sidebar); width: 260px; height: calc(100% - 20px); border-right: var(--gj-border) 1px solid; padding: 10px; display: flex; flex-direction: column; align-items: center; gap: 6px;">
                 <For each={topButtons$().slice(visibleTopButtonCount$(), visibleTopButtonCount$() + moreTopButtonCount$())}>
                   {(btn, i) => {
                     const press = () => {

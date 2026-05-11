@@ -49,12 +49,12 @@ const OverlaySelectOnlineSyncDeviceDialog: Component<OverlaySelectOnlineSyncDevi
                     <img src={StateSync.getSyncIcon(dev.linkType)} style="width: 44px;" />
                     <div style="display: flex; flex-direction: column; flex-grow: 1; align-items: flex-start; justify-content: center;">
                         <div style="overflow: hidden; color: var(--gj-text-primary); text-align: center; text-overflow: ellipsis; font-family: Inter; font-size: 14px; font-style: normal; font-weight: 500; line-height: normal;">{dev.displayName ?? dev.publicKey}</div>
-                        <div style="color: #595959; font-family: Inter; font-size: 10px; font-style: normal; font-weight: 500; line-height: normal;">{dev.metadata}</div>
+                        <div style="color: var(--gj-text-tertiary); font-family: Inter; font-size: 10px; font-style: normal; font-weight: 500; line-height: normal;">{dev.metadata}</div>
                     </div>
                 
                     <div style="border-radius: 4px; border: 1px solid var(--gj-border); display: flex; padding: 6px 8px; align-items: center; gap: 4px; flex-shrink: 0; height: fit-content;">
                       <img src={StateSync.getSyncIcon(dev.linkType)} style="width: 20x; cursor: pointer;" />
-                      <div style="color: #BFBFBF; font-family: Inter; font-size: 10px; font-style: normal; font-weight: 500; line-height: normal;">{StateSync.getSyncLinkName(dev.linkType)}</div>
+                      <div style="color: var(--gj-text-secondary); font-family: Inter; font-size: 10px; font-style: normal; font-weight: 500; line-height: normal;">{StateSync.getSyncLinkName(dev.linkType)}</div>
                     </div>
                   </div>
               </div>
