@@ -54,7 +54,7 @@ const OverlayDownloadMultipleDialog: Component<OverlayDownloadMultipleDialogProp
       setSelectedManifestIndex(manifestIndex);
     }
 
-    function download() {
+    async function download() {
       if(!isDownloadable$())
         return false;
       UIOverlay.dismiss();
@@ -66,12 +66,17 @@ const OverlayDownloadMultipleDialog: Component<OverlayDownloadMultipleDialogProp
 
 
       if(selectedVideo || selectedAudio) {
-        if(props.playlistId)
-          DownloadBackend.downloadPlaylist(props.playlistId, selectedVideo?.pixelCount, selectedAudio?.bitrate);
-        else
-          DownloadBackend.downloadMultiple(props.videos, selectedVideo?.pixelCount, selectedAudio?.bitrate);
-        if(props.onResult)
-          props.onResult(selectedVideo?.pixelCount ?? -1, selectedAudio?.bitrate ?? -1);
+        try {
+          if(props.playlistId)
+            await DownloadBackend.downloadPlaylist(props.playlistId, selectedVideo?.pixelCount, selectedAudio?.bitrate);
+          else
+            await DownloadBackend.downloadMultiple(props.videos ?? [], selectedVideo?.pixelCount, selectedAudio?.bitrate);
+          if(props.onResult)
+            props.onResult(selectedVideo?.pixelCount ?? -1, selectedAudio?.bitrate ?? -1);
+        }
+        catch(ex) {
+          UIOverlay.toast(String(ex));
+        }
       }
     }
 

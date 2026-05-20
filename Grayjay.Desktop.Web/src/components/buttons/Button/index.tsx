@@ -16,14 +16,38 @@ interface ButtonProps {
     style?: JSX.CSSProperties;
     focusableOpts?: FocusableOptions;
     autofocus?: boolean;
+    disabled?: boolean;
 }
 
 const Button: Component<ButtonProps> = (props) => {
     const handleClick = (event: MouseEvent) => {
+        if (props.disabled) {
+            event.preventDefault();
+            event.stopPropagation();
+            return;
+        }
         if (props.onClick) {
             props.onClick(event);
         }
     };
+
+    const focusableOpts = createMemo(() => {
+        if (!props.focusableOpts) {
+            return undefined;
+        }
+
+        if (!props.disabled) {
+            return props.focusableOpts;
+        }
+
+        return {
+            ...props.focusableOpts,
+            disabled: true,
+            onPress: undefined,
+            onAction: undefined,
+            onOptions: undefined,
+        } as FocusableOptions;
+    });
 
     const style = createMemo(() => {
         const normalizeNeutral = (color: string | undefined, fallback: string) => {
@@ -55,7 +79,7 @@ const Button: Component<ButtonProps> = (props) => {
     });
 
     return (
-        <div class={styles.container} classList={{[styles.small]: props.small}} style={style()} onClick={handleClick} use:focusable={props.focusableOpts} data-autofocus={props.autofocus ? '' : undefined}>
+        <div class={styles.container} classList={{[styles.small]: props.small, [styles.disabled]: props.disabled}} style={style()} onClick={handleClick} use:focusable={focusableOpts()} data-autofocus={props.autofocus ? '' : undefined} aria-disabled={props.disabled ? 'true' : undefined}>
             <Show when={props.icon}>
                 <img src={props.icon} class={styles.icon} alt={props.text} />
             </Show>

@@ -22,6 +22,60 @@
     position: relative;
     transition: transform 0.5s ease;
 }
+
+.container.selectionMode .videoThumbnail {
+    outline: 1px solid var(--gj-border-muted);
+    outline-offset: 0px;
+}
+
+.container.selectionMode:hover .videoThumbnail {
+    transform: scale(1.02);
+}
+
+.container.selected .videoThumbnail {
+    outline: 2px solid var(--gj-accent);
+    outline-offset: 0px;
+}
+
+.selectionOverlay {
+    position: absolute;
+    inset: 0;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+.selectionIndicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    border: 2px solid rgba(255, 255, 255, 0.88);
+    background: rgba(20, 20, 20, 0.66);
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    box-sizing: border-box;
+    z-index: 5;
+}
+
+.selectionIndicatorSelected {
+    border-color: var(--gj-accent);
+    background: var(--gj-accent);
+}
+
+.selectionIndicator img {
+    width: 18px;
+    height: 18px;
+}
+
+.container.selected .selectionOverlay {
+    background: rgba(1, 155, 231, 0.18);
+}
+
 .videoThumbnail .image {
     position:absolute;
     left: 0px;
@@ -178,4 +232,15 @@
 
 :global(:root[data-theme="light"]) .sourceIcon {
     filter: none;
+}
+
+
+:global(:root[data-theme="light"]) .selectionIndicator {
+    border-color: rgba(255, 255, 255, 0.95);
+    background: rgba(20, 20, 20, 0.55);
+}
+
+:global(:root[data-theme="light"]) .selectionIndicatorSelected {
+    border-color: var(--gj-accent);
+    background: var(--gj-accent);
 }

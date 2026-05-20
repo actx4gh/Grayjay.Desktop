@@ -11,7 +11,7 @@ import OverlaySubscriptionsSelector from "../overlays/OverlaySubscriptionsSelect
 import OverlayImageSelector from "../overlays/OverlayImageSelector";
 import { SubscriptionsBackend } from "../backend/SubscriptionsBackend";
 import { IPlaylist } from "../backend/models/IPlaylist";
-import { PlaylistsBackend } from "../backend/PlaylistsBackend";
+import { PlaylistsBackend, type IAddContentsToPlaylistsResult } from "../backend/PlaylistsBackend";
 import OverlayImportSelectDialog from "../overlays/OverlayImportSelectDialog";
 import { IPlatformVideoDetails } from "../backend/models/contentDetails/IPlatformVideoDetails";
 import { Navigate, useNavigate } from "@solidjs/router";
@@ -437,16 +437,22 @@ export interface UIOverlay {
           }
         });
       },
-      async overlayAddToPlaylist(content: IPlatformVideo, onAdded?: (playlists: IPlaylist[]) => void) {
-        const playlists = await PlaylistsBackend.getAll();
-        const addContentToPlaylists = (playlists: IPlaylist[]) => {
+      async overlayAddToPlaylist(content: IPlatformVideo, onAdded?: (playlists: IPlaylist[], result: IAddContentsToPlaylistsResult) => void) {
+        await this.overlayAddToPlaylistMultiple([content], onAdded, true);
+      },
+      async overlayAddToPlaylistMultiple(contents: IPlatformVideo[], onAdded?: (playlists: IPlaylist[], result: IAddContentsToPlaylistsResult) => void, showDefaultResultToast: boolean = false) {
+        const validContents = contents.filter(c => c !== undefined && c !== null);
+        if (validContents.length < 1) {
+          return;
+        }
 
-        };
+        const playlists = await PlaylistsBackend.getAll();
+        const contentCount = validContents.length;
         
         this.overlay({
           dialog: {
-            title: "Add to playlist",
-            description: "Add content to a playlist.",
+            title: contentCount === 1 ? "Add to playlist" : `Add ${contentCount} videos to playlist`,
+            description: contentCount === 1 ? "Add content to a playlist." : "Add the selected videos to one or more playlists.",
             input: new DialogInputCheckboxList({
               values: playlists.map(p => {
                 return {
@@ -457,7 +463,7 @@ export interface UIOverlay {
               addLabel: "Create new playlist",
               onAddClicked: () => {
                 this.overlayNewPlaylist(() => {
-                  this.overlayAddToPlaylist(content, onAdded);
+                  this.overlayAddToPlaylistMultiple(validContents, onAdded, showDefaultResultToast);
                   this.dismiss();
                 });
                 this.dismiss();
@@ -469,8 +475,24 @@ export interface UIOverlay {
               onClick: async (output: IDialogOutput) => {
                 console.info("Add to selected playlists", output.selected);
                 const playlists = output.selected as IPlaylist[];
-                await PlaylistsBackend.addContentToPlaylists(content, playlists.map(p => p.id));
-                onAdded?.(playlists);
+                if (playlists.length < 1) {
+                  UIOverlay.toast("Select at least one playlist");
+                  return;
+                }
+
+                const result = validContents.length === 1
+                  ? await PlaylistsBackend.addContentToPlaylists(validContents[0], playlists.map(p => p.id))
+                  : await PlaylistsBackend.addContentsToPlaylists(validContents, playlists.map(p => p.id));
+                if (showDefaultResultToast) {
+                  const addedCount = result?.totalAdded ?? validContents.length * playlists.length;
+                  const playlistLabel = playlists.length === 1 ? "playlist" : "selected playlists";
+                  if (addedCount < 1) {
+                    UIOverlay.toast(`Video was already in the ${playlistLabel}`);
+                  } else {
+                    UIOverlay.toast(`${addedCount} video ${addedCount === 1 ? "entry" : "entries"} added to ${playlistLabel}`);
+                  }
+                }
+                onAdded?.(playlists, result);
               }
             }]
           }

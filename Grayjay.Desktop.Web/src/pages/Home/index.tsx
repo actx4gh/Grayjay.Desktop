@@ -17,9 +17,12 @@ import EmptyContentView from '../../components/EmptyContentView';
 import { focusable } from '../../focusable'; void focusable;
 import LiveChatWindow from '../../components/LiveChatWindow';
 import UIOverlay from '../../state/UIOverlay';
+import VideoSelectionToolbar from '../../components/VideoSelectionToolbar';
+import { createVideoSelection } from '../../state/VideoSelection';
 
 const HomePage: Component = () => {
   const homePager = StateGlobal.home$;
+  const videoSelection = createVideoSelection(() => homePager()?.dataFiltered);
 
   const nav = useNavigate();
   
@@ -44,20 +47,41 @@ const HomePage: Component = () => {
             iconInset="0px"
             style={{ "margin-left": "24px" }}
             onClick={() => {
+              videoSelection.cancelSelection();
               StateGlobal.reloadHome();
             }}
             focusableOpts={{
               groupId: 'nav-bar',
               groupIndices: [1],
               groupType: 'horizontal',
-              onPress: () => StateGlobal.reloadHome(),
+              onPress: () => {
+                videoSelection.cancelSelection();
+                StateGlobal.reloadHome();
+              },
             }}
           />
         } />
         <Show when={homePager.state == 'ready'}>
           <Show when={homePager() && homePager()!.data.length > 0}>
+            <VideoSelectionToolbar
+              selectionMode={videoSelection.selectionMode$()}
+              selectedCount={videoSelection.selectedVideoCount$()}
+              onStartSelection={videoSelection.startSelection}
+              onAddToPlaylist={videoSelection.addSelectedVideosToPlaylist}
+              onDownload={videoSelection.downloadSelectedVideos}
+              onSelectLoaded={videoSelection.selectLoadedVideos}
+              onClear={videoSelection.clearSelectedVideos}
+              onCancel={videoSelection.requestCancelSelection}
+            />
             <ScrollContainer ref={scrollContainerRef}>
-              <ContentGrid pager={homePager()} outerContainerRef={scrollContainerRef} openChannelButton={true} />
+              <ContentGrid
+                pager={homePager()}
+                outerContainerRef={scrollContainerRef}
+                openChannelButton={true}
+                selectionMode={videoSelection.selectionMode$()}
+                isContentSelected={videoSelection.isSelectedVideo}
+                onContentSelectionToggle={videoSelection.toggleSelectedVideo}
+              />
             </ScrollContainer>
           </Show>
           <Show when={homePager() && homePager()!.data.length == 0}>

@@ -21,6 +21,7 @@ namespace Grayjay.ClientServer.Controllers
     [Route("[controller]/[action]")]
     public class DownloadController : ControllerBase
     {
+        private const int MaxDownloadMultipleCount = 500;
         private static object _lock = new object();
         private static PlatformVideoDetails _details = new PlatformVideoDetails();
         private static DownloadSources _sources = new DownloadSources();
@@ -151,6 +152,28 @@ namespace Grayjay.ClientServer.Controllers
             StateDownloads.StartDownloadCycle();
 
             return Ok(download);
+        }
+
+        [HttpPost]
+        public IActionResult DownloadMultiple([FromBody] PlatformVideo[] videos, int pixelCount, int bitrate)
+        {
+            if (videos == null || videos.Length == 0)
+                return Ok(new List<VideoDownload>());
+
+            if (videos.Length > MaxDownloadMultipleCount)
+                return BadRequest($"Cannot download more than {MaxDownloadMultipleCount} videos in one request.");
+
+            long? targetPixelCount = pixelCount >= 0 ? (long?)pixelCount : null;
+            long? targetBitrate = bitrate >= 0 ? (long?)bitrate : null;
+            var downloads = videos
+                .Where(video => video != null)
+                .Select(video => StateDownloads.StartDownload(video, targetPixelCount, targetBitrate))
+                .ToList();
+
+            if (downloads.Count > 0)
+                StateDownloads.StartDownloadCycle();
+
+            return Ok(downloads);
         }
 
         [HttpGet]

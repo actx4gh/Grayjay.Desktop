@@ -5,6 +5,7 @@ import { IVideoDownload } from "./models/downloads/IVideoDownload";
 import { IVideoLocal } from "./models/downloads/IVideoLocal";
 import { Pager } from "./models/pagers/Pager";
 
+export const MAX_DOWNLOAD_MULTIPLE_COUNT = 500;
 
 export abstract class DownloadBackend {
 
@@ -19,8 +20,13 @@ export abstract class DownloadBackend {
         return await Backend.GET(`/download/DownloadPlaylist?playlistId=${playlistId}&pixelCount=${pixelCount ?? -1}&bitrate=${bitrate ?? -1}`);
     }
     static async downloadMultiple(videos: IPlatformVideo[], pixelCount?: number, bitrate?: number) {
+        const sanitizedVideos = videos.filter(v => v !== undefined && v !== null);
+        if (sanitizedVideos.length > MAX_DOWNLOAD_MULTIPLE_COUNT) {
+            throw new Error(`Cannot download more than ${MAX_DOWNLOAD_MULTIPLE_COUNT} videos in one request.`);
+        }
+
         return await Backend.POST(`/download/DownloadMultiple?pixelCount=${pixelCount ?? -1}&bitrate=${bitrate ?? -1}`,
-            JSON.stringify(videos), "application/json"
+            JSON.stringify(sanitizedVideos), "application/json"
         );
     }
 
