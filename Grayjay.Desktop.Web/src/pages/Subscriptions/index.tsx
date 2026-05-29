@@ -22,6 +22,8 @@ import LoaderGrid from '../../components/basics/loaders/LoaderGrid';
 import { Pager } from '../../backend/models/pagers/Pager';
 import Button from '../../components/buttons/Button';
 import UIOverlay from '../../state/UIOverlay';
+import VideoSelectionToolbar from '../../components/VideoSelectionToolbar';
+import { createVideoSelection } from '../../state/VideoSelection';
 
 import { IPlatformContent } from '../../backend/models/content/IPlatformContent';
 import { IPlatformVideo } from '../../backend/models/content/IPlatformVideo';
@@ -114,6 +116,7 @@ const SubscriptionsPage: Component = () => {
     else
       return subGroupPager$();
   });
+  const videoSelection = createVideoSelection(() => currentPager$()?.dataFiltered);
   createEffect(()=>{
     const pager = currentPager$();
     console.log("Current pager changed", {filteredItems: pager?.dataFiltered.length, items: pager?.data.length});
@@ -161,6 +164,7 @@ const SubscriptionsPage: Component = () => {
     const pager = currentPager$();
     if(pager)
       updateFilter(pager, getFilter());
+    videoSelection.clearSelectedVideos();
   }
   function getFilter() {
     return (obj: IPlatformContent)=>{
@@ -193,6 +197,7 @@ const SubscriptionsPage: Component = () => {
   }
 
   function toggleCreator(channelUrl: string) {
+    videoSelection.cancelSelection();
     if(selectedCreators$() && selectedCreators$().indexOf(channelUrl) >= 0)
       setSelectedCreators([]);
     else
@@ -220,11 +225,13 @@ const SubscriptionsPage: Component = () => {
     title: "",
     items: [
       new MenuItemButton("Reload from Update", iconRefresh, "Updates the subscriptions", ()=>{
+        videoSelection.cancelSelection();
         doUpdate = true;
         subPagerResource.refetch();
         setShowReloadMenu(false);
       }),
       new MenuItemButton("Reload from Cache", iconRefresh, "Just reloads the cached view", ()=>{
+        videoSelection.cancelSelection();
         doUpdate = false;
         subPagerResource.refetch();
         setShowReloadMenu(false);
@@ -372,7 +379,7 @@ const SubscriptionsPage: Component = () => {
                   <div
                     class={styles.subgroup}
                     classList={{ [styles.active]: subGroup.id === selectedGroup$() }}
-                    onClick={() => (subGroup.id === selectedGroup$()) ? setSelectedGroup(undefined) : setSelectedGroup(subGroup.id)}
+                    onClick={() => { videoSelection.cancelSelection(); (subGroup.id === selectedGroup$()) ? setSelectedGroup(undefined) : setSelectedGroup(subGroup.id); }}
                     use:focusable={{
                       groupEscapeTo: {
                         left: ['sidebar'],
@@ -383,7 +390,7 @@ const SubscriptionsPage: Component = () => {
                       groupType: 'horizontal',
                       groupIndices: [i()],
                       onOptions: () => UIOverlay.overlayEditSubscriptionGroup(subGroup),
-                      onPress: () => (subGroup.id === selectedGroup$()) ? setSelectedGroup(undefined) : setSelectedGroup(subGroup.id)
+                      onPress: () => { videoSelection.cancelSelection(); (subGroup.id === selectedGroup$()) ? setSelectedGroup(undefined) : setSelectedGroup(subGroup.id); }
                     }}
                   >
                     <div
@@ -458,7 +465,25 @@ const SubscriptionsPage: Component = () => {
               <Portal>
                 <SettingsMenu menu={reloadMenu} show={showReloadMenu$()} anchor={anchor} onHide={()=>setShowReloadMenu(false)} />
               </Portal>
-              <ContentGrid pager={currentPager$()} outerContainerRef={scrollContainerRef} useCache={true} openChannelButton={true} />
+              <VideoSelectionToolbar
+                selectionMode={videoSelection.selectionMode$()}
+                selectedCount={videoSelection.selectedVideoCount$()}
+                onStartSelection={videoSelection.startSelection}
+                onAddToPlaylist={videoSelection.addSelectedVideosToPlaylist}
+                onDownload={videoSelection.downloadSelectedVideos}
+                onSelectLoaded={videoSelection.selectLoadedVideos}
+                onClear={videoSelection.clearSelectedVideos}
+                onCancel={videoSelection.requestCancelSelection}
+              />
+              <ContentGrid
+                pager={currentPager$()}
+                outerContainerRef={scrollContainerRef}
+                useCache={true}
+                openChannelButton={true}
+                selectionMode={videoSelection.selectionMode$()}
+                isContentSelected={videoSelection.isSelectedVideo}
+                onContentSelectionToggle={videoSelection.toggleSelectedVideo}
+              />
             </div>
           </Show>
         </Show>

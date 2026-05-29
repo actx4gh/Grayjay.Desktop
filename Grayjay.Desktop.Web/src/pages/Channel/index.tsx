@@ -31,6 +31,8 @@ import { Portal } from 'solid-js/web';
 import UIOverlay from '../../state/UIOverlay';
 import { useFocus } from '../../FocusProvider';
 import IconButton from '../../components/buttons/IconButton';
+import VideoSelectionToolbar from '../../components/VideoSelectionToolbar';
+import { createVideoSelection } from '../../state/VideoSelection';
 
 interface ChannelTopBarInit {
   hideSubscriptionSettings: () => void;
@@ -191,7 +193,6 @@ const ChannelPage: Component = () => {
   const [error$, setError] = createSignal<any>(undefined);
   const [suggestionsVisible$, setSuggestionsVisible] = createSignal(true);
 
-
   const authorSummary$ = createMemo(() => {
     const author = (location.state as any)?.author;
     console.log("state changed", author);
@@ -203,10 +204,12 @@ const ChannelPage: Component = () => {
   const updatePager = async (query: string, url?: string) => {
     if (!url) {
       setChannelPager(undefined);
+      videoSelection.cancelSelection();
       return;
     }
 
     setChannelPager(undefined);
+    videoSelection.cancelSelection();
 
     if (!query || query.length < 1) {
       setChannelPager(await ChannelBackend.channelContentPager(url));
@@ -221,6 +224,7 @@ const ChannelPage: Component = () => {
   const [activeTab$, setActiveTab] = createSignal("Videos");
   
   const [query$, setQuery] = createSignal<string>("");
+  const videoSelection = createVideoSelection(() => channelPager$()?.dataFiltered);
   
   const [channel$, channelResource] = createResourceDefault(()=>params.url, async (u) => {
     console.log("get channel", params.url);
@@ -303,7 +307,12 @@ const ChannelPage: Component = () => {
                 name={channel$()?.name ?? authorSummary$()?.name}
                 authorUrl={channel$()?.url ?? authorSummary$()?.url}
                 activeTab={activeTab$()}
-                onActiveTabChanged={(tab) => setActiveTab(tab)}
+                onActiveTabChanged={(tab) => {
+                  setActiveTab(tab);
+                  if (tab !== "Videos") {
+                    videoSelection.cancelSelection();
+                  }
+                }}
                 suggestionsVisible={suggestionsVisible$()}
                 onInit={(init) => {
                   topBarInit = init;
@@ -329,6 +338,17 @@ const ChannelPage: Component = () => {
                   focusable={true} />
                 </Show>
                       
+                <VideoSelectionToolbar
+                  selectionMode={videoSelection.selectionMode$()}
+                  selectedCount={videoSelection.selectedVideoCount$()}
+                  onStartSelection={videoSelection.startSelection}
+                  onAddToPlaylist={videoSelection.addSelectedVideosToPlaylist}
+                  onDownload={videoSelection.downloadSelectedVideos}
+                  onSelectLoaded={videoSelection.selectLoadedVideos}
+                  onClear={videoSelection.clearSelectedVideos}
+                  onCancel={videoSelection.requestCancelSelection}
+                />
+
                 <Show when={error$()}>
                   <div style="text-align: center;">
                     <div style="color: var(--gj-text-tertiary)">
@@ -345,7 +365,13 @@ const ChannelPage: Component = () => {
                       <LoaderGrid itemCount={18} />
                     </div>
                   }>
-                   <ContentGrid pager={channelPager$()} outerContainerRef={scrollContainerRef} />
+                   <ContentGrid
+                    pager={channelPager$()}
+                    outerContainerRef={scrollContainerRef}
+                    selectionMode={videoSelection.selectionMode$()}
+                    isContentSelected={videoSelection.isSelectedVideo}
+                    onContentSelectionToggle={videoSelection.toggleSelectedVideo}
+                   />
                   </LoaderContainer>
                 </Show>
               </Show>

@@ -4,6 +4,7 @@ import styles from './index.module.css';
 import IconButton from '../../buttons/IconButton';
 import more from '../../../assets/icons/more_horiz_FILL0_wght400_GRAD0_opsz24.svg';
 import addToQueueIcon from '../../../assets/icons/icon_add_to_queue.svg';
+import iconCheck from '../../../assets/icons/icon_checkmark.svg';
 import { dateFromAny, toHumanNowDiffString, toHumanNumber, toHumanTime } from '../../../utility';
 import { DateTime } from 'luxon';
 import { useNavigate } from '@solidjs/router';
@@ -16,13 +17,16 @@ import { focusable } from '../../../focusable';import { useFocus } from '../../.
 
 interface VideoProps {
   video?: IPlatformVideo;
-  onClick: () => void;
+  onClick: (event?: MouseEvent) => void;
   onSettings?: (element: HTMLDivElement, content: IPlatformVideo) => void;
   onAddtoQueue?: (element: HTMLDivElement, content: IPlatformVideo) => void;
   style?: JSX.CSSProperties;
   imageStyle?: JSX.CSSProperties;
   useCache?: boolean;
   focusableOpts?: FocusableOptions;
+  selectionMode?: boolean;
+  selected?: boolean;
+  onSelectionToggle?: (content: IPlatformVideo) => void;
 }
 
 const VideoThumbnailView: Component<VideoProps> = (props) => {
@@ -37,7 +41,14 @@ const VideoThumbnailView: Component<VideoProps> = (props) => {
   })
   
   const navigate = useNavigate();
-  function onClickAuthor() {
+  function onClickAuthor(ev?: MouseEvent) {
+      if (props.selectionMode && props.video) {
+        ev?.preventDefault();
+        ev?.stopPropagation();
+        props.onSelectionToggle?.(props.video);
+        return;
+      }
+
       const author = props.video?.author;
       if(author)
         navigate("/web/channel?url=" + encodeURIComponent(author.url), { state: { author } });
@@ -52,13 +63,26 @@ const VideoThumbnailView: Component<VideoProps> = (props) => {
   let refAddToQueueButton: HTMLDivElement | undefined;
 
   function startDrag(ev: any){
+    if (props.selectionMode) {
+      ev.preventDefault?.();
+      ev.stopPropagation?.();
+      return;
+    }
+
     ev.dataTransfer?.setData("text/uri-list", props.video?.url ?? ""); 
     console.log(props.video?.url)
   }
 
   function onClicked(ev: any){
+    if(props.selectionMode && props.video) {
+      ev.preventDefault?.();
+      ev.stopPropagation?.();
+      props.onSelectionToggle?.(props.video);
+      return;
+    }
+
     if(props.onClick)
-      props.onClick();
+      props.onClick(ev);
   }
 
   function openMoreOverlay() {
@@ -67,14 +91,24 @@ const VideoThumbnailView: Component<VideoProps> = (props) => {
 
   const showAuthorThumbnail$ = createMemo(() => props.video?.author?.thumbnail && props.video?.author.thumbnail.length);
   return (
-    <div class={styles.container} style={props.style} use:focusable={props.focusableOpts}>
+    <div class={styles.container} classList={{[styles.selectionMode]: props.selectionMode === true, [styles.selected]: props.selected === true}} style={props.style} use:focusable={props.focusableOpts}>
         <div class={styles.videoThumbnail} 
           style={{... props.imageStyle}} 
-          draggable={true}
+          draggable={!props.selectionMode}
           onDragStart={startDrag}
           onClick={onClicked}>
           
           <AnimatedImage class={styles.image} src={(!props.useCache) ? bestThumbnail$()?.url?.replace("u0026", "&") : "/Images/CachePassthrough?url=" + encodeURIComponent(bestThumbnail$()?.url?.replace("u0026", "&") ?? "")} referrerPolicy='no-referrer' />
+
+          <Show when={props.selectionMode}>
+            <div class={styles.selectionOverlay}>
+              <div class={styles.selectionIndicator} classList={{[styles.selectionIndicatorSelected]: props.selected === true}}>
+                <Show when={props.selected}>
+                  <img src={iconCheck} alt="Selected" />
+                </Show>
+              </div>
+            </div>
+          </Show>
 
           <Show when={pluginIconUrl()}>
             <img src={pluginIconUrl()} class={styles.sourceIcon} />
@@ -94,7 +128,7 @@ const VideoThumbnailView: Component<VideoProps> = (props) => {
               </div>
             </div>
         </div>
-        <div class={styles.title} onClick={props.onClick} onDragStart={startDrag} draggable={true}>{props.video?.name}</div>
+        <div class={styles.title} onClick={onClicked} onDragStart={startDrag} draggable={!props.selectionMode}>{props.video?.name}</div>
         <div class={styles.bottomRow}>
             <Show when={showAuthorThumbnail$()}>
               <AnimatedImage src={props.video?.author.thumbnail} class={styles.authorThumbnail} alt="author thumbnail" onClick={onClickAuthor} referrerPolicy='no-referrer' />
@@ -109,14 +143,14 @@ const VideoThumbnailView: Component<VideoProps> = (props) => {
             </div>
             
 
-            <Show when={props.onAddtoQueue && focus?.isControllerMode() !== true}>
+            <Show when={!props.selectionMode && props.onAddtoQueue && focus?.isControllerMode() !== true}>
               <IconButton icon={addToQueueIcon} 
                 style={{"margin-right": "7px", "margin-top": "4px"}}
                 iconPadding='4px'
                 ref={refAddToQueueButton} onClick={() => props.onAddtoQueue?.(refAddToQueueButton!, props.video!)} />
             </Show>
             
-            <Show when={props.onSettings && focus?.isControllerMode() !== true} fallback={<div class="menu-anchor"></div>}>
+            <Show when={!props.selectionMode && props.onSettings && focus?.isControllerMode() !== true} fallback={<div class="menu-anchor"></div>}>
               <IconButton icon={more} ref={refMoreButton} onClick={() => openMoreOverlay()} />
             </Show>
         </div>

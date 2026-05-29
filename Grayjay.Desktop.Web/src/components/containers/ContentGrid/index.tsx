@@ -47,6 +47,9 @@ export interface ContentGridProps {
     outerContainerRef: HTMLDivElement | undefined;
     useCache?: boolean;
     openChannelButton?: boolean;
+    selectionMode?: boolean;
+    isContentSelected?: (content: IPlatformContent) => boolean;
+    onContentSelectionToggle?: (content: IPlatformVideo) => void;
 };
 
 const ContentGrid: Component<ContentGridProps> = (props) => {
@@ -296,16 +299,34 @@ const ContentGrid: Component<ContentGridProps> = (props) => {
                                         groupIndices: [row(), col()],
                                         groupEscapeTo: { left: ['sidebar'] },
                                         onPress: () => {
+                                            if (props.selectionMode) {
+                                                props.onContentSelectionToggle?.(item() as IPlatformVideo);
+                                                return;
+                                            }
+
                                             const url = item().backendUrl ?? item().url;
                                             if (url)
                                                 video?.actions.openVideo(item() as IPlatformVideo, undefined, VideoState.Fullscreen);
                                         },
                                         onOptions: (e, inputSource) => {
+                                            if (props.selectionMode) {
+                                                return;
+                                            }
                                             onSettingsClicked(e, item(), inputSource);
                                         },
                                         onBack: () => onBackContentGrid()
                                     } as FocusableOptions : undefined}
-                                    onClick={() => {
+                                    selectionMode={props.selectionMode}
+                                    selected={!!item() && props.isContentSelected?.(item() as IPlatformContent)}
+                                    onSelectionToggle={(content) => props.onContentSelectionToggle?.(content)}
+                                    onClick={(ev?: MouseEvent) => {
+                                        if (ev && (ev.ctrlKey || ev.metaKey)) {
+                                            props.onContentSelectionToggle?.(item() as IPlatformVideo);
+                                            ev.preventDefault();
+                                            ev.stopPropagation();
+                                            return;
+                                        }
+
                                         const url = item().backendUrl ?? item().url;
                                         if (url)
                                             video?.actions.openVideo(item() as IPlatformVideo);

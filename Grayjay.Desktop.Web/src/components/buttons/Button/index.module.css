@@ -14,7 +14,9 @@
   padding-bottom: 16px;
   padding-left: 24px;
   padding-right: 24px;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container:hover {
@@ -48,15 +50,30 @@
   cursor: pointer;
 }
 
+.container.disabled {
+  opacity: 0.55;
+}
+
+.container.disabled:hover {
+  cursor: default;
+  background: var(--btn-bg, #212122);
+  color: var(--btn-text, #fff);
+}
+
+.container.disabled:hover .icon {
+  filter: none;
+}
+
 .icon {
   height: 24px;
   width: 24px;
   margin-right: 8px;
-  vertical-align: bottom;
 }
 
 .text {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 :global(:root[data-theme="light"]) .container .icon {

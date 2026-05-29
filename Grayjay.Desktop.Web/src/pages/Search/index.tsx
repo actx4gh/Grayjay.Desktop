@@ -22,6 +22,8 @@ import StateGlobal from '../../state/StateGlobal';
 import { focusScope } from '../../focusScope'; void focusScope;
 import { focusable } from "../../focusable"; void focusable;
 import { createResourceDefault } from '../../utility';
+import VideoSelectionToolbar from '../../components/VideoSelectionToolbar';
+import { createVideoSelection } from '../../state/VideoSelection';
 
 const SearchPage: Component = () => {
   const navigate = useNavigate();
@@ -35,28 +37,42 @@ const SearchPage: Component = () => {
   const disabledSources$ = createMemo<string[]>(()=>((StateGlobal.sourceStates$() ?? []).filter(x=>enabledSources$().indexOf(x.config.id) < 0).map(v => v.config.id)));
   let filtersChanged = false;
 
-  createEffect(() => {
-    console.log("query changed", params.q);
-    setQuery(params.q);
-    searchPagerActions.refetch();
-  });
-
-  createEffect(() => {
-    console.log("type changed", params.type);
-    setSearchType(params.type ? parseInt(params.type) as ContentType : ContentType.MEDIA);
-    searchPagerActions.refetch();
-  });
 
   const [searchPager, searchPagerActions] = createResourceDefault(async () => {
     console.log("retrieve new pager");
     const query = query$();
     return query ? await SearchBackend.searchPagerLazy(query, untrack(searchType$), untrack(sortBy$), untrack(filterValues$), untrack(disabledSources$)) : undefined;
   });
+  const videoSelection = createVideoSelection(() => searchPager()?.dataFiltered);
+
+  createEffect(() => {
+    console.log("query changed", params.q);
+    setQuery(params.q);
+    videoSelection.cancelSelection();
+    searchPagerActions.refetch();
+  });
+
+  createEffect(() => {
+    console.log("type changed", params.type);
+    const nextSearchType = params.type ? parseInt(params.type) as ContentType : ContentType.MEDIA;
+    setSearchType(nextSearchType);
+    if (nextSearchType !== ContentType.MEDIA) {
+      videoSelection.cancelSelection();
+    } else {
+      videoSelection.clearSelectedVideos();
+    }
+    searchPagerActions.refetch();
+  });
 
   const performSearch = (type?: ContentType, sortBy?: string, filters?: Record<string, string[]>, clientIds?: string[]) => {
     const query = query$();
     if (!query) {
       return;
+    }
+
+    videoSelection.clearSelectedVideos();
+    if (type !== ContentType.MEDIA) {
+      videoSelection.cancelSelection();
     }
 
     const newNavigationUri = "/web/search?q=" + encodeURIComponent(query) + (type ? "&type=" + encodeURIComponent(type) : "") + (sortBy ? "&sortBy=" + encodeURIComponent(sortBy) : "") + (filters ? "&filters=" + encodeURIComponent(JSON.stringify(filters)) : "") + (clientIds ? "&clientIds=" + encodeURIComponent(JSON.stringify(clientIds)) : "");
@@ -165,7 +181,7 @@ const SearchPage: Component = () => {
     <>
       <div class={styles.container}>
           <NavigationBar initialText={query$()} defaultSearchType={searchType$()} autoFocusSearch={true} />
-          <div style="display: flex; flex-direction: row; align-items: center; margin-bottom: 24px; gap: 24px; margin-left: 24px; margin-right: 24px;">
+          <div class={styles.topControls}>
             <ToggleItemButtonGroup items={[
               { text: "Media", value: ContentType.MEDIA, icon: iconVideos },
               { text: "Creators", value: ContentType.CHANNEL, icon: iconCreators },
@@ -178,11 +194,29 @@ const SearchPage: Component = () => {
               <CustomButton text='Filters' icon={iconFilters} iconStyle={{"filter": "var(--gj-theme-icon-filter)"}} border='1px solid var(--gj-border)' style={{"height": "44px", "background": "var(--gj-bg-button-secondary)", "color": "var(--gj-text-primary)" }} onClick={() => setFiltersDialogVisible(true)} focusableOpts={{
                 onPress: () => setFiltersDialogVisible(true)
               }} />
+              <VideoSelectionToolbar
+                variant="inline"
+                selectionMode={videoSelection.selectionMode$()}
+                selectedCount={videoSelection.selectedVideoCount$()}
+                onStartSelection={videoSelection.startSelection}
+                onAddToPlaylist={videoSelection.addSelectedVideosToPlaylist}
+                onDownload={videoSelection.downloadSelectedVideos}
+                onSelectLoaded={videoSelection.selectLoadedVideos}
+                onClear={videoSelection.clearSelectedVideos}
+                onCancel={videoSelection.requestCancelSelection}
+              />
             </Show>
           </div>
           <Show when={searchPager.state == 'ready'}>
             <ScrollContainer ref={scrollContainerRef}>
-              <ContentGrid pager={searchPager()} outerContainerRef={scrollContainerRef} openChannelButton={true} />
+              <ContentGrid
+                pager={searchPager()}
+                outerContainerRef={scrollContainerRef}
+                openChannelButton={true}
+                selectionMode={searchType$() === ContentType.MEDIA && videoSelection.selectionMode$()}
+                isContentSelected={videoSelection.isSelectedVideo}
+                onContentSelectionToggle={videoSelection.toggleSelectedVideo}
+              />
             </ScrollContainer>
           </Show>
       </div>

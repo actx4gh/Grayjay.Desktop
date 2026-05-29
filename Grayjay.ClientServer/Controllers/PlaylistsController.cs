@@ -9,6 +9,8 @@ namespace Grayjay.ClientServer.Controllers
     [Route("[controller]/[action]")]
     public class PlaylistsController : ControllerBase
     {
+        private const int MaxAddContentsToPlaylistsCount = 500;
+
         [HttpGet]
         public ActionResult<List<Playlist>> GetAll()
         {
@@ -40,11 +42,28 @@ namespace Grayjay.ClientServer.Controllers
             public required PlatformVideo Content { get; set; }
         }
 
-        [HttpPost]
-        public ActionResult AddContentToPlaylists([FromBody] AddContentToPlaylistsRequest request)
+        public class AddContentsToPlaylistsRequest
         {
-            StatePlaylists.AddContentToPlaylists(request.PlaylistIds, request.Content);
-            return Ok();
+            public required string[] PlaylistIds { get; set; }
+            public required PlatformVideo[] Contents { get; set; }
+        }
+
+        [HttpPost]
+        public ActionResult<AddContentsToPlaylistsResult> AddContentToPlaylists([FromBody] AddContentToPlaylistsRequest request)
+        {
+            return Ok(StatePlaylists.AddContentToPlaylists(request.PlaylistIds, request.Content));
+        }
+
+        [HttpPost]
+        public ActionResult<AddContentsToPlaylistsResult> AddContentsToPlaylists([FromBody] AddContentsToPlaylistsRequest request)
+        {
+            if (request.Contents == null || request.Contents.Length == 0)
+                return Ok(new AddContentsToPlaylistsResult());
+
+            if (request.Contents.Length > MaxAddContentsToPlaylistsCount)
+                return BadRequest($"Cannot add more than {MaxAddContentsToPlaylistsCount} videos to playlists in one request.");
+
+            return Ok(StatePlaylists.AddContentsToPlaylists(request.PlaylistIds, request.Contents));
         }
 
         [HttpGet]

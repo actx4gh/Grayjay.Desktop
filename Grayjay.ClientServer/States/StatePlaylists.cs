@@ -13,6 +13,13 @@ using Grayjay.ClientServer.Subscriptions;
 
 namespace Grayjay.ClientServer.States;
 
+public class AddContentsToPlaylistsResult
+{
+    public Dictionary<string, int> AddedByPlaylistId { get; set; } = new Dictionary<string, int>();
+    public int TotalAdded => AddedByPlaylistId.Values.Sum();
+    public int PlaylistCount => AddedByPlaylistId.Count;
+}
+
 public class StatePlaylists
 {
     private static readonly ManagedStore<Playlist> _playlists = new ManagedStore<Playlist>("playlists")
@@ -57,31 +64,92 @@ public class StatePlaylists
     {
         return _playlistRemoved.All();
     }
-    public static void AddContentToPlaylists(string[] playlistIds, PlatformVideo content)
+    public static AddContentsToPlaylistsResult AddContentToPlaylists(string[] playlistIds, PlatformVideo content)
     {
+        return AddContentsToPlaylists(playlistIds, new[] { content });
+    }
+
+    public static AddContentsToPlaylistsResult AddContentsToPlaylists(string[] playlistIds, IEnumerable<PlatformVideo> contents)
+    {
+        var result = new AddContentsToPlaylistsResult();
+        List<PlatformVideo> contentList = contents?.Where(x => x != null).ToList() ?? new List<PlatformVideo>();
+        if (playlistIds == null || playlistIds.Length == 0 || contentList.Count == 0)
+            return result;
+
         List<Playlist> changed = new List<Playlist>();
-        foreach (var playlistId in playlistIds)
+        HashSet<string> changedPlaylistIds = new HashSet<string>();
+        foreach (var playlistId in playlistIds.Where(x => !string.IsNullOrWhiteSpace(x)).Distinct())
         {
-            changed.Add(_playlists.Update(v => v.Id, playlistId, (playlist) =>
+            int addedCount = 0;
+            var changedPlaylist = _playlists.Update(v => v.Id, playlistId, (playlist) =>
             {
+                var videos = new List<PlatformVideo>(playlist.Videos ?? new List<PlatformVideo>());
+                var videosToAdd = GetVideosNotAlreadyInPlaylist(videos, contentList);
+                addedCount = videosToAdd.Count;
+                if (addedCount == 0)
+                    return;
+
                 playlist.DatePlayed = DateTime.Now;
                 playlist.DateUpdate = DateTime.Now;
-                playlist.Videos = new List<PlatformVideo>(playlist.Videos)
-                {
-                    content
-                };
-            }));
+                videos.AddRange(videosToAdd);
+                playlist.Videos = videos;
+            });
+
+            if (addedCount > 0)
+            {
+                changed.Add(changedPlaylist);
+                changedPlaylistIds.Add(playlistId);
+                result.AddedByPlaylistId[playlistId] = addedCount;
+            }
         }
+
+        if (changed.Count == 0)
+            return result;
+
         BroadcastSyncPlaylists(changed);
-        foreach(var playlistId in playlistIds)
+        foreach(var playlistId in changedPlaylistIds)
         {
             var downloaded = StateDownloads.GetDownloadingPlaylist(playlistId);
             if(downloaded != null)
             {
                 _ =StateDownloads.StartDownloadCycle();
-                return;
+                return result;
             }
         }
+
+        return result;
+    }
+
+    private static List<PlatformVideo> GetVideosNotAlreadyInPlaylist(IEnumerable<PlatformVideo> playlistVideos, IEnumerable<PlatformVideo> videosToAdd)
+    {
+        var result = new List<PlatformVideo>();
+        var existingVideos = playlistVideos?.Where(x => x != null).ToList() ?? new List<PlatformVideo>();
+
+        foreach (var video in videosToAdd?.Where(x => x != null) ?? Enumerable.Empty<PlatformVideo>())
+        {
+            if (existingVideos.Any(existing => IsSamePlaylistVideo(existing, video)))
+                continue;
+
+            if (result.Any(existing => IsSamePlaylistVideo(existing, video)))
+                continue;
+
+            result.Add(video);
+        }
+
+        return result;
+    }
+
+    private static bool IsSamePlaylistVideo(PlatformVideo left, PlatformVideo right)
+    {
+        if (left == null || right == null)
+            return false;
+
+        if (left.ID != null && right.ID != null && left.ID.Equals(right.ID))
+            return true;
+
+        return !string.IsNullOrWhiteSpace(left.Url)
+            && !string.IsNullOrWhiteSpace(right.Url)
+            && left.Url == right.Url;
     }
 
     public static void RemoveContentFromPlaylist(string playlistId, int index)
