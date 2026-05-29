@@ -51,7 +51,7 @@ const ToggleItemButtonGroupMulti: Component<ToggleItemButtonGroupPropsMulti> = (
                         ... props.focusableGroupOpts
                     } : undefined}>
                         <Show when={item.icon}>
-                            <img src={item.icon} style={styles.icon} />
+                            <img src={item.icon} class={styles.icon} />
                         </Show>
                         <div>{item.text}</div>
                     </div>

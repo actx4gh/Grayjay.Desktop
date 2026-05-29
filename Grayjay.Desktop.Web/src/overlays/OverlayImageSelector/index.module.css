@@ -8,9 +8,9 @@
     padding-right: 20px;
     padding-bottom: 20px;
     border-radius: 12px;
-    border: 1px solid #2E2E2E;
-    background: #141414;
-    box-shadow: 0px 1.648px 3.148px 0px rgba(0, 0, 0, 0.10), 0px 7.252px 6.519px 0px rgba(0, 0, 0, 0.16), 0px 17.8px 13px 0px rgba(0, 0, 0, 0.21), 0px 34.281px 25.481px 0px rgba(0, 0, 0, 0.26), 0px 57.685px 46.852px 0px rgba(0, 0, 0, 0.32), 0px 89px 80px 0px rgba(0, 0, 0, 0.42);
+    border: 1px solid var(--gj-border);
+    background: var(--gj-bg-popover);
+    box-shadow: var(--gj-shadow);
 }
 
 .dialogHeader {
@@ -25,7 +25,7 @@
 }
 .dialogHeader .headerSubText {
     font-size: 14px;
-    color: #AAA;
+    color: var(--gj-text-tertiary);
 }
 
 .closeButton {
@@ -38,7 +38,7 @@
     width: 40px;
     height: 40px;
     border-radius: 48px;
-    background: #2E2E2E;
+    background: var(--gj-bg-card-active);
     cursor: pointer;
 }
 .closeButton img {
@@ -62,7 +62,7 @@
     margin: 5px;
 }
 .subscription.enabled {
-    background-color: #212121;
+    background-color: var(--gj-bg-control);
 }
 .subscription .check {
     width: 18px;
@@ -71,13 +71,13 @@
     top: 10px;
     right: 5px;
     border-radius: 72.727px;
-    border: 2px solid #454545;
+    border: 2px solid var(--gj-border-strong);
 }
 .subscription .check img {
     display: none;
 }
 .subscription.enabled .check {
-    background-color: #019BE7;
+    background-color: var(--gj-accent);
 }
 .subscription.enabled .check img {
     display: block;
@@ -92,7 +92,7 @@
     display: inline-block;
 }
 .subscription .name {
-    color: #FFF;
+    color: var(--gj-text-primary);
 
     text-align: center;
     
@@ -123,16 +123,16 @@
     background-position: center;
 }
 .addImage {
-    background: linear-gradient(267deg, rgb(1, 214, 230) -100.57%, rgb(1, 130, 231) 90.96%); 
+    background: var(--gj-accent-grad); 
     margin-left: 0px;
 }
 .addImage:focus-visible {
-    background: white;
-    color: #141414;
+    background: var(--gj-text-primary);
+    color: var(--gj-text-inverse);
     outline: unset;
 }
 .image.enabled {
-    border: 3px solid white;
+    border: 3px solid var(--gj-text-primary);
 }
 
 .horizontalList {
@@ -141,7 +141,7 @@
     width: 100%;
     text-wrap: nowrap;
     scrollbar-width: thin;
-    scrollbar-color: #555 #333;
+    scrollbar-color: var(--gj-scroll-thumb) var(--gj-scroll-track);
 }
 .horizontalList::-webkit-scrollbar {
     background-color: transparent;
@@ -153,7 +153,7 @@
   .horizontalList::-webkit-scrollbar-thumb {
     border-radius: 20px;
     border: 4px solid transparent;
-    background-color: rgba(0,0,0,0.2);
+    background-color: var(--gj-bg-hover);
     background-clip: content-box;
   }
   .horizontalList::-webkit-scrollbar-button {
@@ -167,6 +167,65 @@
 }
 .sectionDescription {
     font-size: 14px;
-    color: #AAA;
+    color: var(--gj-text-tertiary);
     margin-bottom: 10px;
+}
+
+
+/* image-selector-light-mode-v29 */
+:global(:root[data-theme="light"]) .container {
+    border-color: var(--gj-border);
+    background: var(--gj-bg-panel);
+    color: var(--gj-text-primary);
+    box-shadow: var(--gj-shadow);
+}
+
+:global(:root[data-theme="light"]) .dialogHeader .headerText,
+:global(:root[data-theme="light"]) .sectionTitle {
+    color: var(--gj-text-primary);
+}
+
+:global(:root[data-theme="light"]) .dialogHeader .headerSubText,
+:global(:root[data-theme="light"]) .sectionDescription {
+    color: var(--gj-text-tertiary);
+}
+
+:global(:root[data-theme="light"]) .closeButton {
+    background: var(--gj-bg-panel-strong);
+}
+
+:global(:root[data-theme="light"]) .closeButton img,
+:global(:root[data-theme="light"]) .subscription .check img {
+    filter: var(--gj-theme-icon-filter);
+}
+
+:global(:root[data-theme="light"]) .horizontalList {
+    scrollbar-color: var(--gj-scroll-thumb) var(--gj-scroll-track);
+}
+
+:global(:root[data-theme="light"]) .subscription {
+    color: var(--gj-text-primary);
+}
+
+:global(:root[data-theme="light"]) .subscription.enabled,
+:global(:root[data-theme="light"]) .subscription:focus {
+    background-color: var(--gj-bg-card-hover);
+}
+
+:global(:root[data-theme="light"]) .subscription .check {
+    border-color: var(--gj-border-strong);
+    background: var(--gj-bg-panel);
+}
+
+:global(:root[data-theme="light"]) .subscription.enabled .check {
+    border-color: var(--gj-accent);
+    background-color: var(--gj-accent);
+}
+
+:global(:root[data-theme="light"]) .subscription .name {
+    color: var(--gj-text-primary);
+}
+
+:global(:root[data-theme="light"]) .image.enabled {
+    border-color: var(--gj-accent);
 }

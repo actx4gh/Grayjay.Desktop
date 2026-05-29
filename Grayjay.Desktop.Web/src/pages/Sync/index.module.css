@@ -9,9 +9,9 @@
     padding-right: 20px;
     padding-bottom: 20px;
     border-radius: 12px;
-    border: 1px solid #2E2E2E;
-    background: #141414;
-    box-shadow: 0px 1.648px 3.148px 0px rgba(0, 0, 0, 0.10), 0px 7.252px 6.519px 0px rgba(0, 0, 0, 0.16), 0px 17.8px 13px 0px rgba(0, 0, 0, 0.21), 0px 34.281px 25.481px 0px rgba(0, 0, 0, 0.26), 0px 57.685px 46.852px 0px rgba(0, 0, 0, 0.32), 0px 89px 80px 0px rgba(0, 0, 0, 0.42);
+    border: 1px solid var(--gj-border);
+    background: var(--gj-bg-panel);
+    box-shadow: var(--gj-shadow);
 }
 
 .header {
@@ -31,7 +31,7 @@
 }
 .header .headerSubText {
     font-size: 14px;
-    color: #AAA;
+    color: var(--gj-text-tertiary);
     margin-top: 5px;
 }
 
@@ -45,7 +45,7 @@
     width: 40px;
     height: 40px;
     border-radius: 48px;
-    background: #2E2E2E;
+    background: var(--gj-bg-panel-strong);
     cursor: pointer;
 }
 .closeButton img {
@@ -60,7 +60,7 @@
     overflow-y: auto;
     max-height: 800px;
     scrollbar-width: thin;
-    scrollbar-color: #555 #333;
+    scrollbar-color: var(--gj-scroll-thumb) var(--gj-scroll-track);
 }
 
 .source {
@@ -71,7 +71,7 @@
     cursor: pointer;
 }
 .source .name {
-    color: #CDCDCD;
+    color: var(--gj-text-secondary);
     text-overflow: ellipsis;
     font-family: Inter;
     font-size: 16px;
@@ -88,7 +88,7 @@
     overflow: hidden;
     font-size: 12px;
     text-overflow: ellipsis;
-    color: #8C8C8C
+    color: var(--gj-text-tertiary)
 }
 .source.hasSubs .meta {
     display: hidden;
@@ -111,13 +111,13 @@
 
 .source.enabled {
     border-radius: 4px;
-    background: rgba(255, 255, 255, 0.04);
+    background: var(--gj-bg-hover);
 }
 .source.enabled img {
     display: block;
 }
 .source.enabled .name {
-    color: #F0F0F0;
+    color: var(--gj-text-primary);
     font-weight: 600;
 }
 
@@ -135,9 +135,9 @@
     align-items: flex-start;
     overflow: hidden;
     border-radius: var(--Corner-radius-80, 8px);
-    border: 1px solid #454545;
-    background: #1B1B1B;
-    color: white;
+    border: 1px solid var(--gj-border-strong);
+    background: var(--gj-bg-card);
+    color: var(--gj-text-primary);
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
@@ -149,7 +149,7 @@
 }
 
 .pairingUrl:hover {
-    border: 1px solid #7a7a7a;
+    border: 1px solid var(--gj-border-strong);
 }
 
 .errorCard {
@@ -161,7 +161,7 @@
     align-items: center;
     justify-content: center;
     gap: 6px;
-    color: #F97066;
+    color: var(--gj-danger-accent);
     leading-trim: both;
     text-edge: cap;
     font-family: Inter;
@@ -173,14 +173,14 @@
 
 .warningCard {
     border-radius: 6px;
-    background: rgba(244, 162, 97, 0.10);
+    background: var(--gj-warning-bg);
     display: flex;
     height: 36px;
     padding: 10px 12px;
     align-items: center;
     justify-content: center;
     gap: 6px;
-    color: #F4A261;
+    color: var(--gj-warning-text);
     leading-trim: both;
     text-edge: cap;
     font-family: Inter;
@@ -188,4 +188,10 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+}
+
+:global(:root[data-theme="light"]) .closeButton img,
+:global(:root[data-theme="light"]) .source.enabled img,
+:global(:root[data-theme="light"]) .pairingUrl img {
+    filter: var(--gj-theme-icon-filter);
 }

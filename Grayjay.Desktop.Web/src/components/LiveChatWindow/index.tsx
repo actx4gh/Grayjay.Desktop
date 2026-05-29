@@ -104,7 +104,7 @@ const LiveChatWindow: Component<LiveChatWindowProps> = (props) => {
         }}>
             <div class={styles.containerHeader}>
                 Chat
-                <span style="margin-left:auto; padding-right:14px; font-size:13px; color:rgba(255,255,255,0.5);">
+                <span style="margin-left:auto; padding-right:14px; font-size:13px; color:var(--gj-text-muted);">
                     {toHumanNumber((store.viewerCount == 0 ? (props.viewCount ?? 0) : store.viewerCount))} viewers
                 </span>
             </div>
@@ -153,7 +153,7 @@ const LiveChatWindow: Component<LiveChatWindowProps> = (props) => {
                                                 <img src={event.thumbnail} class={styles.liveChatAuthorImage} />
                                             </Show>
                                             <div class={styles.liveChatContent}>
-                                                <span class={styles.liveChatAuthorName} style={{ color: event.colorName || '#ffffff' }}>
+                                                <span class={styles.liveChatAuthorName} style={{ color: event.colorName || 'var(--gj-text-secondary)' }}>
                                                     {renderBadges(event.name.trim(), event.badges || [], store.emojis)}
                                                 </span>
                                                 <span class={styles.liveChatMessage}>{renderEmojis(event.message.trim(), store.emojis)}</span>

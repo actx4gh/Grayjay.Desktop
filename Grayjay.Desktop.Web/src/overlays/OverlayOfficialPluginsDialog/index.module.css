@@ -1,5 +1,4 @@
 
-
 .container {
     width: 500px;
     position: relative;
@@ -9,12 +8,13 @@
     padding-right: 20px;
     padding-bottom: 20px;
     border-radius: 12px;
-    scrollbar-color: #555 #333;
+    scrollbar-color: var(--gj-scroll-thumb) var(--gj-scroll-track);
     scrollbar-width: thin;
     overflow-y: auto;
-    border: 1px solid #2E2E2E;
-    background: #141414;
-    box-shadow: 0px 1.648px 3.148px 0px rgba(0, 0, 0, 0.10), 0px 7.252px 6.519px 0px rgba(0, 0, 0, 0.16), 0px 17.8px 13px 0px rgba(0, 0, 0, 0.21), 0px 34.281px 25.481px 0px rgba(0, 0, 0, 0.26), 0px 57.685px 46.852px 0px rgba(0, 0, 0, 0.32), 0px 89px 80px 0px rgba(0, 0, 0, 0.42);
+    border: 1px solid var(--gj-border);
+    background: var(--gj-bg-panel);
+    color: var(--gj-text-primary);
+    box-shadow: var(--gj-shadow);
 }
 
 .dialogHeader {
@@ -26,11 +26,11 @@
 .dialogHeader .headerText {
     font-size: 25px;
     font-weight: bold;
-
+    color: var(--gj-text-primary);
 }
 .dialogHeader .headerSubText {
     font-size: 14px;
-    color: #AAA;
+    color: var(--gj-text-tertiary);
     margin-top: 5px;
 }
 
@@ -38,13 +38,13 @@
     position: absolute;
     display: grid;
     justify-content: center;
-    align-items: center;;
+    align-items: center;
     top: 20px;
     right: 20px;
     width: 40px;
     height: 40px;
     border-radius: 48px;
-    background: #2E2E2E;
+    background: var(--gj-bg-panel-strong);
     cursor: pointer;
 }
 .closeButton img {
@@ -62,8 +62,10 @@
     margin: 10px;
     display: inline-block;
     vertical-align: top;
-    background-color: #222;
+    background-color: var(--gj-bg-card);
+    border: 1px solid var(--gj-border);
     border-radius: 6px;
+    color: var(--gj-text-primary);
 }
 
 .source .imageContainer {
@@ -88,18 +90,18 @@
     display:table-cell;
     vertical-align: middle;
     width: 120px;
+    color: var(--gj-text-primary);
 }
 
-.source:hover {
-    background-color: #333;
+.source:hover,
+.source:focus-visible {
+    background-color: var(--gj-bg-card-hover);
+    outline: unset;
 }
-
 
 .source.otherButton:hover {
     cursor: pointer;
-
 }
-
 
 .checkContainer{
     position: absolute;
@@ -112,9 +114,29 @@
 .error {
     width: 100%;
     margin-top: 5px;
-    background-color: rgba(0, 0, 0, .2);
+    background-color: rgba(255, 0, 0, .08);
+    border: 1px solid rgba(255, 0, 0, .18);
     padding: 5px;
     text-align: center;
-    color: red;
+    color: #c83333;
     border-radius: 10px;
+}
+
+
+:global(:root[data-theme="light"]) .closeButton {
+    background: var(--gj-bg-panel-strong);
+    border: 1px solid var(--gj-border);
+}
+
+:global(:root[data-theme="light"]) .closeButton img {
+    filter: var(--gj-theme-icon-filter);
+}
+
+
+/* broad-light-theme-icon-pass */
+:global(:root[data-theme="light"]) .closeButton img,
+:global(:root[data-theme="light"]) .iconClose,
+:global(:root[data-theme="light"]) .button img,
+:global(:root[data-theme="light"]) .status img {
+    filter: var(--gj-theme-icon-filter);
 }

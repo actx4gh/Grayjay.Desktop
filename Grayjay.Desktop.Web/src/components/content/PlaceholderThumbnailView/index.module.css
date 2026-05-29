@@ -50,7 +50,7 @@
     flex-direction: row;
     margin-top: 24px;
     font-size: 16px;
-    color: #808080;
+    color: var(--gj-text-tertiary);
     align-items: center;
     overflow: hidden;
 }

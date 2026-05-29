@@ -19,7 +19,7 @@
 }
 
 .text {
-    color: #D9D9D9;
+    color: var(--gj-text-secondary);
     leading-trim: both;
     text-edge: cap;
     font-family: Inter;
@@ -56,7 +56,7 @@
 .containerAuthorThumbnail svg { 
     width: 100%;
     height: 100%;
-    background-color: #000;
+    background-color: var(--gj-bg-card);
     border-radius: 50%;
 }
 
@@ -67,7 +67,7 @@
 }
 
 .authorName {
-    color: #FFF;
+    color: var(--gj-text-primary);
     leading-trim: both;
     text-edge: cap;
     font-family: Inter;
@@ -78,7 +78,7 @@
 }
 
 .metadata {
-    color: #888;
+    color: var(--gj-text-tertiary);
     leading-trim: both;
     text-edge: cap;
     font-family: Inter;
@@ -96,9 +96,9 @@
     align-items: center; 
     gap: 4px; 
     border-radius: 99px; 
-    border: 1px solid #454545; 
+    border: 1px solid var(--gj-border-strong); 
     overflow: hidden; 
-    color: #FFF; 
+    color: var(--gj-text-primary); 
     text-align: center; 
     font-family: Inter; 
     font-size: 14px; 
@@ -106,4 +106,12 @@
     font-weight: 500; 
     line-height: 140%; 
     cursor: pointer;
+}
+
+:global(:root[data-theme="light"]) .buttonList img {
+    filter: brightness(0) saturate(100%);
+}
+
+:global(:root[data-theme="light"]) .repiesButton img {
+    filter: brightness(0) saturate(100%);
 }

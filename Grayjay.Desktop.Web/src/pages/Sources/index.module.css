@@ -1,7 +1,6 @@
 
-
 .pageTitle {
-    color: #FFF;
+    color: var(--gj-text-primary);
     leading-trim: both;
     text-edge: cap;
     font-family: Inter;
@@ -39,19 +38,21 @@
     position: relative;
     width: calc(100% - 40px);
     height: 80px;
-    background-color: #111;
+    background-color: var(--gj-bg-card);
     overflow: hidden;
     margin-left: 24px;
     border-radius: 8px;
-    border-bottom: 1px solid #1B1B1B;
+    border: 1px solid var(--gj-border);
 }
 
-.source:focus-visible {
-    background-color: #454545;
+.source:focus-visible,
+.source:hover {
+    background-color: var(--gj-bg-card-hover);
+    outline: unset;
 }
 
 .source.enabled {
-    background-color: #222;
+    background-color: var(--gj-bg-card-active);
 }
 
 .source .thumb {
@@ -70,7 +71,7 @@
     font-family: "Inter";
     line-height: 24px;
     overflow: hidden;
-    color: white;
+    color: var(--gj-text-primary);
     leading-trim: both;
     text-edge: cap;
     text-overflow: ellipsis;
@@ -103,8 +104,8 @@
     width: 80px;
     height: 30px;
     text-align:center;
-    background-color: #444;
-    color: white;
+    background-color: var(--gj-bg-panel-strong);
+    color: var(--gj-text-primary);
     border: 0px;
     border-radius: 20px;
 }

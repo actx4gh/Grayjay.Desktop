@@ -45,7 +45,7 @@ const SearchBar: Component<SearchBarProps> = (props) => {
 
   const buttonStyle: JSX.CSSProperties = {
     "border-radius": "6px",
-    "border": "1px solid #454545",
+    "border": "1px solid var(--gj-border-strong)",
     "height": "37px",
     "padding-left": "16px",
     "padding-right": "16px",
@@ -57,7 +57,8 @@ const SearchBar: Component<SearchBarProps> = (props) => {
   const buttonIconStyle: JSX.CSSProperties = {
     "width": "16px",
     "height": "16px",
-    "margin-right": "4px"
+    "margin-right": "4px",
+    "filter": "var(--gj-theme-icon-filter)"
   };
 
   const [query$, setQuery] = createSignal<string>(props.initialText ?? "");
@@ -181,23 +182,23 @@ const SearchBar: Component<SearchBarProps> = (props) => {
             e.stopPropagation();
             e.preventDefault();
           }} style={props.overlayStyle}>
-            <div>Choose content type to search</div>
-            <div style="display: flex; flex-direction: row; gap: 4px; margin-top: 16px;">
-              <CustomButton icon={iconVideos} text='Media' style={{ ... buttonStyle, "background-color": searchType$() === ContentType.MEDIA ? "#2E2E2E" : undefined }} iconStyle={buttonIconStyle} onMouseDown={(e) => changeSearchType(e, ContentType.MEDIA)} />
-              <CustomButton icon={iconCreators} text='Creators' style={{ ... buttonStyle, "background-color": searchType$() === ContentType.CHANNEL ? "#2E2E2E" : undefined }} iconStyle={buttonIconStyle} onMouseDown={(e) => changeSearchType(e, ContentType.CHANNEL)} />
-              <CustomButton icon={iconPlaylist} text='Playlists' style={{ ... buttonStyle, "background-color": searchType$() === ContentType.PLAYLIST ? "#2E2E2E" : undefined }} iconStyle={buttonIconStyle} onMouseDown={(e) => changeSearchType(e, ContentType.PLAYLIST)} />
+            <div class={styles.sectionTitle}>Choose content type to search</div>
+            <div class={styles.filterRow}>
+              <CustomButton icon={iconVideos} text='Media' style={{ ... buttonStyle, "background-color": searchType$() === ContentType.MEDIA ? "var(--gj-bg-card-active)" : "var(--gj-bg-panel)", "color": "var(--gj-text-primary)" }} iconStyle={buttonIconStyle} onMouseDown={(e) => changeSearchType(e, ContentType.MEDIA)} />
+              <CustomButton icon={iconCreators} text='Creators' style={{ ... buttonStyle, "background-color": searchType$() === ContentType.CHANNEL ? "var(--gj-bg-card-active)" : "var(--gj-bg-panel)", "color": "var(--gj-text-primary)" }} iconStyle={buttonIconStyle} onMouseDown={(e) => changeSearchType(e, ContentType.CHANNEL)} />
+              <CustomButton icon={iconPlaylist} text='Playlists' style={{ ... buttonStyle, "background-color": searchType$() === ContentType.PLAYLIST ? "var(--gj-bg-card-active)" : "var(--gj-bg-panel)", "color": "var(--gj-text-primary)" }} iconStyle={buttonIconStyle} onMouseDown={(e) => changeSearchType(e, ContentType.PLAYLIST)} />
             </div>
-            <div style="width: 100%; background-color: #2E2E2E; height: 1px; margin-top: 20px; margin-bottom: 20px;"></div>
+            <div class={styles.divider}></div>
             <Show when={historical$()}>
               <div style="display: flex; flex-direction: row; margin-bottom: 12px; width: 100%;">
-                <div>Your previous searches</div>
+                <div class={styles.sectionTitle}>Your previous searches</div>
                 <div style="flex-grow: 1"></div>
 
               </div>
             </Show>
-            <Switch fallback={<div>No results found</div>}>
+            <Switch fallback={<div class={styles.emptyState}>No results found</div>}>
               <Match when={isLoadingSuggestions$()}>
-                <div style="display: flex; flex-direction: row; width: 100%; align-items: center; justify-content: center;">
+                <div class={styles.loadingRow}>
                   <LoaderSmall />
                 </div>
               </Match>
@@ -212,16 +213,16 @@ const SearchBar: Component<SearchBarProps> = (props) => {
                         });
                         await searchFor(item, searchType$());
                       }}>
-                        <img src={iconSearch} style="width: 16px; height: 16px;" />
-                        <div style="margin-left: 12px;">{item}</div>
+                        <img src={iconSearch} class={styles.actionIcon} />
+                        <div class={styles.suggestionLabel}>{item}</div>
                         <div style="flex-grow: 1"></div>
-                        <img src={iconAddToQuery} style="width: 16px; height: 16px;" onMouseDown={(e) => {
+                        <img src={iconAddToQuery} class={styles.actionIcon} onMouseDown={(e) => {
                           setQuery(item);
                           e.preventDefault();
                           e.stopPropagation();
                         }} />
                         <Show when={historical$()}>
-                          <img src={iconClose} style="width: 16px; height: 16px; margin-left: 16px;" onMouseDown={async (e) => {
+                          <img src={iconClose} class={styles.actionIconClose} onMouseDown={async (e) => {
                             e.preventDefault();
                             e.stopPropagation();
                             await SearchBackend.removePreviousSearch(item);

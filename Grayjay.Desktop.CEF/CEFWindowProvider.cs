@@ -2,6 +2,7 @@
 using Grayjay.ClientServer;
 using Grayjay.ClientServer.Browser;
 using Grayjay.ClientServer.Dialogs;
+using Grayjay.ClientServer.Settings;
 using Grayjay.Desktop.POC;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using System;
@@ -44,7 +45,7 @@ namespace Grayjay.Desktop.CEF
             if(beforeLoad != null)
                 await beforeLoad(windowResult);
             await window.SetDevelopmentToolsEnabledAsync(true);
-            await window.LoadUrlAsync($"{GrayjayServer.Instance.BaseUrl}{GrayjayServer.Instance.GetIndexUrl()}");
+            await window.LoadUrlAsync(StartupSplash.CreateThemedWebUrl(GrayjayServer.Instance.BaseUrl, GrayjayServer.Instance.GetIndexUrl(), GrayjaySettings.Instance.Appearance.Theme));
             return windowResult;
         }
 

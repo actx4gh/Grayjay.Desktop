@@ -1,7 +1,7 @@
 .backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.5);
+    background: var(--gj-bg-backdrop);
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -15,15 +15,16 @@
     width: 100%;
     max-width: none;
     padding: 16px;
-    border-radius: 0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    background-color: #2A2A2A;
+    border-radius: 6px;
+    box-shadow: var(--gj-shadow);
+    background-color: var(--gj-bg-panel);
+    color: var(--gj-text-primary);
+    border: 1px solid var(--gj-border);
     display: flex;
     flex-direction: column;
     gap: 8px;
     animation: fadeIn 200ms ease-out forwards;
     z-index: 11;
-    border-radius: 6px;
 }
 
 .raidHeader {
@@ -34,7 +35,7 @@
 }
 
 .raidMessage {
-    color: #737070;
+    color: var(--gj-text-tertiary);
     font-size: 14px;
     text-align: center;
 }
@@ -54,7 +55,7 @@
 
 .raidName {
     font-size: 15px;
-    color: #fff;
+    color: var(--gj-text-primary);
 }
 
 .raidButtons {
@@ -68,17 +69,23 @@
     flex: 1;
     padding: 10px 0;
     font-size: 13px;
-    border: none;
+    border: 1px solid var(--gj-border);
     border-radius: 4px;
     cursor: pointer;
 }
 
 .goButton {
-    background: #2f2f2f;
-    color: #fff;
+    background: var(--gj-bg-button-secondary);
+    color: var(--gj-text-primary);
 }
 
 .preventButton {
-    background: #481414;
-    color: #fff;
+    background: var(--gj-danger);
+    color: var(--gj-text-inverse);
+    border-color: var(--gj-danger);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }

@@ -191,7 +191,7 @@ const HistoryPage: Component = () => {
               style={{
                 "width": "300px",
               }} inputContainerStyle={{
-                "background-color": "#212121"
+                "background-color": "var(--gj-bg-input)"
               }}
               onTextChanged={(newVal) => setQuery(newVal)}
               icon={ic_search}
@@ -210,7 +210,7 @@ const HistoryPage: Component = () => {
                 style={{
                   "margin-left": "16px",
                   "margin-right": "32px",
-                  "border": "1px solid #f621215c",
+                  "border": "1px solid var(--gj-danger-accent)",
                 }}
                 onClick={(e) => {
                   contentAnchor.setElement(e.target as HTMLElement);
@@ -318,7 +318,7 @@ const HistoryPage: Component = () => {
                         "bottom": "0px",
                         "left": "0px",
                         "right": "0px",
-                        "background-color": "#019BE7",
+                        "background-color": "var(--gj-accent)",
                         "height": "3px",
                         "width": historyVideo() ? `${(getVideoProgressPercentage(historyVideo()?.position, historyVideo()?.video?.duration))}%` : undefined
                       }} />

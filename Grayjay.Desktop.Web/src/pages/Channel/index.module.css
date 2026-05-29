@@ -2,7 +2,8 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    
+    background: var(--gj-bg-root);
+    color: var(--gj-text-primary);
 }
 
 .containerTopBar {
@@ -46,7 +47,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(to bottom, #141414DB, #141414 100%);
+    background-image: linear-gradient(to bottom, rgba(20, 20, 20, 0.86), var(--gj-bg-root) 100%);
 }
 
 .containerActions {
@@ -79,7 +80,7 @@
 }
 
 .creatorName {
-    color: #FFF;
+    color: var(--gj-text-primary);
     font-family: Inter;
     font-size: 28px;
     font-style: normal;
@@ -89,7 +90,7 @@
 }
 
 .creatorMetadata {
-    color: #8C8C8C;
+    color: var(--gj-text-tertiary);
     font-family: Inter;
     font-size: 14px;
     font-style: normal;
@@ -99,7 +100,7 @@
 }
 
 .creatorDescription {
-    color: #8C8C8C;
+    color: var(--gj-text-tertiary);
     font-family: Inter;
     font-size: 14px;
     font-style: normal;
@@ -130,22 +131,25 @@
 
 
 .aboutTab {
-    width: 600px; 
-    padding: 20px; 
-    margin-top: 30px; 
-    margin-left: auto; 
-    margin-right: auto; 
-    background-color: #111; 
-    border-radius: 5px;
+    width: 600px;
+    padding: 20px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--gj-bg-card);
+    border: 1px solid var(--gj-border);
+    border-radius: 8px;
+    color: var(--gj-text-primary);
 }
 
 .aboutLogo {
-    border-radius: 100px; 
-    position: absolute; 
-    top: 10px; 
-    left: 10px; 
-    width: 100px; 
+    border-radius: 100px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 100px;
     height: 100px;
+    border: 1px solid var(--gj-border);
 }
 
 .aboutTextContainer {
@@ -154,12 +158,13 @@
 }
 
 .aboutTitle {
+    color: var(--gj-text-primary);
     padding-top: 35px;
     font-size: 25px; 
     font-weight: bold;
 }
 .aboutMeta {
-    color: #8C8C8C;
+    color: var(--gj-text-tertiary);
     font-family: Inter; 
     font-size: 15px; 
     font-style: normal; 
@@ -168,9 +173,20 @@
 
 
 .aboutDescription {
+    color: var(--gj-text-secondary);
+    white-space: pre-wrap;
     margin-left: 10px; 
     margin-right: 10px; 
     margin-bottom: 10px; 
     font-family: 'Inter'; 
     font-size: 16px;
+}
+
+:global(:root[data-theme="light"]) .containerTopBarGradient {
+    background-image: linear-gradient(to bottom, rgba(245, 245, 243, 0.86), var(--gj-bg-root) 100%);
+}
+
+:global(:root[data-theme="light"]) .containerTopBarControls img[src$="sidebar-open.svg"],
+:global(:root[data-theme="light"]) .containerTopBarControls img[src$="sidebar-close.svg"] {
+    filter: var(--gj-theme-icon-filter);
 }

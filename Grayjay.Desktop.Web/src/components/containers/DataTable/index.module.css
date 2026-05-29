@@ -3,7 +3,7 @@
     height: 100%;
     position: relative;
     scrollbar-width: 8px;
-    scrollbar-color: #555 #333;
+    scrollbar-color: var(--gj-scroll-thumb) var(--gj-scroll-track);
     scrollbar-width: thin;
 }
 
@@ -12,16 +12,16 @@
 }
 
 .containerScroll::-webkit-scrollbar-thumb {
-    background-color: #555;
+    background-color: var(--gj-scroll-thumb);
     border-radius: 5px;
 }
 
 .containerScroll::-webkit-scrollbar-thumb:hover {
-    background-color: #888;
+    background-color: var(--gj-scroll-thumb-hover);
 }
 
 .containerScroll::-webkit-scrollbar-track {
-    background-color: #333;
+    background-color: var(--gj-scroll-track);
 }
 
 .containerScroll::-webkit-scrollbar-corner {
@@ -36,7 +36,7 @@ table .header tr {
     border-bottom: 0px !important;
 }
 table .header th {
-    background: #1B1B1B;
+    background: var(--gj-bg-panel);
     padding-top: 16px;
     padding-bottom: 16px;
 }
@@ -54,12 +54,12 @@ table .headers th:last-child{
 
 table tr {
     max-height: 60px;
-    border-bottom: 1px solid #3b3939;
-    background: #141414;
+    border-bottom: 1px solid var(--gj-border);
+    background: var(--gj-bg-root);
 }
 table th {
     overflow: hidden;
-    color: #D9D9D9;
+    color: var(--gj-text-secondary);
     text-overflow: ellipsis;
     font-family: sans-serif;
     font-size: 14px;
@@ -89,4 +89,9 @@ table td .tableImage img {
 
 .isClickable {
     cursor: pointer;
+}
+
+:global(:root[data-theme="light"]) table tr {
+    border-bottom: 1px solid var(--gj-border);
+    background: var(--gj-bg-root);
 }

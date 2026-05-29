@@ -141,7 +141,7 @@ const CreatorsPage: Component = () => {
               showClearButton={true}
               inputContainerStyle={{
                 "height": "48px", 
-                "background": "#141414"
+                "background": "var(--gj-bg-input)"
               }}
               onTextChanged={(v) => {
                 setFilterText(v);
@@ -207,7 +207,7 @@ const CreatorsPage: Component = () => {
               {
                 icon: iconSearch,
                 title: "Search Creators",
-                color: "#019BE7",
+                color: "var(--gj-accent)",
                 action: ()=>{navigate("/web/search?type=" + ContentType.CHANNEL)}
               }
             ]} />

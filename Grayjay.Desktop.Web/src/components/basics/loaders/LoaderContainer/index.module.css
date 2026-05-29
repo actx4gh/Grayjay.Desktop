@@ -4,7 +4,7 @@
     position: relative;
 
     scrollbar-width: 8px;
-    scrollbar-color: #555 #333;
+    scrollbar-color: var(--gj-scroll-thumb) var(--gj-scroll-track);
 }
 
 
@@ -30,5 +30,5 @@
   top: calc(50% + 95px);
   left: 50%;
   transform: translateX(-50%);
-  color: #AAA;
+  color: var(--gj-text-tertiary);
 }

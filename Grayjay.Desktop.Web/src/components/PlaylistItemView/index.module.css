@@ -6,18 +6,18 @@
     height: 100%; 
     padding-top: 12px; 
     padding-bottom: 12px; 
-    border-bottom: 1px solid #2E2E2E; 
+    border-bottom: 1px solid var(--gj-border); 
     box-sizing: border-box; 
-    background-color: #141414
+    background-color: var(--gj-bg-root)
 }
 
 .container:focus-visible {
-    background-color: #2E2E2E;
+    background-color: var(--gj-bg-hover);
     outline: unset;
 }
 
 .metadata {
-    color: rgba(255, 255, 255, 0.60);
+    color: var(--gj-text-tertiary);
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
@@ -29,7 +29,7 @@
     display: flex;
     flex-direction: row;
     font-size: 16px;
-    color: #808080;
+    color: var(--gj-text-tertiary);
     align-items: center;
 }
 
@@ -52,6 +52,7 @@
 }
 
 .authorName {
+    color: var(--gj-text-secondary);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -67,11 +68,14 @@
     -webkit-line-clamp: 2;
     flex: 1 0 0;
     overflow: hidden;
-    color: #F0F0F0;
+    color: var(--gj-text-primary);
     text-overflow: ellipsis;
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: 20px; /* 125% */
+}
+:global(:root[data-theme="light"]) .container > img:first-child {
+    filter: var(--gj-theme-icon-filter);
 }

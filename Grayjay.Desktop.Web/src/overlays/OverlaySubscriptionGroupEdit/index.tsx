@@ -108,7 +108,7 @@ const OverlaySubscriptionGroupEditDialog: Component<OverlaySubscriptionGroupEdit
                 Deleted groups cannot be recovered
               </div>
             </div>
-            <div style="height: 1px; background-color: rgba(255, 255, 255, 0.09); margin-top: 10px; margin-bottom: 10px;"></div>
+            <div style="height: 1px; background-color: var(--gj-border); margin-top: 10px; margin-bottom: 10px;"></div>
             <div style="text-align: right">
                 <Button text={"Cancel"}
                   onClick={()=>changeView(0)}
@@ -192,7 +192,7 @@ const OverlaySubscriptionGroupEditDialog: Component<OverlaySubscriptionGroupEdit
                 </div>
               </div>
             </ScrollContainer>
-            <div style="height: 1px; background-color: rgba(255, 255, 255, 0.09); margin-top: 10px; margin-bottom: 10px;"></div>
+            <div style="height: 1px; background-color: var(--gj-border); margin-top: 10px; margin-bottom: 10px;"></div>
             <div style="text-align: right">
                   <Show when={selected$().length > 0}>
                     <Button text={"Delete Selected"}
@@ -207,7 +207,7 @@ const OverlaySubscriptionGroupEditDialog: Component<OverlaySubscriptionGroupEdit
                 <Button text={"Add Subscriptions"}
                   onClick={()=>changeView(2)}
                   style={{"margin-left": "10px", cursor: ("pointer")}} 
-                  color={"#222"}
+                  color={"var(--gj-bg-control)"}
                   focusableOpts={{
                     onPress: () => changeView(2),
                     onBack: globalBack
@@ -223,7 +223,7 @@ const OverlaySubscriptionGroupEditDialog: Component<OverlaySubscriptionGroupEdit
                 <Button text={"Save"}
                   onClick={()=>save()}
                   style={{"margin-left": "10px", cursor: ("pointer")}} 
-                  color={"linear-gradient(267deg, #01D6E6 -100.57%, #0182E7 90.96%)"}
+                  color={"var(--gj-accent-grad)"}
                   focusableOpts={{
                     onPress: () => save(),
                     onBack: globalBack

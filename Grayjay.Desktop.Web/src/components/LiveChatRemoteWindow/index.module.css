@@ -1,5 +1,3 @@
-
-
 .container {
     width: 100%;
     height: 640px;
@@ -9,14 +7,17 @@
 .window {
     height: 100%;
     padding: 10px;
-    background-color: #111;
+    background-color: var(--gj-bg-panel);
     border-radius: 10px;
-    border: 2px solid #222;
+    border: 1px solid var(--gj-border);
     box-sizing: border-box;
+    box-shadow: var(--gj-shadow);
 }
+
 .window iframe {
     width: 100%;
     height: 100%;
-    border: 1px solid black;
+    border: 1px solid var(--gj-border);
     border-radius: 10px;
+    background: var(--gj-bg-panel);
 }

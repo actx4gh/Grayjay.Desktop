@@ -2,7 +2,7 @@
     height: 36px;
     margin: 4px;
     border-radius: 6px;
-    border: 1px solid #2E2E2E;
+    border: 1px solid var(--gj-border);
     overflow: hidden;
     flex-shrink: 0;
 }
@@ -11,14 +11,26 @@
     display: inline-block;
     align-items: center;
     justify-content: center;
-    background-color: #1B1B1B;
+    background-color: var(--gj-bg-panel);
 }
 .toggleViewType.enabled {
-    background-color: #262626 !important;
+    background-color: var(--gj-bg-card-active);
 }
 
 .toggleViewType img {
     padding: 10px;
     width: 16px;
     height: 16px;
+}
+
+:global(:root[data-theme="light"]) .toggleViewType {
+    background-color: var(--gj-bg-panel-strong);
+}
+
+:global(:root[data-theme="light"]) .toggleViewType.enabled {
+    background-color: var(--gj-bg-card-active);
+}
+
+:global(:root[data-theme="light"]) .toggleViewType img {
+    filter: var(--gj-theme-icon-filter);
 }

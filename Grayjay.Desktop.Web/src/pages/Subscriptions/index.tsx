@@ -339,7 +339,7 @@ const SubscriptionsPage: Component = () => {
                 </div>
                 <div style="flex-grow: 1"></div>
                 <div class={styles.bannerButtons}>
-                  <Button text="Create a subscription group" color="linear-gradient(267deg, #01D6E6 -100.57%, #0182E7 90.96%)"
+                  <Button text="Create a subscription group" color="var(--gj-accent-grad)"
                     onClick={() => newSubscriptionGroup()} focusableOpts={{ 
                       onPress: () => newSubscriptionGroup(),
                       groupEscapeTo: {
@@ -351,7 +351,7 @@ const SubscriptionsPage: Component = () => {
                       groupType: 'horizontal',
                       groupIndices: [0]
                     }} />
-                  <Button text="Dismiss" color="transparant" focusColor="#FFFFFF22" style={{ border: "1px solid rgba(1, 155, 231, 0)", "margin-left": "16px" }} 
+                  <Button text="Dismiss" color="transparent" focusColor="var(--gj-bg-hover)" textColor="var(--gj-text-primary)" focusTextColor="var(--gj-text-primary)" style={{ border: "1px solid transparent", "margin-left": "16px" }} 
                     onClick={() => dismissSubscriptionGroups()} focusableOpts={{ 
                       onPress: () => dismissSubscriptionGroups(),
                       groupEscapeTo: {
@@ -415,7 +415,7 @@ const SubscriptionsPage: Component = () => {
                     onPress: () => newSubscriptionGroup() 
                   }}
                 >
-                  <div class={styles.image} style={{ background: "#222" }} />
+                  <div class={styles.image} style={{ background: "var(--gj-bg-card-active)" }} />
                   <div class={styles.centerText}>New Group</div>
                 </div>
               </div>
@@ -446,7 +446,7 @@ const SubscriptionsPage: Component = () => {
               </div>
             </Show>
             <Show when={subProgress$() > 0 && subProgress$() < 1}>
-                <div style={{height: "2px", width: (subProgress$() * 100) + "%", position: "absolute", bottom: "1px", background: "linear-gradient(267deg, rgb(1, 214, 230) -100.57%, rgb(1, 130, 231) 90.96%)"}}>
+                <div class={styles.subProgress} style={{width: (subProgress$() * 100) + "%"}}>
                 </div>
               </Show>
           </div>
@@ -477,7 +477,7 @@ const SubscriptionsPage: Component = () => {
               {
                 icon: iconSearch,
                 title: "Search Creators",
-                color: "#019BE7",
+                color: "var(--gj-accent)",
                 action: ()=>{navigate("/web/search?type=" + ContentType.CHANNEL)}
               }
             ]} />

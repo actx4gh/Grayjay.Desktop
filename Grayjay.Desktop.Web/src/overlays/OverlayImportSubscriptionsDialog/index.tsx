@@ -130,7 +130,7 @@ const OverlayImportSubscriptionsDialog: Component<OverlayImportSubscriptionsDial
                             onPress: () => props.dialog.action!('close', ''),
                             onBack: globalBack
                           }}></Button>
-                          <Button text='Import' color={(props.dialog.data$().Selected.length > 0) ? '#019BE7' : '#181818'} onClick={()=>importSubs()} style={{"margin-left": "10px"}} focusableOpts={{
+                          <Button text='Import' color={(props.dialog.data$().Selected.length > 0) ? 'var(--gj-accent)' : 'var(--gj-bg-control)'} onClick={()=>importSubs()} style={{"margin-left": "10px"}} focusableOpts={{
                             onPress: () => importSubs(),
                             onBack: globalBack
                           }}></Button>

@@ -66,7 +66,7 @@ const ScrollContainer: Component<ScrollContainerProps> = (p) => {
                         <div class={styles.scrollButton} onClick={handleButtonClick}>
                             <IconButton
                                 icon={props.scrollToTopButton ? ic_arrowUp : ic_arrowDown}
-                                style={{ border: "1px solid #454545" }}
+                                style={{ border: "1px solid var(--gj-border-strong)" }}
                             />
                         </div>
                     </Show>

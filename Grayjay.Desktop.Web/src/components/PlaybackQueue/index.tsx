@@ -75,19 +75,7 @@ const PlaybackQueue: Component<PlaybackQueueProps> = (props) => {
                             });
 
                             return (
-                                <div style={{
-                                    height: "80px",
-                                    "margin-bottom": "8px",
-                                    "margin-right": "12px",
-                                    "display": "flex",
-                                    "flex-direction": "row",
-                                    "width": "calc(100% - 12px)",
-                                    "align-items": "center",
-                                    "overflow": "hidden",
-                                    "gap": "8px",
-                                    "background-color": index() == props.index ? "#2E2E2E" : undefined,
-                                    "border-radius": "8px"
-                                }} onClick={() => {
+                                <div class={styles.queueItem} classList={{ [styles.queueItemActive]: index() === props.index }} onClick={() => {
                                     const v = video();
                                     if (!v) return;
                                     props.onVideoClick?.(v);
@@ -129,16 +117,15 @@ const PlaybackQueue: Component<PlaybackQueueProps> = (props) => {
                                                 <img class={styles.iconDrag} src={iconDrag} style="position: absolute;" />
                                             </>
                                         }>
-                                            <img src={iconPlay} style="position: absolute;" />
+                                            <img class={styles.iconPlay} src={iconPlay} style="position: absolute;" />
                                         </Show>
                                     </div>
-                                    <img src={bestThumbnail()?.url} 
-                                        style="border-radius: 3px; height: 56px; width: 100px; cursor: pointer;" />
+                                    <img src={bestThumbnail()?.url} class={styles.queueThumbnail} />
                                     <div style="display: flex; flex-direction: column; flex-grow: 1; overflow: hidden; cursor: pointer;">
                                         <div class={styles.itemTitle}>{video()?.name}</div>
                                         <div class={styles.itemAuthor} style="margin-top: 6px">{video()?.author?.name}</div>
                                     </div>
-                                    <img src={iconClear} style="padding: 13px; height: 24px; width: 24px; cursor: pointer;" onClick={(ev) => {
+                                    <img class={styles.queueRemoveIcon} src={iconClear} style="padding: 13px; height: 24px; width: 24px; cursor: pointer;" onClick={(ev) => {
                                         const i = index();
                                         if (i !== undefined) {
                                             handleRemove(ev, i);

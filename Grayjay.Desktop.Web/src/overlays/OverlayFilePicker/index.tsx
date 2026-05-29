@@ -523,7 +523,7 @@ const OverlayFilePicker: Component<OverlayFilePickerProps> = (props) => {
                 itemHeight={34}
                 builder={(index, item) => {
                   return (
-                    <Show when={item()?.type !== "divider"} fallback={<div style="width: 100%; height: 34px; display: flex; align-items: center; justify-content: center;"><div style="width: 100%; height: 1px; background-color: #2A2A2A"></div></div>}>
+                    <Show when={item()?.type !== "divider"} fallback={<div style="width: 100%; height: 34px; display: flex; align-items: center; justify-content: center;"><div style="width: 100%; height: 1px; background-color: var(--gj-border)"></div></div>}>
                       <div
                         class={styles.navItem}
                         classList={{ [styles.active]: currentDirectory() === item()?.path }}
@@ -662,7 +662,7 @@ const OverlayFilePicker: Component<OverlayFilePickerProps> = (props) => {
         <div
           style="
             position:absolute; inset:0; 
-            background: rgba(15,15,15,0.6);
+            background: var(--gj-bg-backdrop);
             display:grid; place-items:center; z-index: 3;
           "
           onClick={(e) => {
@@ -682,8 +682,8 @@ const OverlayFilePicker: Component<OverlayFilePickerProps> = (props) => {
               width: 420px; height: auto;
               grid-template-rows: auto 1fr auto;
               border-radius: 12px;
-              border: 1px solid #2E2E2E;
-              background: #141414;
+              border: 1px solid var(--gj-border);
+              background: var(--gj-bg-popover);
               box-shadow:
                 0 1.6px 3.1px rgba(0,0,0,0.10),
                 0 7.25px 6.52px rgba(0,0,0,0.16),
@@ -699,7 +699,7 @@ const OverlayFilePicker: Component<OverlayFilePickerProps> = (props) => {
               if (e.key === 'Enter') { e.stopPropagation(); resolveConfirm(true); }
             }}
           >
-            <div class={styles.dialogHeader} style="border-bottom: 1px solid #2A2A2A; padding: 16px 16px 12px;">
+            <div class={styles.dialogHeader} style="border-bottom: 1px solid var(--gj-border); padding: 16px 16px 12px;">
               <div class={styles.titleRow}>
                 <div id="confirm-title" class={styles.dialogTitle}>
                   {confirmState()!.title}
@@ -714,7 +714,7 @@ const OverlayFilePicker: Component<OverlayFilePickerProps> = (props) => {
               </div>
             </div>
 
-            <div style="padding: 16px; color:#EDEDED; line-height:1.5; white-space:pre-wrap;">
+            <div style="padding: 16px; color: var(--gj-text-primary); line-height:1.5; white-space:pre-wrap;">
               {confirmState()!.message}
             </div>
 

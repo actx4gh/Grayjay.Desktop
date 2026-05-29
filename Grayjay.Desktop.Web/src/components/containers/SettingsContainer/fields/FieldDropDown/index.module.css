@@ -9,7 +9,7 @@
     flex-wrap: nowrap;
 }
 .container:focus-visible {
-    background: #454545;
+    background: var(--gj-bg-selected-strong);
     border-radius: 6px;
     outline: unset;
 }
@@ -17,7 +17,7 @@
     width: 60%;
 }
 .descriptor .title {
-    color: #FFF;
+    color: var(--gj-text-primary);
     leading-trim: both;
     text-edge: cap;
     font-family: Inter;
@@ -29,7 +29,7 @@
     
 }
 .descriptor .description {
-    color: #8C8C8C;
+    color: var(--gj-text-tertiary);
     leading-trim: both;
     text-edge: cap;
     font-family: Inter;
@@ -50,8 +50,8 @@
 
 .select {
     border-radius: 8px;
-    border: 1px solid #2E2E2E;
-    background: #141414;
+    border: 1px solid var(--gj-border);
+    background: var(--gj-bg-elevated);
     padding: 14px;
-    color: white;
+    color: var(--gj-text-primary);
 }

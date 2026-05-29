@@ -140,7 +140,7 @@ const PlaylistDetailView: Component<PlaylistDetailViewProps> = (props) => {
               showClearButton={true}
               inputContainerStyle={{
                 "height": "48px", 
-                "background": "#141414"
+                "background": "var(--gj-bg-input)"
               }}
               onTextChanged={(v) => {
                 setFilterText(v);
@@ -150,7 +150,7 @@ const PlaylistDetailView: Component<PlaylistDetailViewProps> = (props) => {
             text="Play all"
             icon={iconPlay}
             style={{
-              background: "linear-gradient(267deg, #01D6E6 -100.57%, #0182E7 90.96%)",
+              background: "var(--gj-accent-grad)",
               "flex-shrink": 0
             }}
             onClick={() => props.onPlayAll()}
@@ -160,8 +160,10 @@ const PlaylistDetailView: Component<PlaylistDetailViewProps> = (props) => {
           <CustomButton
             text="Shuffle"
             icon={iconShuffle}
+            iconStyle={{ filter: "var(--gj-theme-icon-filter)" }}
             style={{
-              border: "1px solid #2E2E2E",
+              border: "1px solid var(--gj-border)",
+              background: "var(--gj-bg-button-secondary)",
               "flex-shrink": 0
             }}
             onClick={() => props.onShuffleAll()}

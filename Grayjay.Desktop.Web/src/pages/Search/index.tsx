@@ -175,7 +175,7 @@ const SearchPage: Component = () => {
               performSearch(v, sortBy$(), filterValues$(), enabledSources$());
             }} focusable={true} />
             <Show when={searchType$() === ContentType.MEDIA}>
-              <CustomButton text='Filters' icon={iconFilters} border='1px solid #2E2E2E' style={{"height": "44px" }} onClick={() => setFiltersDialogVisible(true)} focusableOpts={{
+              <CustomButton text='Filters' icon={iconFilters} iconStyle={{"filter": "var(--gj-theme-icon-filter)"}} border='1px solid var(--gj-border)' style={{"height": "44px", "background": "var(--gj-bg-button-secondary)", "color": "var(--gj-text-primary)" }} onClick={() => setFiltersDialogVisible(true)} focusableOpts={{
                 onPress: () => setFiltersDialogVisible(true)
               }} />
             </Show>

@@ -128,6 +128,7 @@ const SideBar: Component<SideBarProps> = (props: SideBarProps) => {
     autoPressOnFocus?: boolean;
     style?: JSX.CSSProperties;
     styleText?: JSX.CSSProperties;
+    themeFilter?: boolean;
   };
   
   const homeBtn: ButtonItem = { icon: home, name: 'Home', path: '/web/home', getSelected: createMemo(() => location.pathname === '/web/home' || location.pathname === '/web/index.html'), autoPressOnFocus: false };
@@ -181,11 +182,12 @@ const SideBar: Component<SideBarProps> = (props: SideBarProps) => {
   
   const buyBtn: ButtonItem = { 
     icon: iconBuy,
+    themeFilter: false,
     name: 'Buy Grayjay', 
     path: '/web/buy', 
     getSelected: createMemo(() => location.pathname === '/web/buy')
   };
-  const settingsBtn: ButtonItem = { icon: iconSettings, name: 'Settings', action: () => UIOverlay.overlaySettings(), getSelected: createMemo(() => location.pathname === '/web/settings') };
+  const settingsBtn: ButtonItem = { icon: iconSettings, themeFilter: false, name: 'Settings', action: () => UIOverlay.overlaySettings(), getSelected: createMemo(() => location.pathname === '/web/settings') };
 
   const bottomButtons$ = createMemo(() => {
     const list: ButtonItem[] = [];
@@ -368,6 +370,7 @@ const SideBar: Component<SideBarProps> = (props: SideBarProps) => {
                   onBlur={globalBlur}
                   style={btn.style}
                   styleText={btn.styleText}
+                  themeFilter={btn.themeFilter}
                 />
               );
             }}
@@ -457,6 +460,7 @@ const SideBar: Component<SideBarProps> = (props: SideBarProps) => {
                   onBlur={globalBlur}
                   style={btn.style}
                   styleText={btn.styleText}
+                  themeFilter={btn.themeFilter}
                 />
               );
             }}
@@ -464,7 +468,7 @@ const SideBar: Component<SideBarProps> = (props: SideBarProps) => {
         </div>
         <Portal>
           <Show when={moreTopButtonCount$() > 0 && moreOverlayVisible$()}>
-            <div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: #0000009e; z-index: 3" onClick={(ev) => {
+            <div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: var(--gj-bg-backdrop); z-index: 3" onClick={(ev) => {
               props?.onMoreClosed?.();
               setMoreOverlayVisible(false);
               ev.preventDefault();
@@ -475,7 +479,7 @@ const SideBar: Component<SideBarProps> = (props: SideBarProps) => {
             }} use:focusScope={{
               initialMode: 'trap'
             }}>
-              <div style="background-color: #141414; width: 260px; height: calc(100% - 20px); border-right: #2a2a2a 1px solid; padding: 10px; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+              <div style="background-color: var(--gj-bg-sidebar); width: 260px; height: calc(100% - 20px); border-right: var(--gj-border) 1px solid; padding: 10px; display: flex; flex-direction: column; align-items: center; gap: 6px;">
                 <For each={topButtons$().slice(visibleTopButtonCount$(), visibleTopButtonCount$() + moreTopButtonCount$())}>
                   {(btn, i) => {
                     const press = () => {
@@ -510,6 +514,7 @@ const SideBar: Component<SideBarProps> = (props: SideBarProps) => {
                         onBlur={globalBlur}
                         style={btn.style}
                         styleText={btn.styleText}
+                        themeFilter={btn.themeFilter}
                       />
                     );
                   }}

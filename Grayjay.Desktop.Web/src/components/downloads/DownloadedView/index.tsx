@@ -83,33 +83,6 @@ const DownloadedView: Component<DownloadedViewProps> = (props) => {
         </Show>
     </div>
   )
-  /*
-  return (
-    <div style="background-color: #111; padding: 30px; margin-bottom: 20px; margin-left: 30px; margin-right: 30px; position: relative;">
-      <div>
-        <img src={proxyImage(getBestThumbnail(downloading$().video.thumbnails)?.url)} style="position: absolute; left: 20px; top: 40px; width: 70px; height: 40px;"/>
-        <div style="margin-left: 80px; margin-bottom: 20px;">
-          <div>
-            {downloading$().video.name}
-          </div>
-          <div>
-            Download Speed: {downloading$().downloadSpeed}
-          </div>
-          <div>
-            State: {downloading$().state}
-          </div>
-          <Show when={downloading$().error}>
-            <div style="color: red;">
-              Error: {downloading$().error};
-            </div>
-          </Show>
-        </div>
-        <div style={{"height": "2px", width: parseInt(downloading$().progress * 100 + "") + "%", "background-color": "red"}}>
-
-        </div>
-      </div>
-    </div>
-  );*/
 };
 
 export default DownloadedView;

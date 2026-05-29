@@ -281,7 +281,7 @@ const SourceDetails: Component<SourceDetailsProps> = (props: SourceDetailsProps)
                 }} />
               </Show>
               
-              <Button style={{width: "calc(100% - 54px)", "margin-bottom": "10px", "margin-left": "24px"}} text='Uninstall' color='#550000' onClick={()=>uninstall()} focusableOpts={{
+              <Button style={{width: "calc(100% - 54px)", "margin-bottom": "10px", "margin-left": "24px"}} text='Uninstall' color='var(--gj-danger)' onClick={()=>uninstall()} focusableOpts={{
                 groupId: 'plugin-settings',
                 groupEscapeTo: {
                   left: ['sources']
@@ -289,7 +289,7 @@ const SourceDetails: Component<SourceDetailsProps> = (props: SourceDetailsProps)
                 groupType: 'vertical',
                 onPress: uninstall
               }}></Button>
-              <Button style={{width: "calc(100% - 54px)", "margin-bottom": "10px", "margin-left": "24px"}} text='Copy Settings to Clipboard' color='#019BE7' onClick={()=>copySettingsToClipboard()} focusableOpts={{
+              <Button style={{width: "calc(100% - 54px)", "margin-bottom": "10px", "margin-left": "24px"}} text='Copy Settings to Clipboard' color='var(--gj-accent)' onClick={()=>copySettingsToClipboard()} focusableOpts={{
                 groupId: 'plugin-settings',
                 groupEscapeTo: {
                   left: ['sources']

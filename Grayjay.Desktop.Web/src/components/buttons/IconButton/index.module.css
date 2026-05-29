@@ -56,3 +56,27 @@
   display: block;
   object-fit: contain;
 }
+
+
+:global(:root[data-theme="light"]) .container.solid {
+  background: rgba(30, 30, 30, 0.10);
+}
+
+:global(:root[data-theme="light"]) .container.ghost {
+  background: rgba(30, 30, 30, 0.06);
+}
+
+:global(:root[data-theme="light"]) .container.solid:hover,
+:global(:root[data-theme="light"]) .container.ghost:hover,
+:global(:root[data-theme="light"]) .container.none:hover,
+:global(:root[data-theme="light"]) .container.solid:focus-visible,
+:global(:root[data-theme="light"]) .container.ghost:focus-visible,
+:global(:root[data-theme="light"]) .container.none:focus-visible {
+  background: rgba(30, 30, 30, 0.16);
+}
+
+:global(:root[data-theme="light"]) .container.solid .icon,
+:global(:root[data-theme="light"]) .container.ghost .icon,
+:global(:root[data-theme="light"]) .container.none .icon {
+  filter: brightness(0) saturate(100%);
+}

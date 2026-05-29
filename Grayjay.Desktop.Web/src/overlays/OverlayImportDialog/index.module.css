@@ -9,9 +9,9 @@
     text-align: center;
     
     border-radius: 12px;
-    border: 1px solid #2E2E2E;
-    background: #141414;
-    box-shadow: 0px 1.167px 3.148px 0px rgba(0, 0, 0, 0.07), 0px 5.133px 6.519px 0px rgba(0, 0, 0, 0.12), 0px 12.6px 13px 0px rgba(0, 0, 0, 0.16), 0px 24.267px 25.481px 0px rgba(0, 0, 0, 0.19), 0px 40.833px 46.852px 0px rgba(0, 0, 0, 0.24), 0px 63px 80px 0px rgba(0, 0, 0, 0.31);
+    border: 1px solid var(--gj-border);
+    background: var(--gj-bg-popover);
+    box-shadow: var(--gj-shadow);
 }
 
 .buttons {
@@ -28,13 +28,13 @@
     border-radius: 6px;
 }
 .button.none {
-    color: #019BE7;
+    color: var(--gj-accent);
 }
 .button.primary {
-    background: #019BE7;
+    background: var(--gj-accent);
 }
 .button.accent {
-    background: #F97066;
+    background: var(--gj-danger-accent);
 }
 
 .input {
@@ -46,9 +46,9 @@
     margin-top: 20px;
     margin-bottom: 30px;
     padding: 10px;
-    background-color: #1A1A1A;
+    background-color: var(--gj-bg-code);
     border-radius: 6px;
-    border: 1px solid #444;
+    border: 1px solid var(--gj-border-strong);
     font-family: monospace;
     white-space: pre-wrap;
 }
@@ -65,7 +65,7 @@
     top: 20px;
     height: 100px;
     width: 100px;
-    background-color: #1B1B1B;
+    background-color: var(--gj-bg-panel);
     border-radius: 20px;
     display: grid;
     align-items: center;
@@ -82,7 +82,7 @@
     width: 100%;
 }
 .header .descriptor .title{
-    color: #FFF;
+    color: var(--gj-text-primary);
     font-family: "Inter";
     font-family: Inter;
     font-size: 28px;
@@ -93,7 +93,7 @@
     text-align: left;
 }
 .header .descriptor .description {
-    color: #8C8C8C;
+    color: var(--gj-text-tertiary);
     font-family: "Inter";
     font-family: Inter;
     font-size: 16px;
@@ -105,7 +105,7 @@
     margin-top: 10px;
 }
 .header .descriptor .meta {
-    color: #FFF;
+    color: var(--gj-text-primary);
     font-family: Inter;
     font-size: 14px;
     font-style: normal;
@@ -128,7 +128,7 @@
     flex: 1;
     flex-basis: 1000px;
     border-radius: 8px;
-    border: 1px solid #2E2E2E;
+    border: 1px solid var(--gj-border);
     padding: 16px 18px;
     align-items: center;
     gap: 8px;
@@ -144,7 +144,7 @@
 }
 .linkContainer .linkTitle {
     overflow: hidden;
-    color: #FFF;
+    color: var(--gj-text-primary);
     
     leading-trim: both;
     
@@ -159,7 +159,7 @@
 }
 .linkContainer .linkUrl {
     overflow: hidden;
-    color: #019BE7;
+    color: var(--gj-accent);
 
     leading-trim: both;
 
@@ -179,7 +179,7 @@
 
 }
 .permissionContainer .headerTitle {
-    color: #FFF;
+    color: var(--gj-text-primary);
 
     leading-trim: both;
 
@@ -191,7 +191,7 @@
     line-height: 24px; /* 109.091% */
 }
 .permissionContainer .headerDescription {
-    color: #8C8C8C;
+    color: var(--gj-text-tertiary);
 
     leading-trim: both;
 
@@ -222,7 +222,7 @@
     width: calc(100% - 50px)
 }
 .permission .permissionTitle {
-    color: #FFF;
+    color: var(--gj-text-primary);
 
     leading-trim: both;
 
@@ -234,7 +234,7 @@
     line-height: 24px; /* 150% */
 }
 .permission .permissionDescription {
-    color: #8C8C8C;
+    color: var(--gj-text-tertiary);
 
     leading-trim: both;
     
@@ -253,7 +253,7 @@
 .tag {
     display: inline-block;
     margin-right: 4px;
-    color: #019BE7;
+    color: var(--gj-accent);
 
     leading-trim: both;
 
@@ -264,7 +264,7 @@
     font-weight: 300;
     line-height: 26px; /* 185.714% */
     border-radius: 4px;
-    background: #1B1B1B;
+    background: var(--gj-bg-panel);
     padding-left: 12px;
     padding-right: 12px;
     padding-top: 4px;
@@ -284,7 +284,7 @@
     display: grid;
     align-items: center;
     justify-content: center;
-    background: #019BE7;
+    background: var(--gj-accent);
     margin-left: auto;
     cursor: pointer;
 }
@@ -318,14 +318,14 @@
     margin-top: 15px;
 }
 .importItem .text .name {
-    color: #FFF;
+    color: var(--gj-text-primary);
     font-size: 18px;
     font-style: normal;
     font-weight: 500;
     line-height: 24px
 }
 .importItem .text .description {
-    color: #8C8C8C;
+    color: var(--gj-text-tertiary);
     font-size: 14px;
     font-style: normal;
     font-weight: 300;
@@ -343,7 +343,7 @@
 
 
 .dialogTitle {
-    color: #FFF;
+    color: var(--gj-text-primary);
     font-size: 32px;
     font-style: normal;
     font-weight: 600;
@@ -351,7 +351,7 @@
     text-align: left;
 }
 .dialogSubtitle {
-    color: #8C8C8C;
+    color: var(--gj-text-tertiary);
     font-size: 14px;
     font-style: normal;
     font-weight: 300;
@@ -363,7 +363,7 @@
 }
 
 .importTitle {
-    color: #FFF;
+    color: var(--gj-text-primary);
     text-align: center;
     leading-trim: both;
 
@@ -414,7 +414,7 @@
 .exception {
     color: red;
     font-size: 14px;
-    background-color: rgba(0, 0, 0, .4);
+    background-color: var(--gj-danger-soft-bg);
     border-radius: 5px;
     padding-top: 4px;
     padding-bottom: 4px;
@@ -424,10 +424,18 @@
 .warning {
     color: orange;
     font-size: 14px;
-    background-color: rgba(0, 0, 0, .4);
+    background-color: var(--gj-danger-soft-bg);
     border-radius: 5px;
     padding-top: 4px;
     padding-bottom: 4px;
     text-align: center;
     margin-bottom: 5px;
+}
+
+/* broad-light-theme-icon-pass */
+:global(:root[data-theme="light"]) .closeButton img,
+:global(:root[data-theme="light"]) .iconClose,
+:global(:root[data-theme="light"]) .button img,
+:global(:root[data-theme="light"]) .status img {
+    filter: var(--gj-theme-icon-filter);
 }

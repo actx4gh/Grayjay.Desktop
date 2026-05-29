@@ -1,5 +1,5 @@
 .container {
-    background-color: #ffffff0a;
+    background-color: var(--gj-bg-hover);
     border-radius: 6px;
     padding-left: 40px;
     padding-right: 40px;
@@ -16,7 +16,7 @@
     justify-content: center;
     box-sizing: border-box;
 
-    color: #EFF9FF;
+    color: var(--gj-text-primary);
     text-align: center;
     font-feature-settings: 'clig' off, 'liga' off;
     font-family: Inter;

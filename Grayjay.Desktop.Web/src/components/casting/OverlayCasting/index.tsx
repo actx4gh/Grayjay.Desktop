@@ -98,7 +98,7 @@ const CastingDeviceView: Component<CastingDeviceViewProps> = (props) => {
                 onOptionsLabel: 'Pin',
                 onOptions: () => props.pinned ? casting?.actions?.removePinnedDevice(props.device) : casting?.actions?.addPinnedDevice(props.device)
             }}>
-                <img src={icon$()} /> 
+                <img class={styles.deviceIcon} src={icon$()} /> 
                 <div style="display: flex; flex-direction: column; flex-grow: 1">
                     <div class={styles.deviceName}>{props.device.name}</div>
                     <div class={styles.deviceType}>{name}</div>
@@ -175,7 +175,7 @@ const DeviceList: Component = () => {
                     }}</For>
                 </div>
 
-                <div style="height: 1px; width: 100%; background-color: #2E2E2E; margin-top: 16px;"></div>
+                <div class={styles.divider}></div>
 
                 <div style="display: flex; flex-direction: row; width: 100%; margin-top: 20px;">
                     <div class={styles.containerUnableToSeeDevice}>
@@ -309,7 +309,7 @@ const AddDeviceManually: Component = () => {
                 <div style="flex-grow: 1"></div>
                 <ButtonFlex small={true} onClick={onClick}
                     text='Add device'
-                    color='#019BE7'
+                    color='var(--gj-accent)'
                     style={{
                         "height": "48px",
                         "width": "180px",
@@ -336,7 +336,7 @@ const ActiveDeviceView: Component = () => {
                 Casting to <Show when={casting?.activeDevice.state() != CastConnectionState.Connected}><CircleLoader style={{"width": "16px", "height": "16px", "margin-left": "8px"}} /></Show>
             </div>
             <div style="display: flex; flex-direction: row; width: 100%; align-items: center; margin-top: 12px;">
-                <img src={icon$()} /> 
+                <img class={styles.deviceIcon} src={icon$()} /> 
                 <div style="display: flex; flex-direction: column; flex-grow: 1; margin-left: 10px;">
                     <div class={styles.deviceName}>{casting?.activeDevice?.device()?.name}</div>
                     <div class={styles.deviceType}>{getDeviceTypeName(casting?.activeDevice?.device())}</div>
@@ -415,10 +415,10 @@ const OverlayCasting: Component = () => {
                                 <div style="flex-grow: 1"></div>
                             </div>
                             
-                            <div style="display: flex; width: 100%; flex-direction: column; justify-content: center; align-items: center; margin-top: 32px">
-                                <div style="color: #FFF; font-family: Inter; font-size: 24px; font-style: normal; font-weight: 600;">Connecting to casting device</div>
+                            <div class={styles.connectingBody}>
+                                <div class={styles.connectingTitle}>Connecting to casting device</div>
                                 <CircleLoader style={{"margin-top": "16px"}} />
-                                <div style="color: #8C8C8C; text-align: center; leading-trim: both; text-edge: cap; font-family: Inter; font-size: 16px; font-style: normal; font-weight: 400; line-height: normal; text-align: center; margin-top: 32px">Make sure you are on the same network VPNs and guest networks can cause issues</div>
+                                <div class={styles.connectingHelp}>Make sure you are on the same network VPNs and guest networks can cause issues</div>
                             </div>
 
                             <div style="display: flex; width: 100%; flex-direction: column; justify-content: center; align-items: end; margin-top: 32px">
@@ -426,7 +426,7 @@ const OverlayCasting: Component = () => {
                                         casting?.actions.disconnect();
                                     }}
                                     text='Disconnect'
-                                    style={{ border: "1px solid rgba(1, 155, 231, 0)", "margin-left": "16px", "flex-shrink": "0" }}
+                                    style={{ border: "1px solid transparent", "margin-left": "16px", "flex-shrink": "0" }}
                                     focusableOpts={{
                                         onPress: async () => casting?.actions.disconnect(),
                                         onBack: globalBack

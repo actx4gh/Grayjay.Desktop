@@ -168,12 +168,12 @@ const OverlayImageSelector: Component<OverlayImageSelectorDialogProps> = (props:
             </div>
           </ScrollContainer>
         </div>
-        <div style="height: 1px; background-color: rgba(255, 255, 255, 0.09); margin-top: 10px; margin-bottom: 10px;"></div>
+        <div style="height: 1px; background-color: var(--gj-border); margin-top: 10px; margin-bottom: 10px;"></div>
         <div style="text-align: right">
             <Button text={"Select Image"}
               onClick={()=>submit()}
               style={{"margin-left": "auto", cursor: ("pointer")}} 
-              color={"linear-gradient(267deg, #01D6E6 -100.57%, #0182E7 90.96%)"}
+              color={"var(--gj-accent-grad)"}
               focusableOpts={{
                 onPress: submit,
                 onBack: globalBack

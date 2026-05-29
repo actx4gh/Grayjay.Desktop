@@ -1,8 +1,8 @@
 .sidebar {
     width: 260px;
     height: calc(100vh - 20px);
-    border-right: #2E2E2E 1px solid;
-    background: #1B1B1B;
+    border-right: var(--gj-border) 1px solid;
+    background: var(--gj-bg-sidebar);
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -44,7 +44,7 @@
     flex-direction: column;
     align-items: center;
     gap: 4px;
-    border-top: 1px solid #2E2E2E;
+    border-top: 1px solid var(--gj-border);
     padding-bottom: 0px;
     padding-top: 10px;
     flex-shrink: 0;
@@ -60,26 +60,26 @@
 
 .collapse:hover {
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.055);
+    background: var(--gj-bg-hover);
 }
 
 .collapse.selected:focus {
-    background: rgba(255, 255, 255, 0.15);
+    background: var(--gj-bg-selected-strong);
     outline: unset;
 }
 
 .collapse:focus {
-  background: rgba(255, 255, 255, 0.055);
+  background: var(--gj-bg-hover);
   outline: unset;
 }
 
 .width.selected:focus {
-    background: rgba(255, 255, 255, 0.15);
+    background: var(--gj-bg-selected-strong);
     outline: unset;
 }
 
 .width:focus {
-  background: rgba(255, 255, 255, 0.055);
+  background: var(--gj-bg-hover);
   outline: unset;
 }
 
@@ -106,7 +106,7 @@
     flex-direction: row;
     text-transform: uppercase;
     letter-spacing: 2.94px;
-    color: #8C8C8C;
+    color: var(--gj-text-tertiary);
     font-size: 14px;
     cursor: pointer;
 }
@@ -133,7 +133,7 @@
     width: 100%;
     margin-left: 4px;
     margin-bottom: 8px;
-    color: #FFF;
+    color: var(--gj-text-primary);
     font-family: Sen;
     font-size: 20px;
     font-style: normal;
@@ -165,8 +165,8 @@
   width: 280px;
   height: 100%;
 
-  background: #1B1B1B;
-  border-right: #2E2E2E 1px solid;
+  background: var(--gj-bg-sidebar);
+  border-right: var(--gj-border) 1px solid;
 
   pointer-events: none;
 }
@@ -178,4 +178,13 @@
   width: 260px;
   height: calc(100% - 20px);
   z-index: 1;
+}
+
+:global(:root[data-theme="light"]) .collapse {
+    filter: brightness(0) saturate(100%) invert(22%);
+}
+
+:global(:root[data-theme="light"]) .collapse:hover,
+:global(:root[data-theme="light"]) .collapse:focus {
+    background: var(--gj-bg-selected);
 }

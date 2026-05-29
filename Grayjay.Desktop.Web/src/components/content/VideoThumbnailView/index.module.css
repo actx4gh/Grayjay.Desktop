@@ -43,13 +43,13 @@
 
 .duration {
     border-radius: 4px;
-    background: #000000EE;
+    background: var(--gj-thumbnail-badge-bg);
     position: absolute;
     right: 12px;
     bottom: 12px;
-    color: #D9D9D9;
+    color: var(--gj-thumbnail-badge-text);
     padding: 6px 8px;
-    color: #FFF;
+    color: var(--gj-thumbnail-badge-text);
 
     /*leading-trim: both; -NOT SUPPORTED YET BY BROWSERS*/
     
@@ -63,29 +63,13 @@
 }
 .isLive {
     border-radius: 4px;
-    background: red;
+    background: var(--gj-live-badge-bg);
     position: absolute;
     right: 12px;
     bottom: 12px;
-    color: #D9D9D9;
-    padding: 6px 8px;
-
+    color: var(--gj-live-badge-text);
     padding: 5px 8px;
 
-
-    color: #FFF;
-
-
-    
-
-    font-family: Inter;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 200;
-    line-height: normal;
-
-
-    color: #FFF;
     font-family: Inter;
     font-size: 14px;
     font-style: normal;
@@ -94,13 +78,13 @@
 }
 .isPlanned {
     border-radius: 3px;
-    background: #222;
+    background: var(--gj-thumbnail-badge-bg);
     position: absolute;
     right: 12px;
     bottom: 12px;
-    color: #D9D9D9;
+    color: var(--gj-thumbnail-badge-text);
     padding: 6px 8px;
-    color: #FFF;
+    color: var(--gj-thumbnail-badge-text);
 
 
     
@@ -180,4 +164,18 @@
 .progressBarProgress {
     height: 3px;
     background-color: #3333FFAA;
+}
+
+:global(:root[data-theme="light"]) .duration {
+    background: var(--gj-thumbnail-badge-bg);
+    color: var(--gj-thumbnail-badge-text);
+}
+
+:global(:root[data-theme="light"]) .isPlanned {
+    background: var(--gj-thumbnail-badge-bg);
+    color: var(--gj-thumbnail-badge-text);
+}
+
+:global(:root[data-theme="light"]) .sourceIcon {
+    filter: none;
 }

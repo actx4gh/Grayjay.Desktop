@@ -6,7 +6,7 @@
 }
 
 .header {
-    color: #FFF;
+    color: var(--gj-text-primary);
     font-family: Inter;
     font-size: 29px;
     font-style: normal;
@@ -24,4 +24,13 @@
     gap: 12px;
     margin-top: 24px;
     margin-bottom: 12px;
+}
+
+.metadata {
+    color: var(--gj-text-tertiary);
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }

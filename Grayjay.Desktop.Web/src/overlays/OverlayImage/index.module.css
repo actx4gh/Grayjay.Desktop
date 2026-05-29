@@ -5,13 +5,13 @@
     overflow:hidden;
     border-radius: 12px;
     padding:0.5px;
-    border: 1px solid #2E2E2E;
-    background: #141414;
+    border: 1px solid var(--gj-border);
+    background: var(--gj-bg-popover);
     max-width: 90%;
     max-height: 90%;
     margin-left: auto;
     margin-right: auto;
-    box-shadow: 0px 1.648px 3.148px 0px rgba(0, 0, 0, 0.10), 0px 7.252px 6.519px 0px rgba(0, 0, 0, 0.16), 0px 17.8px 13px 0px rgba(0, 0, 0, 0.21), 0px 34.281px 25.481px 0px rgba(0, 0, 0, 0.26), 0px 57.685px 46.852px 0px rgba(0, 0, 0, 0.32), 0px 89px 80px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: var(--gj-shadow);
 }
 
 .dialogHeader {
@@ -36,7 +36,7 @@
 }
 .dialogHeader .headerSubText {
     font-size: 14px;
-    color: #AAA;
+    color: var(--gj-text-tertiary);
 }
 
 .closeButton {
@@ -49,7 +49,7 @@
     width: 40px;
     height: 40px;
     border-radius: 48px;
-    background: #2E2E2E;
+    background: var(--gj-bg-card-active);
     cursor: pointer;
     box-shadow: 0px 0px 3px black;
 }
@@ -74,7 +74,7 @@
     margin: 5px;
 }
 .subscription.enabled {
-    background-color: #212121;
+    background-color: var(--gj-bg-control);
 }
 .subscription .check {
     width: 18px;
@@ -83,13 +83,13 @@
     top: 10px;
     right: 5px;
     border-radius: 72.727px;
-    border: 2px solid #454545;
+    border: 2px solid var(--gj-border-strong);
 }
 .subscription .check img {
     display: none;
 }
 .subscription.enabled .check {
-    background-color: #019BE7;
+    background-color: var(--gj-accent);
 }
 .subscription.enabled .check img {
     display: block;
@@ -104,7 +104,7 @@
     display: inline-block;
 }
 .subscription .name {
-    color: #FFF;
+    color: var(--gj-text-primary);
 
     text-align: center;
     
@@ -135,7 +135,7 @@
     background-position: center;;
 }
 .image.enabled {
-    border: 3px solid white;
+    border: 3px solid var(--gj-text-primary);
 }
 
 .horizontalList {
@@ -144,7 +144,7 @@
     width: 100%;
     text-wrap: nowrap;
     scrollbar-width: thin;
-    scrollbar-color: #555 #333;
+    scrollbar-color: var(--gj-scroll-thumb) var(--gj-scroll-track);
 }
 .horizontalList::-webkit-scrollbar {
     background-color: transparent;
@@ -156,7 +156,7 @@
   .horizontalList::-webkit-scrollbar-thumb {
     border-radius: 20px;
     border: 4px solid transparent;
-    background-color: rgba(0,0,0,0.2);
+    background-color: var(--gj-bg-hover);
     background-clip: content-box;
   }
   .horizontalList::-webkit-scrollbar-button {
@@ -170,6 +170,6 @@
 }
 .sectionDescription {
     font-size: 14px;
-    color: #AAA;
+    color: var(--gj-text-tertiary);
     margin-bottom: 10px;
 }

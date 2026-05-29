@@ -15,7 +15,7 @@
     flex-direction: column;
 }
 .settingsMenuItem {
-    color: rgba(255, 255, 255, 0.60);
+    color: var(--gj-text-muted);
     height: 46px;
     border-radius: 6px;
     font-family: Inter;
@@ -41,24 +41,24 @@
 }
 
 .advanced:focus-visible {
-    background: #454545;
+    background: var(--gj-border-strong);
     border-radius: 6px;
     outline: unset;
 }
 
 .settingsMenuItem:hover {
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.055);
+    background: var(--gj-bg-hover);
 }
 
 .settingsMenuItem:focus-visible {
-    background: rgba(255, 255, 255, 0.055);
+    background: var(--gj-bg-hover);
     outline: unset;
 }
 
 .settingsMenuItem.active {
-    color: #FFF;
-    background: rgba(255, 255, 255, 0.105);
+    color: var(--gj-text-primary);
+    background: var(--gj-bg-selected);
     padding-left: 16px;
     height: 46px;
     font-family: Inter;

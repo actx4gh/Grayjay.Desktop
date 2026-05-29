@@ -83,7 +83,7 @@ const OverlaySyncNewDeviceDialog: Component<OverlaySyncNewDeviceDialogProps> = (
         <Button text={"Link device"}
           onClick={linkDevice}
           style={{"margin-left": "10px", cursor: ("pointer")}} 
-          color={isDeviceInfoValid$()?.valid === true ? "linear-gradient(267deg, #01D6E6 -100.57%, #0182E7 90.96%)" : undefined} focusableOpts={{
+          color={isDeviceInfoValid$()?.valid === true ? "var(--gj-accent-grad)" : undefined} focusableOpts={{
             onPress: linkDevice,
             onBack: globalBack
           }} />

@@ -57,8 +57,8 @@ const Tooltip = (props: TooltipProps) => {
               position: 'absolute',
               top: `${tooltipPosition().top}px`,
               left: `${tooltipPosition().left}px`,
-              "background-color": '#333',
-              color: '#fff',
+              "background-color": 'var(--gj-bg-card-active)',
+              color: 'var(--gj-text-primary)',
               padding: '8px 12px',
               "border-radius": '4px',
               "font-size": '0.9rem',
@@ -78,7 +78,7 @@ const Tooltip = (props: TooltipProps) => {
                 height: '0',
                 "border-left": '6px solid transparent',
                 "border-right": '6px solid transparent',
-                "border-bottom": '6px solid #333',
+                "border-bottom": '6px solid var(--gj-bg-card-active)',
               }}
             ></div>
           </div>

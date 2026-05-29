@@ -26,10 +26,21 @@ const Button: Component<ButtonProps> = (props) => {
     };
 
     const style = createMemo(() => {
-        const bg = props.color ?? '#212122';
-        const bgFocus = props.focusColor ?? '#fff';
-        const text = props.textColor ?? '#fff';
-        const textFocus = props.focusTextColor ?? (props.focusColor ? text : '#141414');
+        const normalizeNeutral = (color: string | undefined, fallback: string) => {
+            if (!color) {
+                return fallback;
+            }
+            const normalized = color.trim().toLowerCase();
+            return (normalized === 'var(--gj-bg-control)' || normalized === '#2e2e2e' || normalized === '#222' || normalized === '#222222')
+                ? fallback
+                : color;
+        };
+
+        const bg = normalizeNeutral(props.color, 'var(--gj-bg-panel-strong)');
+        const isNeutral = bg === 'var(--gj-bg-panel-strong)';
+        const bgFocus = props.focusColor ?? (isNeutral ? 'var(--gj-bg-card-hover)' : 'var(--gj-text-primary)');
+        const text = props.textColor ?? (isNeutral ? 'var(--gj-text-primary)' : 'var(--gj-text-primary)');
+        const textFocus = props.focusTextColor ?? (isNeutral ? 'var(--gj-text-primary)' : (props.focusColor ? text : 'var(--gj-bg-popover)'));
         const iconFilterFocus = props.focusColor ? 'none' : 'brightness(0) saturate(100%)';
 
         return {

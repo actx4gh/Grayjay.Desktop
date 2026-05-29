@@ -28,24 +28,25 @@ const CustomButton: Component<CustomButtonProps> = (props) => {
   const computedStyle = createMemo(() => {
     const raw = (props.style ?? {}) as Record<string, any>;
 
-    const bg =
+    const explicitBg =
       props.background ??
       raw.background ??
       raw.backgroundColor ??
-      raw['background-color'] ??
-      '#212122';
+      raw['background-color'];
+
+    const bg = explicitBg ?? 'var(--gj-bg-button-secondary)';
 
     const border = props.border ?? raw.border ?? 'none';
 
     const text =
       props.textColor ??
       raw.color ??
-      '#fff';
+      'var(--gj-text-primary)';
 
-    const bgFocus = props.focusColor ?? '#fff';
-    const textFocus = props.focusTextColor ?? (props.focusColor ? text : '#141414');
+    const bgFocus = props.focusColor ?? (explicitBg ? bg : 'var(--gj-bg-card-hover)');
+    const textFocus = props.focusTextColor ?? text;
     const iconFilterFocus =
-      props.iconFilterFocus ?? (props.focusColor ? 'none' : 'brightness(0) saturate(100%)');
+      props.iconFilterFocus ?? (explicitBg ? 'none' : 'var(--gj-theme-icon-filter)');
 
     const rest = { ...raw };
     delete rest.background;

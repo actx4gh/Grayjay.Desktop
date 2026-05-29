@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 8px;
-    background: #1B1B1B;
+    background: var(--gj-bg-card);
     margin-right: 16px;
     margin-bottom: 16px;
     height: calc(100% - 16px);
@@ -21,7 +21,7 @@
 
 .name {
     overflow: hidden;
-    color: #F0F0F0;
+    color: var(--gj-text-primary);
     text-align: center;
     text-wrap: nowrap;
     text-overflow: ellipsis;
@@ -36,7 +36,7 @@
 }
 
 .metadata {
-    color: #6a6a6a;
+    color: var(--gj-text-tertiary);
     text-align: center;
     font-feature-settings: 'clig' off, 'liga' off;
     font-family: Inter;
@@ -46,4 +46,10 @@
     font-weight: 400;
     line-height: 140%;
     margin-top: 4px;
+}
+
+.containerCreator:focus-visible,
+.containerCreator:hover {
+    background: var(--gj-bg-card-hover);
+    outline: unset;
 }

@@ -14,7 +14,7 @@
 
 .text {
     margin-left: 4px;
-    color: #FFF;
+    color: var(--gj-text-primary);
     font-family: Inter;
     font-size: 14px;
     font-style: normal;
@@ -23,9 +23,23 @@
 }
 
 .text.active {
-    color: #019BE7;
+    color: var(--gj-accent);
 }
 
 .text.editable {
     cursor: pointer;
+}
+
+.icon {
+}
+
+.activeIcon {
+}
+
+:global(:root[data-theme="light"]) .icon {
+    filter: brightness(0) saturate(100%);
+}
+
+:global(:root[data-theme="light"]) .activeIcon {
+    filter: none;
 }

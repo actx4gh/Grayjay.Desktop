@@ -267,6 +267,22 @@ const SettingsMenu: Component<SettingsMenuProps> = (props: SettingsMenuProps) =>
         if(props.onHide)
           props.onHide();
     }
+    function isExternalMenuIcon(icon: string | undefined): boolean {
+      if (!icon) {
+        return false;
+      }
+
+      const normalized = icon.toLowerCase();
+      const isLocalAsset =
+        normalized.includes('/assets/') ||
+        normalized.includes('assets/icons') ||
+        normalized.includes('src/assets/') ||
+        normalized.startsWith('./assets/') ||
+        normalized.startsWith('../assets/');
+
+      return !isLocalAsset;
+    }
+
     function clickButton(option: IMenuButton) {
         console.log("Button clicked", option);
         option?.onClick();
@@ -292,7 +308,7 @@ const SettingsMenu: Component<SettingsMenuProps> = (props: SettingsMenuProps) =>
           onBack: onBack,
         }}>
           <Show when={item.icon}>
-            <img src={item.icon} class={styles.icon} />
+            <img src={item.icon} class={styles.icon} classList={{ [styles.pluginIcon]: isExternalMenuIcon(item.icon) }} />
           </Show>
           <div class={styles.nameContainer} style={
             {
@@ -333,7 +349,7 @@ const SettingsMenu: Component<SettingsMenuProps> = (props: SettingsMenuProps) =>
           onBack: onBack,
         }}>
           <Show when={item.icon}>
-            <img src={item.icon} class={styles.icon} />
+            <img src={item.icon} class={styles.icon} classList={{ [styles.pluginIcon]: isExternalMenuIcon(item.icon) }} />
           </Show>
           <div class={styles.nameContainer} style={
             {
@@ -535,7 +551,7 @@ const SettingsMenu: Component<SettingsMenuProps> = (props: SettingsMenuProps) =>
                 >
                   <div class={styles.name} style={{
                     "font-weight": ((item as IMenuItemOption).isSelected) ? "bold" : "regular", 
-                    color: ((item as IMenuItemOption).isSelected) ? "#FFFFFF" : "#AAAAAA"
+                    color: ((item as IMenuItemOption).isSelected) ? "var(--gj-text-primary)" : "var(--gj-text-secondary)"
                   }}>
                     {(item as IMenuItemOption).name}
                   </div>
