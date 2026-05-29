@@ -88,7 +88,7 @@ namespace Grayjay.ClientServer.Subscriptions.Algorithms
                         else
                         {
                             if (peekTasks.Count < 100 && GrayjaySettings.Instance.Subscriptions.PeekChannelContents &&
-                                task.Sub.LastPeekVideo.Year < 1971 || task.Sub.LastPeekVideo < task.Sub.LastVideoUpdate &&
+                                (task.Sub.LastPeekVideo.Year < 1971 || task.Sub.LastPeekVideo < task.Sub.LastVideoUpdate) &&
                                 task.Client.Capabilities.HasPeekChannelContents && task.Client.GetPeekChannelTypes().Contains(task.Type))
                             {
                                 task.FromPeek = true;
